@@ -1,0 +1,77 @@
+.search_wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.searchBtn {
+	width: auto;
+}
+.search_wrapper .input-group-text {
+	background-color: white;
+	border-right: none;
+	border-radius: 8px;
+}
+.search_wrapper .form-control {
+	border-left: none;
+	border-radius: 8px;
+}
+.recordList .name {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 140%;
+
+	/* identical to box height, or 28px */
+
+	color: #000000;
+}
+.recordList .icons {
+	display: flex;
+	align-items: center;
+}
+.recordList .icons > span {
+	display: inline-flex;
+	flex-direction: row;
+	width: 3rem;
+	height: 3rem;
+	/* padding: 1rem; */
+	border: 1px solid #2ea8fa;
+	border-radius: 8px;
+	margin-bottom: 1rem;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+.addPatient {
+	background: linear-gradient(90deg, #2ea8fa 0%, #076eb3 100%);
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 8px;
+	color: white;
+	border: none;
+	outline: none;
+	padding: 0.5rem 1rem;
+}
+.addPatient:hover {
+	background: linear-gradient(90deg, #2ea8fa 0%, #48b1f7 100%);
+	color: white;
+}
+.filterSort .btn {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 8px 16px;
+	background: #ffffff;
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 8px;
+}
+/* .patientList Hide scrollbar for Chrome, Safari and Opera */
+.patientList::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.patientList {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}

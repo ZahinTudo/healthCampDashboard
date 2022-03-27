@@ -1,0 +1,36 @@
+.modalSaveBtn {
+	background: linear-gradient(90deg, #2ea8fa 0%, #076eb3 100%);
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 8px;
+	border: none;
+	box-shadow: none;
+}
+.modalSaveBtn:hover {
+	background: linear-gradient(90deg, #2ea8fa 0%, #3286be 100%);
+}
+.form-label {
+	position: relative;
+	font-weight: bold;
+}
+.form-label.required::after {
+	content: "*";
+	color: red;
+	position: absolute;
+	top: 0;
+	/* right: 0; */
+}
+/* select:required:invalid {
+	color: rgb(168, 164, 164) !important;
+}
+option[value=""][disabled] {
+	display: none;
+}
+option {
+	color: black;
+} */
+.grayDefault option {
+	color: black;
+}
+.empty {
+	color: gray;
+}
