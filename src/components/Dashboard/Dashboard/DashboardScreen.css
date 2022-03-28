@@ -1,0 +1,17 @@
+.dashboardScreen .dashboard_prts {
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1rem;
+}
+.dashboardScreen .info_cards {
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem;
+}
+.dashboardScreen .cards {
+	background: #ffffff;
+	box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 20px;
+}

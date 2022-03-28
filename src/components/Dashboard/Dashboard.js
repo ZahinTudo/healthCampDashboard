@@ -7,7 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { getLogo } from "../../Redux/LocalStorage";
 import Records from "./Records/Records";
 import UpcomingHealthcamp from "./UpcomingHealthcamp/UpcomingHealthcamp";
+import { useRouteMatch } from "react-router-dom";
+import { Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import DashboardScreen from "./Dashboard/DashboardScreen";
 export default function Dashboard() {
+	// let { topicId } = useParams();
+	let { path, url } = useRouteMatch();
 	const { logo } = useSelector((state) => state.logo);
 	const dispatch = useDispatch();
 	const dashItemClick = (e) => {
@@ -67,14 +74,18 @@ export default function Dashboard() {
 							srcset=''
 						/>
 					</div>
-					<div className='d-flex align-items-center dashMenuitem'>
-						<span className='dash_icon dashboardIcon active'></span>
-						<span className='Dashitem'>Dashboard</span>
-					</div>
-					<div className='d-flex align-items-center dashMenuitem'>
-						<span className='healthcare_icon dashboardIcon '></span>
-						<span className='Dashitem'>Healthcamp</span>
-					</div>
+					<Link to={`${url}`}>
+						<div className='d-flex align-items-center dashMenuitem'>
+							<span className='dash_icon dashboardIcon active'></span>
+							<span className='Dashitem'>Dashboard</span>
+						</div>
+					</Link>
+					<Link to={`${url}/Healthcamp`}>
+						<div className='d-flex align-items-center dashMenuitem'>
+							<span className='healthcare_icon dashboardIcon '></span>
+							<span className='Dashitem'>Healthcamp</span>
+						</div>
+					</Link>
 					<div className='d-flex align-items-center dashMenuitem'>
 						<span className='user_icon dashboardIcon'></span>
 						<span className='Dashitem'>Users</span>
@@ -85,19 +96,28 @@ export default function Dashboard() {
 					</div>
 				</div>
 			</div>
-			<div className='dashboardMain col-10   py-4 px-3'>
-				<h3>Dashboard</h3>
-				<div
-					className='d-flex flex-wrap justify-content-between'
-					style={{ height: "86vh" }}>
-					<div className='records  '>
-						<Records />
-					</div>
-                    <div className='canlender '>
-                        <UpcomingHealthcamp/>
-                    </div>
-				</div>
-			</div>
+			<Switch>
+				<Route exact path={path}>
+					<DashboardScreen />
+					{/* <div className='dashboardMain col-10   py-4 px-3'>
+						<h3>Dashboard</h3>
+						<div
+							className='d-flex flex-wrap justify-content-between'
+							style={{ height: "86vh" }}>
+							<div className='records  '>
+								<Records />
+							</div>
+							<div className='canlender '>
+								<UpcomingHealthcamp />
+							</div>
+						</div>
+					</div> */}
+				</Route>
+				<Route path={`${path}/:topicId`}>
+					{/* <Topic /> */}
+					<h3 className='text-secondary'>someting</h3>
+				</Route>
+			</Switch>
 		</div>
 	);
 }
