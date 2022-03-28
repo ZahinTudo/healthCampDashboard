@@ -1,7 +1,7 @@
 .dashboardScreen .dashboard_prts {
 	display: grid;
 	grid-auto-flow: column;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: 2fr 1fr;
 	gap: 1rem;
 }
 .dashboardScreen .info_cards {
@@ -10,8 +10,30 @@
 	grid-template-columns: repeat(3, 1fr);
 	gap: 1rem;
 }
-.dashboardScreen .cards {
+.dashboardScreen .card .titles {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 1.25rem;
+	line-height: 140%;
+	color: #000000;
+	opacity: 0.7;
+}
+.dashboardScreen .card {
 	background: #ffffff;
 	box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.15);
 	border-radius: 20px;
+	/* width: 10rem; */
+	height: 7.5rem;
+	display: flex;
+	padding: 1rem;
+}
+.dashboardScreen .Healthcamps {
+	background: #ffffff;
+	box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 20px;
+	/* width: 10rem; */
+	height: 7.5rem;
+	display: flex;
+	/* padding: 1rem; */
 }

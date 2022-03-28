@@ -1,0 +1,16 @@
+.activities_wrapper .activities {
+	background: #ffffff;
+	box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 20px;
+	/* width: 10rem; */
+	/* height: 7.5rem; */
+	display: flex;
+	padding: 1rem;
+}
+.activities_wrapper .status {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1.25rem;
+	line-height: 140%;
+}
