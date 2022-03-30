@@ -6,32 +6,47 @@ import {
 	faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect } from "react";
-import { FormControl, InputGroup } from "react-bootstrap";
-import useWindowResize from "../../../CustomHooks/useWindowResize";
+import React, { useEffect, useState } from "react";
+import { FormControl, InputGroup, Spinner } from "react-bootstrap";
+import useWindowResize from "../../../../CustomHooks/useWindowResize";
+import useWrapperHeight from "../../../../CustomHooks/useWrapperHeight";
+import HealthcampCards from "../../HealthcampCards/HealthcampCards";
 import "./HealthCamps.css";
+import { useSelector } from "react-redux";
 
 export default function HealthCamps() {
+	const [loading, setLoading] = useState(true);
 	const { width } = useWindowResize();
-	const getInnerHeight = (elm) => {
-		var computed = getComputedStyle(elm),
-			padding =
-				parseInt(computed.paddingTop) +
-				parseInt(computed.paddingBottom);
+	const { location } = useSelector((state) => state.location);
 
-		return elm.clientHeight - padding;
-	};
-	const patientLIstHeight = () => {
-		const camWrapperHead = document.querySelector(".camWrapperHead");
-		const healthcampWrapper = document.querySelector(".healthcampWrapper");
-		const cardWrapper = document.querySelector(".cardWrapper");
-		cardWrapper.style.height =
-			getInnerHeight(healthcampWrapper) -
-			getInnerHeight(camWrapperHead) +
-			"px";
-	};
+	// const getInnerHeight = (elm) => {
+	// 	var computed = getComputedStyle(elm),
+	// 		padding =
+	// 			parseInt(computed.paddingTop) +
+	// 			parseInt(computed.paddingBottom);
+
+	// 	return elm.clientHeight - padding;
+	// };
+	// const patientLIstHeight = () => {
+	// 	const camWrapperHead = document.querySelector(
+	// 		".healthcampWrapper .camWrapperHead"
+	// 	);
+	// 	const healthcampWrapper = document.querySelector(".healthcampWrapper");
+	// 	const cardWrapper = document.querySelector(
+	// 		".healthcampWrapper .cardWrapper"
+	// 	);
+	// 	console.log(camWrapperHead, "\n", healthcampWrapper, "\n", cardWrapper);
+	// 	cardWrapper.style.height =
+	// 		getInnerHeight(healthcampWrapper) -
+	// 		getInnerHeight(camWrapperHead) +
+	// 		"px";
+	// };
 	useEffect(() => {
-		patientLIstHeight();
+		console.log(location);
+		setTimeout(() => {
+			setLoading(false);
+			// patientLIstHeight();
+		}, 100);
 	}, [width]);
 	return (
 		<div className='w-100 healthcampWrapper p-4'>
@@ -48,7 +63,16 @@ export default function HealthCamps() {
 					/>
 				</InputGroup>
 			</div>
-			<div className='row g-4 mt-2 cardWrapper py-3'>
+			{loading ? (
+				<Spinner />
+			) : (
+				<HealthcampCards
+					parent={"healthcampWrapper"}
+					head={"camWrapperHead"}
+					column={"4"}
+				/>
+			)}
+			{/* <div className='row g-4 mt-2 cardWrapper py-3'>
 				{[1, 1, 1, 1].map((item, ind) => (
 					<div className=' col-4'>
 						<div className='campCard '>
@@ -97,7 +121,7 @@ export default function HealthCamps() {
 						</div>
 					</div>
 				))}
-			</div>
+			</div> */}
 		</div>
 	);
 }

@@ -6,12 +6,14 @@ import "./Dashboard.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getLogo } from "../../Redux/LocalStorage";
 import Records from "./Records/Records";
-import UpcomingHealthcamp from "./UpcomingHealthcamp/UpcomingHealthcamp";
+import UpcomingHealthcamp from "./HealthcampCards/HealthcampCards";
 import { useRouteMatch } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import DashboardScreen from "./Dashboard/DashboardScreen";
+import Healthcamps from "./Healthcamps/Healthcamps";
+import Users from "./Users/Users";
 export default function Dashboard() {
 	// let { topicId } = useParams();
 	let { path, url } = useRouteMatch();
@@ -80,16 +82,18 @@ export default function Dashboard() {
 							<span className='Dashitem'>Dashboard</span>
 						</div>
 					</Link>
-					<Link to={`${url}/Healthcamp`}>
+					<Link to={`${url}/healthcamp`}>
 						<div className='d-flex align-items-center dashMenuitem'>
 							<span className='healthcare_icon dashboardIcon '></span>
 							<span className='Dashitem'>Healthcamp</span>
 						</div>
 					</Link>
-					<div className='d-flex align-items-center dashMenuitem'>
-						<span className='user_icon dashboardIcon'></span>
-						<span className='Dashitem'>Users</span>
-					</div>
+					<Link to={`${url}/users`}>
+						<div className='d-flex align-items-center dashMenuitem'>
+							<span className='user_icon dashboardIcon'></span>
+							<span className='Dashitem'>Users</span>
+						</div>
+					</Link>
 					<div className='d-flex align-items-center dashMenuitem'>
 						<span className='settings_icon dashboardIcon'></span>
 						<span className='Dashitem'>Settings</span>
@@ -113,9 +117,11 @@ export default function Dashboard() {
 						</div>
 					</div> */}
 				</Route>
-				<Route path={`${path}/:topicId`}>
-					{/* <Topic /> */}
-					<h3 className='text-secondary'>someting</h3>
+				<Route path={`${path}/healthcamp`}>
+					<Healthcamps />
+				</Route>
+				<Route path={`${path}/users`}>
+					<Users />
 				</Route>
 			</Switch>
 		</div>

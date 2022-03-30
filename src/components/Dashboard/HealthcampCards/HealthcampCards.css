@@ -1,23 +1,13 @@
-.healthcampWrapper .input-group-text {
-	background-color: white;
-	border-right: none;
-	border-radius: 8px;
-}
-.healthcampWrapper .form-control {
-	border-left: none;
-	border-radius: 8px;
-}
-.healthcampWrapper .cardWrapper {
+.cardWrapper {
 	overflow-y: scroll;
 }
-.healthcampWrapper .campCard {
+.cardWrapper .campCard {
 	border-radius: 10px;
 	background-color: white;
 	box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.15);
 }
-.healthcampWrapper .date {
+.cardWrapper .date {
 	width: 3rem;
-	/* height: auto; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -25,9 +15,8 @@
 	top: 0.5rem;
 	left: 0.5rem;
 	border-radius: 0.5rem;
-	/* line-height: 1px; */
 }
-.healthcampWrapper .date > span:last-child {
+.cardWrapper .date > span:last-child {
 	font-family: "Public Sans";
 	font-style: normal;
 	font-weight: 700;
@@ -54,8 +43,6 @@
 	font-size: 1rem;
 	line-height: 140%;
 
-	/* identical to box height, or 22px */
-
 	color: #000000;
 
 	opacity: 0.5;
@@ -66,8 +53,6 @@
 	font-weight: 400;
 	font-size: 1rem;
 	line-height: 140%;
-
-	/* identical to box height, or 22px */
 
 	color: #000000;
 }
@@ -82,8 +67,7 @@
 	display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
 .cardWrapper {
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }

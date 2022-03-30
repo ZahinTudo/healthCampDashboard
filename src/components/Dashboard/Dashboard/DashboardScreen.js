@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 import Activities from "../Activities/Activities";
-import HealthCamps from "../HealthCamps/HealthCamps";
+import HealthCamps from "./HealthCamps/HealthCamps";
 import VerticallyCenteredModal from "../Modal/VerticallyCenteredModal";
 import "./DashboardScreen.css";
 
@@ -42,10 +42,10 @@ export default function DashboardScreen() {
 						</div>
 					</div>
 					<div
-						className='Healthcamps bg-white my-2'
-                        style={{ height: "calc(100% - 8rem)" }}>
-                        <HealthCamps/>
-                        </div>
+						className='Healthcamps bg-white mt-2'
+						style={{ height: "calc(100vh - 27vh" }}>
+						<HealthCamps />
+					</div>
 				</div>
 				<Activities />
 			</div>

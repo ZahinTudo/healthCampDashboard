@@ -1,0 +1,10 @@
+.healthcampWrapper .input-group-text {
+	background-color: white;
+	border-right: none;
+	border-radius: 8px;
+}
+.healthcampWrapper .form-control {
+	border-left: none;
+	border-radius: 8px;
+}
+

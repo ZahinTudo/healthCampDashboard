@@ -1,16 +1,16 @@
-.dashboardScreen .dashboard_prts {
+.UserScreen .user_prts {
 	display: grid;
 	grid-auto-flow: column;
 	grid-template-columns: 2fr 1fr;
 	gap: 1rem;
 }
-.dashboardScreen .info_cards {
+.UserScreen .info_cards {
 	display: grid;
 	grid-auto-flow: column;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 1rem;
 }
-.dashboardScreen .card .titles {
+.UserScreen .card .titles {
 	font-family: "Public Sans";
 	font-style: normal;
 	font-weight: 600;
@@ -19,7 +19,7 @@
 	color: #000000;
 	opacity: 0.7;
 }
-.dashboardScreen .card {
+.UserScreen .card {
 	background: #ffffff;
 	box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.15);
 	border-radius: 20px;
@@ -28,7 +28,7 @@
 	display: flex;
 	padding: 1rem;
 }
-.dashboardScreen .Healthcamps {
+.UserScreen .Healthcamps {
 	background: #ffffff;
 	box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.15);
 	border-radius: 20px;
@@ -38,7 +38,7 @@
 	/* padding: 1rem; */
 }
 @media (max-width: 600px) {
-	.dashboardScreen .dashboard_prts {
+	.UserScreen .user_prts {
 		display: grid;
 		grid-auto-flow: row;
 		grid-template-columns: 1fr;

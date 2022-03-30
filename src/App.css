@@ -6,3 +6,27 @@ body {
 a {
 	text-decoration: none !important;
 }
+.search_wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.searchBtn {
+	width: auto;
+}
+.search_wrapper .input-group-text {
+	background-color: white;
+	border-right: none;
+	border-radius: 8px;
+}
+.search_wrapper .form-control {
+	border-left: none;
+	border-radius: 8px;
+}
+
+@media (max-width: 1400px) {
+	html,
+	body {
+		font-size: 80%;
+	}
+}
