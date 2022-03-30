@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
-import { FormControl, InputGroup } from "react-bootstrap";
+import {
+	Dropdown,
+	DropdownButton,
+	FormControl,
+	InputGroup,
+	Table,
+} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import $ from "jquery";
 
@@ -50,7 +56,7 @@ export default function Records() {
 				onHide={() => setModalShow(false)}
 			/>
 			<div className='SearchFilterSection'>
-				<h3>Patients</h3>
+				<h3>Manage Users</h3>
 				<div className='search_wrapper'>
 					<InputGroup className='pe-3'>
 						<InputGroup.Text id='searchBtn'>
@@ -76,19 +82,39 @@ export default function Records() {
 					</div>
 				</div>
 				<div className='filterSort d-flex justify-content-between align-items-center my-3'>
-					<div className='d-flex'>
-						<span className='me-3 btn d-flex align-items-center'>
-							<span className='me-2'>Filter</span>
-							<FontAwesomeIcon icon={faChevronDown} />
+					<div className='d-flex align-items-center'>
+						<span className=' me-3'>
+							<DropdownButton variant='' title='Role' id=''>
+								<Dropdown.Item href='#'>Action</Dropdown.Item>
+								<Dropdown.Item href='#'>
+									Another action
+								</Dropdown.Item>
+								<Dropdown.Item href='#'>
+									Something else here
+								</Dropdown.Item>
+								<Dropdown.Divider />
+								<Dropdown.Item href='#'>
+									Separated link
+								</Dropdown.Item>
+							</DropdownButton>
 						</span>
-						<span className='btn d-flex align-items-center'>
-							<span className='me-2'>Sort</span>
-							<FontAwesomeIcon icon={faArrowDownShortWide} />
+						<span>
+							<input
+								id='Inactive users'
+								className='me-2'
+								type='checkbox'
+								name='eventType'
+							/>
+							<label htmlFor='upcoming'>Inactive users</label>
 						</span>
 					</div>
-					<div>
-						<b>Showing 2/2 patients</b>
-					</div>
+				</div>
+				<div className=' d-flex justify-content-between align-items-center my-2'>
+					<div className='name col-3 '>Name</div>
+					<div className='name col-3 text-center'>Phone</div>
+					<div className='name col-2 text-center'>Role</div>
+					<div className='name col-3 text-center'>Last Activity</div>
+					<div className='name col-1 text-center'></div>
 				</div>
 			</div>
 			<div
@@ -96,17 +122,11 @@ export default function Records() {
 				style={{ height: "53%", overflowY: "scroll" }}>
 				{[1, 2, 3, 4, 5, 6, 8, 0, 0, 0, 0, 0, 0].map((item, ind) => (
 					<div className=' d-flex justify-content-between align-items-center'>
-						<div className='name'>Alina Bondareva</div>
-						<div className='icons'>
-							<span className='me-2'>
-								<img
-									className='img-fluid'
-									style={{ width: "1rem", height: "1rem" }}
-									src='/assets/images/pdf.png'
-									alt=''
-									srcset=''
-								/>
-							</span>
+						<div className='name col-3 '>Alina Bondareva</div>
+						<div className=' col-3 text-center'>+91-9236785412</div>
+						<div className=' col-2 text-center'>Moderator</div>
+						<div className=' col-3 text-center'>26 Mar 2022</div>
+						<div className='icons col-1 text-center'>
 							<span
 								onClick={() => {
 									setModalType("otp");

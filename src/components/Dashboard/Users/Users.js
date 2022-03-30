@@ -14,7 +14,7 @@ export default function Users() {
 					<Records />
 				</div>
 
-				<Activities />
+				<Activities add={false} />
 			</div>
 		</div>
 	);

@@ -47,7 +47,7 @@ export default function DashboardScreen() {
 						<HealthCamps />
 					</div>
 				</div>
-				<Activities />
+				<Activities add={true} />
 			</div>
 		</div>
 	);
