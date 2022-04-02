@@ -8,8 +8,8 @@ export default function Users() {
 	const [modalType, setModalType] = React.useState("");
 	return (
 		<div className='w-100 p-4 UserScreen'>
-			<h3>Users</h3>
-			<div className='user_prts' style={{ height: "88vh" }}>
+			<h3 className='screenTitle'>Users</h3>
+			<div className='user_prts' style={{ height: "86vh" }}>
 				<div className='records bg-white w-100' style={{ height: "" }}>
 					<Records />
 				</div>

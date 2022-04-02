@@ -14,6 +14,7 @@ import { useParams } from "react-router-dom";
 import DashboardScreen from "./Dashboard/DashboardScreen";
 import Healthcamps from "./Healthcamps/Healthcamps";
 import Users from "./Users/Users";
+import Settings from './Settings/Settings';
 export default function Dashboard() {
 	// let { topicId } = useParams();
 	let { path, url } = useRouteMatch();
@@ -94,34 +95,26 @@ export default function Dashboard() {
 							<span className='Dashitem'>Users</span>
 						</div>
 					</Link>
-					<div className='d-flex align-items-center dashMenuitem'>
-						<span className='settings_icon dashboardIcon'></span>
-						<span className='Dashitem'>Settings</span>
-					</div>
+					<Link to={`${url}/settings`}>
+						<div className='d-flex align-items-center dashMenuitem'>
+							<span className='settings_icon dashboardIcon'></span>
+							<span className='Dashitem'>Settings</span>
+						</div>
+					</Link>
 				</div>
 			</div>
 			<Switch>
 				<Route exact path={path}>
 					<DashboardScreen />
-					{/* <div className='dashboardMain col-10   py-4 px-3'>
-						<h3>Dashboard</h3>
-						<div
-							className='d-flex flex-wrap justify-content-between'
-							style={{ height: "86vh" }}>
-							<div className='records  '>
-								<Records />
-							</div>
-							<div className='canlender '>
-								<UpcomingHealthcamp />
-							</div>
-						</div>
-					</div> */}
 				</Route>
 				<Route path={`${path}/healthcamp`}>
 					<Healthcamps />
 				</Route>
 				<Route path={`${path}/users`}>
 					<Users />
+				</Route>
+				<Route path={`${path}/settings`}>
+					<Settings />
 				</Route>
 			</Switch>
 		</div>

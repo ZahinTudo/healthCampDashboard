@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const locationUrl = createSlice({
 	name: "locationUrl",
 	initialState: {
-		location: "/adf",
+		location: "",
 	},
 	reducers: {
 		setlocation: (state, action) => {

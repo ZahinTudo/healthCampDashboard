@@ -9,10 +9,11 @@ import "./DashboardScreen.css";
 
 export default function DashboardScreen() {
 	const [modalShow, setModalShow] = React.useState(false);
-	const [modalType, setModalType] = React.useState("");
+    const [modalType, setModalType] = React.useState("");
+    use
 	return (
 		<div className='w-100 p-4 dashboardScreen'>
-			<h3>Dashboard</h3>
+			<h3 className='screenTitle'>Dashboard</h3>
 			<div className='dashboard_prts' style={{ height: "86vh" }}>
 				<div className='col-12'>
 					<div className='info_cards'>
@@ -43,7 +44,7 @@ export default function DashboardScreen() {
 					</div>
 					<div
 						className='Healthcamps bg-white mt-2'
-						style={{ height: "calc(100vh - 27vh" }}>
+						style={{ height: "calc(86vh - 20vh" }}>
 						<HealthCamps />
 					</div>
 				</div>

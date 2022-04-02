@@ -3,6 +3,7 @@
 	grid-auto-flow: column;
 	grid-template-columns: 2fr 1fr;
 	gap: 1rem;
+	margin-top: var(--dashSecMarginTop);
 }
 .dashboardScreen .info_cards {
 	display: grid;
@@ -14,7 +15,7 @@
 	font-family: "Public Sans";
 	font-style: normal;
 	font-weight: 600;
-	font-size: 1.25rem;
+	font-size: var(--fontMd);
 	line-height: 140%;
 	color: #000000;
 	opacity: 0.7;

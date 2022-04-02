@@ -21,24 +21,10 @@ export default function Login() {
 	// const [loginLogo, setLoginLogo] = useState(null);
 	useEffect(() => {
 		dispatch(getLogo());
-
-		// const logo = localStorage.getItem("logo");
-		// if (logo) {
-		// 	console.log(logo);
-		// 	setLoginLogo(logo);
-		// }
 	}, [logo]);
 
 	const setLocal = () => {
 		dispatch(setLogo());
-		// const logo = localStorage.getItem("logo");
-		// console.log(logo);
-		// if (!logo) {
-		// 	localStorage.setItem(
-		// 		"logo",
-		// 		"http://www.dailyrounds.org/blog/wp-content/uploads/2015/05/caduceus.jpg"
-		// 	);
-		// }
 	};
 	return (
 		<div className='login position-relative'>

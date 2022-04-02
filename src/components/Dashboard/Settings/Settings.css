@@ -1,0 +1,86 @@
+.settings_parts {
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: 1.5fr 1fr;
+	margin: auto;
+	gap: 1rem;
+	margin-top: var(--dashSecMarginTop);
+}
+.settings_parts .saveBtn {
+	/* background-color: #ececec; */
+	background: linear-gradient(90deg, #2ea8fa 0%, #076eb3 100%);
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 8px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 16px 8px;
+	width: 6.375rem;
+	height: 3.5rem;
+	color: #ffffff;
+}
+.settings_parts .organisational_details {
+	height: 70vh;
+	border-radius: 1rem;
+	background: #ffffff;
+	box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 1.25rem;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: space-evenly;
+	padding: 40px 32px 40px 40px;
+}
+.settings_parts .organisational_details .title {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: var(--fontLg);
+	line-height: 140%;
+	color: #000000;
+}
+.settings_parts .LogoAndcolor {
+	height: 55vh;
+	border-radius: 1rem;
+	background: #ffffff;
+	box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 1.25rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 40px 32px 40px 40px;
+}
+.settings_parts .LogoAndcolor .colorBox {
+	width: 3rem;
+	height: 1.5rem;
+	/* background-color: aqua; */
+}
+.settings_parts .LogoAndcolor .changeRemove {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: var(--fontMd);
+	line-height: 140%;
+	margin-top: 1rem;
+}
+.settings_parts .LogoAndcolor .changeRemove > .change {
+	color: #076eb3;
+	text-decoration-line: underline;
+	cursor: pointer;
+}
+.settings_parts .LogoAndcolor .changeRemove > .remove {
+	color: #8e0202;
+	text-decoration-line: underline;
+	cursor: pointer;
+}
+.settings_parts .LogoAndcolor .colorPicking {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: var(--fontMd);
+	line-height: 140%;
+	color: #000000;
+	margin-top: 2rem;
+}

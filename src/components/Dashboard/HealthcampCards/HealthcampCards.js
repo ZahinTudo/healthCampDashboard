@@ -25,15 +25,15 @@ export default function HealthcampCards({ parent, head, column }) {
 		const Parent = document.querySelector(`.${parent}`);
 		const Head = document.querySelector(`.${head}`);
 		const cardWrapper = document.querySelector(".cardWrapper");
-		console.log(
-			Parent,
-			"\n",
-			Head,
-			"\n",
-			cardWrapper,
-			getInnerHeight(Parent),
-			getInnerHeight(Head)
-		);
+		// console.log(
+		// 	Parent,
+		// 	"\n",
+		// 	Head,
+		// 	"\n",
+		// 	cardWrapper,
+		// 	getInnerHeight(Parent),
+		// 	getInnerHeight(Head)
+		// );
 
 		cardWrapper.style.height =
 			getInnerHeight(Parent) - getInnerHeight(Head) + "px";

@@ -20,7 +20,7 @@
 	font-family: "Public Sans";
 	font-style: normal;
 	font-weight: 700;
-	font-size: 1.25rem;
+	font-size: var(--fontMd);
 	line-height: 140%;
 	background: linear-gradient(90deg, #2ea8fa 0%, #076eb3 100%);
 	-webkit-background-clip: text;
@@ -32,7 +32,7 @@
 	font-family: "Public Sans";
 	font-style: normal;
 	font-weight: 600;
-	font-size: 1.25rem;
+	font-size: var(--fontMd);
 	line-height: 140%;
 	color: #000000;
 }
@@ -40,7 +40,7 @@
 	font-family: "Public Sans";
 	font-style: normal;
 	font-weight: 400;
-	font-size: 1rem;
+	font-size: var(--fontSm);
 	line-height: 140%;
 
 	color: #000000;
@@ -51,7 +51,7 @@
 	font-family: "Public Sans";
 	font-style: normal;
 	font-weight: 400;
-	font-size: 1rem;
+	font-size: var(--fontSm);
 	line-height: 140%;
 
 	color: #000000;
