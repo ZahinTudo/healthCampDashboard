@@ -1,0 +1,11 @@
+.form-label {
+	position: relative;
+	font-weight: bold;
+}
+.form-label.required::after {
+	content: "*";
+	color: red;
+	position: absolute;
+	top: 0;
+	/* right: 0; */
+}

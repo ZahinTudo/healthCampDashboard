@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import useWindowResize from "./useWindowResize";
 
-export default function useWrapperHeight(parent, head) {
+export default function useWrapperHeight(parent, head, wrapper) {
 	const location = useLocation();
 	const { width } = useWindowResize();
 	const getInnerHeight = (elm) => {
@@ -16,7 +16,7 @@ export default function useWrapperHeight(parent, head) {
 	const wrapperDynamicHeight = () => {
 		const Parent = document.querySelector(`.${parent}`);
 		const Head = document.querySelector(`.${head}`);
-		const cardWrapper = document.querySelector(".cardWrapper");
+		const cardWrapper = document.querySelector(`.${wrapper}`);
 		cardWrapper.style.height =
 			getInnerHeight(Parent) - getInnerHeight(Head) + "px";
 	};

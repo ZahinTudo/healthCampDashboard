@@ -6,11 +6,12 @@ import Activities from "../Activities/Activities";
 import HealthCamps from "./HealthCamps/HealthCamps";
 import VerticallyCenteredModal from "../Modal/VerticallyCenteredModal";
 import "./DashboardScreen.css";
+import useWrapperHeight from "../../../CustomHooks/useWrapperHeight";
 
 export default function DashboardScreen() {
 	const [modalShow, setModalShow] = React.useState(false);
-    const [modalType, setModalType] = React.useState("");
-    use
+	const [modalType, setModalType] = React.useState("");
+	useWrapperHeight("dashboard_prts", "info_cards", "Healthcamps");
 	return (
 		<div className='w-100 p-4 dashboardScreen'>
 			<h3 className='screenTitle'>Dashboard</h3>

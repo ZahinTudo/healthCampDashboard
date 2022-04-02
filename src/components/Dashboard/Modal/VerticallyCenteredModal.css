@@ -8,26 +8,8 @@
 .modalSaveBtn:hover {
 	background: linear-gradient(90deg, #2ea8fa 0%, #3286be 100%);
 }
-.form-label {
-	position: relative;
-	font-weight: bold;
-}
-.form-label.required::after {
-	content: "*";
-	color: red;
-	position: absolute;
-	top: 0;
-	/* right: 0; */
-}
-/* select:required:invalid {
-	color: rgb(168, 164, 164) !important;
-}
-option[value=""][disabled] {
-	display: none;
-}
-option {
-	color: black;
-} */
+
+
 .grayDefault option {
 	color: black;
 }

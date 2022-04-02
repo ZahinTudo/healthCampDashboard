@@ -42,7 +42,7 @@ export default function Healthcamps() {
 						</div>
 					</div>
 					<div className='my-4 d-flex align-items-center'>
-						<span className='shadow me-3'>
+						<span className='selectShadow me-3'>
 							<DropdownButton
 								variant=''
 								title='All month'
@@ -60,7 +60,7 @@ export default function Healthcamps() {
 								</Dropdown.Item>
 							</DropdownButton>
 						</span>
-						<span className='shadow me-3'>
+						<span className='selectShadow me-3'>
 							<DropdownButton
 								variant=''
 								title='Location'

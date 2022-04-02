@@ -3,8 +3,18 @@ import { Button, Col, Form, Modal } from "react-bootstrap";
 import $ from "jquery";
 import "./VerticallyCenteredModal.css";
 import OTP from "./OTP/OTP";
+import {
+	NormalInputs,
+	SelectInputs,
+} from "../../ModularComponents/Inputs/Inputs";
 
 export default function VerticallyCenteredModal(props) {
+	const gender = [
+		{
+			value: "Male",
+		},
+		{ value: "Female" },
+	];
 	const [formData, setFormData] = useState({});
 	const DataCollect = (e) => {
 		e.preventDefault();
@@ -26,91 +36,60 @@ export default function VerticallyCenteredModal(props) {
 			{props.type === "otp" ? (
 				<OTP hide={props} />
 			) : (
-				<>
+				<div className='px-4 py-5'>
 					<Modal.Header closeButton className='border-0'>
 						<Modal.Title id='contained-modal-title-vcenter'>
 							Patient Registration
 						</Modal.Title>
 					</Modal.Header>
 					<Modal.Body className='py-0'>
+						<div>
+							<NormalInputs
+								label={"Aadhar number"}
+								required={true}
+								onBlur={DataCollect}
+								type={"text"}
+								placeholder={"Enter 16 digits aadhar number"}
+							/>
+						</div>
 						<div className='name my-3 row gx-3 justify-content-between'>
-							<Form.Group
-								className=' '
-								as={Col}
-								md=''
-								controlId='validationCustom01'>
-								<Form.Label className='required'>
-									First name
-								</Form.Label>
-								<Form.Control
-									onBlur={DataCollect}
-									required
-									name='firstName'
-									type='text'
-									placeholder='First name'
-								/>
-							</Form.Group>
-							<Form.Group
-								className=''
-								as={Col}
-								md=''
-								controlId='validationCustom01'>
-								<Form.Label className='required'>
-									Last name
-								</Form.Label>
-								<Form.Control
-									onBlur={DataCollect}
-									required
-									name='lastName'
-									type='text'
-									placeholder='Last name'
-								/>
-							</Form.Group>
+							<NormalInputs
+								label={"First name"}
+								required={true}
+								onBlur={DataCollect}
+								type={"text"}
+								placeholder={"First name"}
+							/>
+							<NormalInputs
+								label={"Last name"}
+								required={true}
+								onBlur={DataCollect}
+								type={"text"}
+								placeholder={"Last name"}
+							/>
+						</div>
+						<div className='name my-3 row gx-3 justify-content-between'>
+							<NormalInputs
+								label={"Age"}
+								required={true}
+								onBlur={DataCollect}
+								type={"number"}
+								placeholder={"Age"}
+							/>
+							<SelectInputs
+								data={gender}
+								label={"Gender"}
+								onBlur={DataCollect}
+								placeholder={"Gender"}
+								required={true}
+							/>
 						</div>
 						<div className='name my-3 row gx-3 justify-content-between'>
 							<Form.Group
 								className=' '
 								as={Col}
 								md=''
-								controlId='validationCustom01'>
-								<Form.Label className='required'>
-									Age
-								</Form.Label>
-								<Form.Control
-									onBlur={DataCollect}
-									required
-									name='Age'
-									type='text'
-									placeholder='Age'
-								/>
-							</Form.Group>
-							<Form.Group
-								className=''
-								as={Col}
-								md=''
-								controlId='validationCustom01'>
-								<Form.Label className='required'>
-									Gender
-								</Form.Label>
-								<Form.Select
-									onBlur={DataCollect}
-									className='grayDefault'
-									name='gender'
-									aria-label='gender'>
-									<option value='0' hidden>
-										Gender
-									</option>
-									<option value='male'>Male</option>
-									<option value='female'>Female</option>
-								</Form.Select>
-							</Form.Group>
-						</div>
-						<div className='name my-3 row gx-3 justify-content-between'>
-							<Form.Group
-								className=' '
-								as={Col}
-								md=''
-								controlId='validationCustom01'>
+								controlId=''>
 								<Form.Label className='required'>
 									State
 								</Form.Label>
@@ -131,7 +110,7 @@ export default function VerticallyCenteredModal(props) {
 								className=''
 								as={Col}
 								md=''
-								controlId='validationCustom01'>
+								controlId=''>
 								<Form.Label className='required'>
 									District
 								</Form.Label>
@@ -154,7 +133,7 @@ export default function VerticallyCenteredModal(props) {
 								className=' '
 								as={Col}
 								md=''
-								controlId='validationCustom01'>
+								controlId=''>
 								<Form.Label className='required'>
 									Phone Number
 								</Form.Label>
@@ -170,7 +149,7 @@ export default function VerticallyCenteredModal(props) {
 								name='email'
 								as={Col}
 								md=''
-								controlId='validationCustom01'>
+								controlId=''>
 								<Form.Label className=''>Email</Form.Label>
 								<Form.Control
 									onBlur={DataCollect}
@@ -187,7 +166,7 @@ export default function VerticallyCenteredModal(props) {
 							Save
 						</Button>
 					</Modal.Footer>
-				</>
+				</div>
 			)}
 		</Modal>
 	);
