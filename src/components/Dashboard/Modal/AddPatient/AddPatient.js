@@ -6,6 +6,7 @@ import {
 	SelectInputs,
 } from "../../..//ModularComponents/Inputs/Inputs";
 import { Button, Col, Form, Modal } from "react-bootstrap";
+import "./AddPatient.css";
 
 export default function AddPatient({ props }) {
 	const [formData, setFormData] = React.useState({ countryCode: "+91" });

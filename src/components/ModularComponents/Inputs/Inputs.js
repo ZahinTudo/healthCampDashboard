@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { data } from "jquery";
-import React from "react";
+import $ from "jquery";
+import React, { useEffect } from "react";
 import { Col, Form, FormControl, InputGroup } from "react-bootstrap";
 import "./Inputs.css";
 import {
@@ -95,6 +95,24 @@ export function PhoneInputs({
 	);
 }
 export function SelectInputs({ data, required, placeholder, label, onBlur }) {
+	const selectDefHandler = () => {
+		const selectDef = $(".grayDefault");
+		selectDef.each((ind, obj) => {
+			const val = $(obj).val();
+			if (val == 0) {
+				$(obj).addClass("empty");
+			} else $(obj).removeClass("empty");
+			// console.log($(obj).val());
+		});
+	};
+	useEffect(() => {
+		selectDefHandler();
+		const selectDef = $(".grayDefault");
+		selectDef.change(() => {
+			selectDefHandler();
+		});
+	}, []);
+
 	return (
 		<Form.Group className='' as={Col} md='' controlId=''>
 			<Form.Label className={required ? "required" : ""}>
