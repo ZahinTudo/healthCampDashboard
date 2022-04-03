@@ -2,10 +2,30 @@
 	position: relative;
 	font-weight: bold;
 }
+.form-control:focus,
+.form-select:focus {
+	/* border-color: initial !important; */
+	box-shadow: none;
+}
+/* .form-control,
+.form-select {
+	border-color: inherit !important;
+} */
 .form-label.required::after {
 	content: "*";
 	color: red;
 	position: absolute;
 	top: 0;
 	/* right: 0; */
+}
+.CountryCode {
+	width: max-content;
+	border-top-right-radius: 0%;
+	border-bottom-right-radius: 0%;
+	border-right-color: transparent;
+}
+.phoneInput {
+	border-top-left-radius: 0%;
+	border-bottom-left-radius: 0%;
+	border-left-color: transparent;
 }

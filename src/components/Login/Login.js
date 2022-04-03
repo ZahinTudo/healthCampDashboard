@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Login.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getLogo, setLogo } from "../../Redux/LocalStorage";
+import { PassInputs, PhoneInputs } from "../ModularComponents/Inputs/Inputs";
 
 export default function Login() {
 	const { logo } = useSelector((state) => state.logo);
@@ -52,40 +53,14 @@ export default function Login() {
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Leo
 					aliquam, faucibus morbi ut.
 				</p>
-				<label htmlFor='phone'>Phone Number</label>
-				<InputGroup id='phone' className='mb-3'>
-					<DropdownButton
-						variant='outline-secondary'
-						title='+91'
-						id='input-group-dropdown-1'>
-						<Dropdown.Item href='#'>+88</Dropdown.Item>
-						<Dropdown.Item href='#'>+99</Dropdown.Item>
-					</DropdownButton>
-					<FormControl
-						id='phoneInput'
-						placeholder='Phone Number'
-						aria-label='Phone Number'
-					/>
-				</InputGroup>
+				<PhoneInputs
+					placeholder={"phone"}
+					data={[{ name: "+88", value: "+88" }]}
+					label={"phone Number"}
+				/>
 
-				<label htmlFor='pass'>Password</label>
-				<div className='position-relative'>
-					<FormControl
-						id='pass'
-						placeholder='password'
-						type={passType ? "password" : "text"}
-						aria-label='password'
-					/>
-					<span
-						onClick={() => {
-							setPassIcon(!passIcon);
-							setPassType(!passType);
-						}}
-						className='position-absolute'
-						style={{ right: "2%", top: "16%" }}>
-						<FontAwesomeIcon icon={passIcon ? faEye : faEyeSlash} />
-					</span>
-				</div>
+				<PassInputs placeholder={"password"} label={"Password"} />
+
 				<Link
 					to='/dashboard'
 					onClick={setLocal}
