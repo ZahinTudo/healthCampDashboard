@@ -25,7 +25,7 @@ export default function Activities({ add }) {
 							<div
 								className='btn addPatient'
 								onClick={() => {
-									setModalType("form");
+									setModalType("addpatient");
 									setModalShow(true);
 								}}>
 								<span

@@ -9,6 +9,10 @@ import "./Settings.css";
 import { Form } from "react-bootstrap";
 import ColorPicker from "./ColorPicker/ColorPicker";
 import { useSelector } from "react-redux";
+import {
+	NormalInputs,
+	PhoneInputs,
+} from "../../ModularComponents/Inputs/Inputs";
 
 export default function Settings() {
 	// const useDispatch()
@@ -43,44 +47,69 @@ export default function Settings() {
 						</div>
 					</div>
 					<div className='org_name'>
-						<Form.Group className='mb-3' controlId='org_name'>
+						<NormalInputs
+							label={"Organisation name "}
+							type={"text"}
+							placeholder={"City hospital"}
+							disabled={disable}
+						/>
+						{/* <Form.Group className='mb-3' controlId='org_name'>
 							<Form.Label>Password</Form.Label>
 							<Form.Control
 								disabled={disable}
 								type='text'
 								placeholder='City hospital'
 							/>
-						</Form.Group>
+						</Form.Group> */}
 					</div>
 					<div className='org_email'>
-						<Form.Group className='mb-3' controlId='org_name'>
+						<NormalInputs
+							label={"Email "}
+							type={"email"}
+							placeholder={"cityhospital@gmail.com"}
+							disabled={disable}
+						/>
+						{/* <Form.Group className='mb-3' controlId='org_name'>
 							<Form.Label>Email</Form.Label>
 							<Form.Control
 								disabled={disable}
 								type='email'
 								placeholder='cityhospital@gmail.com'
 							/>
-						</Form.Group>
+						</Form.Group> */}
 					</div>
 					<div className='org_contactPerson'>
-						<Form.Group className='mb-3' controlId='org_name'>
+						<NormalInputs
+							label={"Contact person"}
+							type={"text"}
+							placeholder={"Rajesh Kumar"}
+							disabled={disable}
+						/>
+						{/* <Form.Group className='mb-3' controlId='org_name'>
 							<Form.Label>Contact person</Form.Label>
 							<Form.Control
 								disabled={disable}
 								type='text'
 								placeholder='Rajesh Kumar'
 							/>
-						</Form.Group>
+						</Form.Group> */}
 					</div>
 					<div className='org_contactPerson'>
-						<Form.Group className='mb-3' controlId='org_name'>
+						<PhoneInputs
+							data={[{ name: "+88", value: "+88" }]}
+							label={"Contact person"}
+							type={"tel"}
+							placeholder={"Phone Number"}
+							disabled={disable}
+						/>
+						{/* <Form.Group className='mb-3' controlId='org_name'>
 							<Form.Label>Phone Number</Form.Label>
 							<Form.Control
 								disabled={disable}
 								type='phone'
 								placeholder='Phone Number'
 							/>
-						</Form.Group>
+						</Form.Group> */}
 					</div>
 				</div>
 				<div className='LogoAndcolor'>

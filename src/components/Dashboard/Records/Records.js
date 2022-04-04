@@ -42,11 +42,11 @@ export default function Records() {
 	};
 	useEffect(() => {
 		patientLIstHeight();
-		$(".grayDefault").change(function () {
-			if ($(this).val() == "0") $(this).addClass("empty");
-			else $(this).removeClass("empty");
-		});
-		$(".grayDefault").change();
+		// $(".grayDefault").change(function () {
+		// 	if ($(this).val() == "0") $(this).addClass("empty");
+		// 	else $(this).removeClass("empty");
+		// });
+		// $(".grayDefault").change();
 	}, [width, modalShow]);
 	return (
 		<div className='w-100 recordList'>
@@ -71,13 +71,13 @@ export default function Records() {
 					<div
 						className='btn addPatient'
 						onClick={() => {
-							setModalType("form");
+							setModalType("adduser");
 							setModalShow(true);
 						}}>
 						<span className='' style={{ whiteSpace: "nowrap" }}>
 							{" "}
 							<FontAwesomeIcon icon={faUserPlus} />
-							<span className='ms-2'>New Patient</span>
+							<span className='ms-2'>New User</span>
 						</span>
 					</div>
 				</div>

@@ -9,7 +9,14 @@ import {
 	faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
 
-export function NormalInputs({ type, required, placeholder, label, onBlur }) {
+export function NormalInputs({
+	type,
+	required,
+	placeholder,
+	label,
+	onBlur,
+	disabled,
+}) {
 	return (
 		<Form.Group className=' ' as={Col} md='' controlId=''>
 			<Form.Label className={required ? "required" : ""}>
@@ -21,6 +28,7 @@ export function NormalInputs({ type, required, placeholder, label, onBlur }) {
 				required={required}
 				name={label}
 				type={type}
+				disabled={disabled}
 				placeholder={placeholder}
 			/>
 		</Form.Group>
@@ -62,6 +70,7 @@ export function PhoneInputs({
 	placeholder,
 	label,
 	onBlur,
+	disabled,
 }) {
 	return (
 		<Form.Group className=' ' as={Col} md='' controlId=''>
@@ -72,6 +81,7 @@ export function PhoneInputs({
 				<Form.Select
 					onBlur={onBlur}
 					className='grayDefault p-3 CountryCode'
+					disabled={disabled}
 					name={"countryCode"}
 					aria-label={label}>
 					<option value='+91'>+91</option>
@@ -87,6 +97,7 @@ export function PhoneInputs({
 					onBlur={onBlur}
 					required={required}
 					name={label}
+					disabled={disabled}
 					type={type}
 					placeholder={placeholder}
 				/>
@@ -94,7 +105,14 @@ export function PhoneInputs({
 		</Form.Group>
 	);
 }
-export function SelectInputs({ data, required, placeholder, label, onBlur }) {
+export function SelectInputs({
+	data,
+	required,
+	placeholder,
+	label,
+	onBlur,
+	disabled,
+}) {
 	const selectDefHandler = () => {
 		const selectDef = $(".grayDefault");
 		selectDef.each((ind, obj) => {
@@ -122,6 +140,7 @@ export function SelectInputs({ data, required, placeholder, label, onBlur }) {
 				onBlur={onBlur}
 				className='grayDefault p-3'
 				name={label}
+				disabled={disabled}
 				required={`${required}`}
 				aria-label={label}>
 				<option value='0' hidden>

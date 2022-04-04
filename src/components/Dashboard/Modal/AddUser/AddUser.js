@@ -6,10 +6,9 @@ import {
 	SelectInputs,
 } from "../../..//ModularComponents/Inputs/Inputs";
 import { Button, Col, Form, Modal } from "react-bootstrap";
-import "./AddPatient.css";
 
-export default function AddPatient({ props }) {
-	const [formData, setFormData] = React.useState({ countryCode: "+91" });
+export default function AddUser({ props }) {
+	const [formData, setFormData] = React.useState({});
 	const [SaveDisable, setSaveDisable] = React.useState(true);
 	const handleSubmit = () => {};
 	const DataCollect = (e) => {
@@ -20,14 +19,16 @@ export default function AddPatient({ props }) {
 		const newData = { ...formData };
 		newData[name] = val;
 		// console.log(newData);
+
 		setFormData(newData);
 		const dataKeys = Object.keys(newData);
 		dataKeys.forEach((item, ind) => {
-			if (item !== "Email" || item !== "countryCode") {
-				if (newData[item].length > 0) count += 1;
-			}
+			if (newData[item].length > 0) count += 1;
 		});
-		if (count === 9) {
+
+		console.log(count, formData, newData);
+
+		if (count === 6) {
 			setSaveDisable(false);
 		} else setSaveDisable(true);
 	};
@@ -38,43 +39,35 @@ export default function AddPatient({ props }) {
 		},
 		{ name: "Female", value: "Female" },
 	];
-	const state = [
+	const role = [
 		{
-			name: "Pune",
-			value: "pune",
+			name: "Admin",
+			value: "admin",
 		},
 		{
-			name: "Delhi",
-			value: "delhi",
-		},
-		{
-			name: "Kolkata",
-			value: "kolkata",
+			name: "Patient",
+			value: "patient",
 		},
 	];
-	const district = [
+	const docType = [
 		{
-			name: "Pune",
-			value: "pune",
+			name: "Passport",
+			value: "passport",
 		},
 		{
-			name: "Delhi",
-			value: "delhi",
-		},
-		{
-			name: "Kolkata",
-			value: "kolkata",
+			name: "Adhar card",
+			value: "adhar",
 		},
 	];
 	return (
 		<div className='px-4 py-5'>
 			<Modal.Header closeButton className='border-0'>
 				<Modal.Title id='contained-modal-title-vcenter'>
-					Patient Registration
+					Add user
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body className='py-0'>
-				<div>
+				{/* <div>
 					<NormalInputs
 						label={"Aadhar number"}
 						required={true}
@@ -82,7 +75,7 @@ export default function AddPatient({ props }) {
 						type={"text"}
 						placeholder={"Enter 16 digits aadhar number"}
 					/>
-				</div>
+				</div> */}
 				<div className='name my-3 row gx-3 justify-content-between'>
 					<NormalInputs
 						label={"First name"}
@@ -115,39 +108,36 @@ export default function AddPatient({ props }) {
 						required={true}
 					/>
 				</div>
-				<div className='name my-3 row gx-3 justify-content-between'>
+				<div className='my-3'>
 					<SelectInputs
-						data={state}
-						label={"State"}
+						data={role}
+						label={"Role"}
 						onBlur={DataCollect}
-						placeholder={"State"}
-						required={true}
-					/>
-					<SelectInputs
-						data={district}
-						label={"District"}
-						onBlur={DataCollect}
-						placeholder={"District"}
+						placeholder={"Admin"}
 						required={true}
 					/>
 				</div>
-				<div className='name my-3 row gx-3 justify-content-between'>
-					<PhoneInputs
-						label={"Phone"}
+				<div className='my-3'>
+					<SelectInputs
+						data={docType}
+						label={"Type of document "}
+						onBlur={DataCollect}
+						placeholder={"Passport"}
 						required={true}
-						onBlur={DataCollect}
-						type={"text"}
-						placeholder={"Phone"}
-						data={[{ name: "+88", value: "+88" }]}
 					/>
+				</div>
 
-					<NormalInputs
-						label={"Email"}
-						required={false}
-						onBlur={DataCollect}
-						type={"email"}
-						placeholder={"Email"}
-					/>
+				<div className='d-flex w-100 align-items-center'>
+					<div>
+						<h4 className='fw-bold'>Upload id proof</h4>
+						<p>
+							(Document to be uploaded should be in pdf format and
+							the file size should be 5MB only)
+						</p>
+					</div>
+					<div>
+						<input type='file' name='' id='' />
+					</div>
 				</div>
 			</Modal.Body>
 			<Modal.Footer className='border-0 justify-content-center px-5 py-2 '>
