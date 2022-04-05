@@ -16,6 +16,7 @@ import { useSelector } from "react-redux";
 
 export default function HealthCamps() {
 	const [loading, setLoading] = useState(true);
+	const [column, setColumn] = useState("4");
 	const { width } = useWindowResize();
 	const { location } = useSelector((state) => state.location);
 
@@ -25,9 +26,10 @@ export default function HealthCamps() {
 			setLoading(false);
 			// patientLIstHeight();
 		}, 100);
+		if (width <= 600) setColumn("6");
 	}, [width]);
 	return (
-		<div className='w-100 healthcampWrapper p-4'>
+		<div className='w-100 healthcampWrapper p-sm-4'>
 			<div className='camWrapperHead d-flex flex-sm-row flex-column justify-content-between align-items-sm-center'>
 				<h3>Healthcamps</h3>
 				<div className='col-md-5 col-12 mt-3 mt-sm-0'>
@@ -49,7 +51,8 @@ export default function HealthCamps() {
 				<HealthcampCards
 					parent={"healthcampWrapper"}
 					head={"camWrapperHead"}
-					column={"4"}
+					target={".dashboardScreen .cardWrapper"}
+					column={column}
 				/>
 			)}
 		</div>

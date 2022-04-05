@@ -3,7 +3,9 @@
 	--fontSm: 1rem;
 	--fontMd: 1.25rem;
 	--fontLg: 1.5rem;
-	--dashSecMarginTop: .5rem;
+	--dashSecMarginTop: 0.5rem;
+	--deskHeight: 86vh;
+	--mobHeight: auto;
 }
 html,
 body {

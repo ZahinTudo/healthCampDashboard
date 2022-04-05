@@ -11,15 +11,15 @@ import useWrapperHeight from "../../../CustomHooks/useWrapperHeight";
 export default function DashboardScreen(props) {
 	const [modalShow, setModalShow] = React.useState(false);
 	const [modalType, setModalType] = React.useState("");
-	useWrapperHeight("dashboard_prts", "info_cards", "Healthcamps");
+	useWrapperHeight("dashcamps", "info_cards", "Healthcamps");
 	return (
 		<div className='w-100 p-4 dashboardScreen'>
 			<div className='d-flex align-items-center '>
 				{props.children}
 				<h3 className='screenTitle mb-0'>Dashboard</h3>
 			</div>
-			<div className='dashboard_prts' style={{ height: "86vh" }}>
-				<div className='col-12'>
+			<div className='dashboard_prts'>
+				<div className='dashcamps '>
 					<div className='info_cards'>
 						<div className='col-12 card'>
 							<p
@@ -46,9 +46,7 @@ export default function DashboardScreen(props) {
 							<p className='m-0 title'>No. of Health checkups</p>
 						</div>
 					</div>
-					<div
-						className='Healthcamps bg-white mt-2'
-						style={{ height: "calc(86vh - 20vh" }}>
+					<div className='Healthcamps  mt-2' style={{}}>
 						<HealthCamps />
 					</div>
 				</div>

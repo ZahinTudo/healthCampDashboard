@@ -4,6 +4,7 @@
 	grid-template-columns: 2fr 1fr;
 	gap: 1rem;
 	margin-top: var(--dashSecMarginTop);
+	height: var(--deskHeight);
 }
 .dashboardScreen .info_cards {
 	display: grid;
@@ -34,15 +35,42 @@
 	box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.15);
 	border-radius: 20px;
 	/* width: 10rem; */
-	height: 7.5rem;
+	/* height: 7.5rem; */
 	display: flex;
 	/* padding: 1rem; */
 }
+.dashboardScreen .info_cards::-webkit-scrollbar {
+	display: none;
+}
+
+.dashboardScreen .info_cards {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
 @media (max-width: 600px) {
 	.dashboardScreen .dashboard_prts {
-		display: grid;
-		grid-auto-flow: row;
-		grid-template-columns: 1fr;
-		gap: 1rem;
+		display: block;
+		height: var(--mobHeight);
+		/* grid-auto-flow: row; */
+		/* grid-template-row: 1fr; */
+		/* gap: 1rem; */
+	}
+	.dashboardScreen .dashboard_prts > div {
+		/* margin-bottom: 10px; */
+		padding-bottom: 10px;
+	}
+	.dashboardScreen .info_cards {
+		grid-template-columns: repeat(3, 17rem);
+		overflow-y: scroll;
+		padding: 1rem 1.5rem 1rem .4rem;
+		width: calc(100vw - 2%);
+	}
+	.dashboardScreen .Healthcamps {
+		background: transparent;
+		box-shadow: none;
+	}
+	.dashboardScreen .Healthcamps .cardWrapper {
+		flex-wrap: nowrap !important;
 	}
 }

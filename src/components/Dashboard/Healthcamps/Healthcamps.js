@@ -18,7 +18,7 @@ export default function Healthcamps(props) {
 				<h3 className='screenTitle mb-0'>Healthcamps</h3>
 			</div>
 
-			<div className='healthcamps' style={{ height: "86vh" }}>
+			<div className='healthcamps p-4' style={{ height: "86vh" }}>
 				<div className='healthcampsWrapperHead w-100'>
 					<div className='search_wrapper '>
 						<InputGroup className='pe-3 w-50'>
@@ -105,6 +105,7 @@ export default function Healthcamps(props) {
 				<HealthcampCards
 					parent={"healthcamps"}
 					head={"healthcampsWrapperHead"}
+					target={".healthcamps .cardWrapper"}
 					column='3'
 				/>
 			</div>

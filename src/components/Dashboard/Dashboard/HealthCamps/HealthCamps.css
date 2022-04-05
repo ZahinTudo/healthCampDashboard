@@ -8,3 +8,13 @@
 	border-radius: 8px;
 }
 
+
+@media (max-width:600px) {
+    .dashboardScreen .cardWrapper{
+        width: calc(100vw - 2%);
+    }
+    .dashboardScreen .cardWrapper .col-6{
+        width: 60%
+    }
+    
+}

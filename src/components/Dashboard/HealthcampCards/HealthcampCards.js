@@ -10,7 +10,7 @@ import React, { useEffect } from "react";
 import useWindowResize from "../../../CustomHooks/useWindowResize";
 import { useLocation } from "react-router-dom";
 
-export default function HealthcampCards({ parent, head, column }) {
+export default function HealthcampCards({ parent, head, target, column }) {
 	const location = useLocation();
 	const { width } = useWindowResize();
 	const getInnerHeight = (elm) => {
@@ -24,7 +24,11 @@ export default function HealthcampCards({ parent, head, column }) {
 	const wrapperDynamicHeight = () => {
 		const Parent = document.querySelector(`.${parent}`);
 		const Head = document.querySelector(`.${head}`);
-		const cardWrapper = document.querySelector(".cardWrapper");
+		const cardWrapper = document.querySelector(`${target}`);
+		if (width <= 600) {
+			cardWrapper.style.height = "auto";
+			return;
+		}
 		// console.log(
 		// 	Parent,
 		// 	"\n",
@@ -45,8 +49,8 @@ export default function HealthcampCards({ parent, head, column }) {
 	}, [location.pathname]);
 	return (
 		<div
-			className='row   g-4 mt-2 cardWrapper py-3'
-			style={{ overflowX: "scroll",width:"80vw" }}>
+			className='row   g-4 mt-sm-2 cardWrapper py-3'
+			style={{ overflowX: "scroll" }}>
 			{[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((item, ind) => (
 				<div className={`col-${column}`}>
 					<div className='campCard '>
