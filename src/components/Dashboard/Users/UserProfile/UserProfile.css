@@ -1,0 +1,25 @@
+.UserProfile_wrapper .user {
+	background: #ffffff;
+	box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 20px;
+	/* width: 10rem; */
+	/* height: 7.5rem; */
+	display: flex;
+	padding: 1rem;
+}
+
+.UserProfile_wrapper .userProfile {
+	display: flex;
+	flex-direction: column;
+}
+.UserProfile_wrapper .userDetails {
+	flex-grow: 1;
+}
+/* .UserProfile_wrapper .userDetails .userHistory {
+	display: flex;
+	flex-direction: column;
+} */
+.UserProfile_wrapper .userDetails .userHistory  {
+	/* overflow-y: scroll; */
+	/* flex-grow: 1; */
+}

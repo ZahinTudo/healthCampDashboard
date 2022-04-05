@@ -6,14 +6,12 @@ import {
 	SelectInputs,
 } from "../../..//ModularComponents/Inputs/Inputs";
 import { Button, Col, Form, Modal } from "react-bootstrap";
-import "./AddUser.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
-import UploadInput from "../../../ModularComponents/UploadInput/UploadInput";
+import "./EditHealthCamp.css";
 import DragAndDrop from "../../../ModularComponents/DragAndDrop/DragAndDrop";
+import TextAreaInput from "../../../ModularComponents/TextAreaInput/TextAreaInput";
 
-export default function AddUser({ props }) {
-	const [formData, setFormData] = React.useState({});
+export default function EditHealthCamp({ props }) {
+	const [formData, setFormData] = React.useState({ countryCode: "+91" });
 	const [SaveDisable, setSaveDisable] = React.useState(true);
 	const handleSubmit = () => {};
 	const DataCollect = (e) => {
@@ -24,72 +22,69 @@ export default function AddUser({ props }) {
 		const newData = { ...formData };
 		newData[name] = val;
 		// console.log(newData);
-
 		setFormData(newData);
 		const dataKeys = Object.keys(newData);
 		dataKeys.forEach((item, ind) => {
-			if (newData[item].length > 0) count += 1;
+			if (item !== "Email" || item !== "countryCode") {
+				if (newData[item].length > 0) count += 1;
+			}
 		});
-
-		console.log(count, formData, newData);
-
-		if (count === 6) {
+		if (count === 9) {
 			setSaveDisable(false);
 		} else setSaveDisable(true);
 	};
-	const gender = [
+
+	const Location = [
 		{
-			name: "Male",
-			value: "Male",
-		},
-		{ name: "Female", value: "Female" },
-	];
-	const role = [
-		{
-			name: "Admin",
-			value: "admin",
+			name: "Pune",
+			value: "pune",
 		},
 		{
-			name: "Patient",
-			value: "patient",
+			name: "Delhi",
+			value: "delhi",
+		},
+		{
+			name: "Kolkata",
+			value: "kolkata",
 		},
 	];
-	const docType = [
-		{
-			name: "Passport",
-			value: "passport",
-		},
-		{
-			name: "Adhar card",
-			value: "adhar",
-		},
-	];
+
 	return (
 		<div className='px-4 py-5'>
 			<Modal.Header closeButton className='border-0'>
 				<Modal.Title id='contained-modal-title-vcenter'>
-					Add user
+					Edit healthcamp
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body className='py-0'>
-			
-				<div className='name my-3 row gx-3 justify-content-between'>
+				<div className='my-3'>
+					{/* <DragAndDrop /> */}
+					<div className='CampImage'>
+						<img
+							src='/assets/images/CampDummyImage.png'
+							alt=''
+							className='img-fluid'
+						/>
+					</div>
+				</div>
+				<div>
 					<NormalInputs
-						label={"First name"}
-						required={true}
+						label={"Title"}
+						required={false}
 						onBlur={DataCollect}
 						type={"text"}
-						placeholder={"First name"}
-					/>
-					<NormalInputs
-						label={"Last name"}
-						required={true}
-						onBlur={DataCollect}
-						type={"text"}
-						placeholder={"Last name"}
+						placeholder={"Healthcamp name"}
 					/>
 				</div>
+
 				<div className='name my-3 row gx-3 justify-content-between'>
+					<SelectInputs
+						data={Location}
+						label={"Location"}
+						onBlur={DataCollect}
+						placeholder={"Location"}
+						required={true}
+					/>
 					<DateInputs
 						label={"Date of birth"}
 						required={true}
@@ -97,40 +92,22 @@ export default function AddUser({ props }) {
 						type={"date"}
 						placeholder={"MM/DD/YYYY"}
 					/>
-					<SelectInputs
-						data={gender}
-						label={"Gender"}
+				</div>
+				<div>
+					<TextAreaInput
+						label={"Heathcamp Description"}
+						required={false}
 						onBlur={DataCollect}
-						placeholder={"Gender"}
-						required={true}
+						placeholder={"Description"}
 					/>
 				</div>
-				<div className='my-3'>
-					<SelectInputs
-						data={role}
-						label={"Role"}
-						onBlur={DataCollect}
-						placeholder={"Admin"}
-						required={true}
-					/>
-				</div>
-				<div className='my-3'>
-					<SelectInputs
-						data={docType}
-						label={"Type of document "}
-						onBlur={DataCollect}
-						placeholder={"Passport"}
-						required={true}
-					/>
-				</div>
-				<UploadInput Btntype={"Upload"} />
 			</Modal.Body>
 			<Modal.Footer className='border-0 justify-content-center px-5 py-2 '>
 				<Button
 					disabled={SaveDisable}
 					className='w-50 modalSaveBtn pb-2'
 					onClick={props.onHide}>
-					Save
+					Confirm
 				</Button>
 			</Modal.Footer>
 		</div>

@@ -9,10 +9,13 @@ import "./HealthcampCards.css";
 import React, { useEffect } from "react";
 import useWindowResize from "../../../CustomHooks/useWindowResize";
 import { useLocation } from "react-router-dom";
+import VerticallyCenteredModal from "../Modal/VerticallyCenteredModal";
 
 export default function HealthcampCards({ parent, head, target, column }) {
 	const location = useLocation();
 	const { width } = useWindowResize();
+	const [modalShow, setModalShow] = React.useState(false);
+	const [modalType, setModalType] = React.useState("");
 	const getInnerHeight = (elm) => {
 		var computed = getComputedStyle(elm),
 			padding =
@@ -47,10 +50,16 @@ export default function HealthcampCards({ parent, head, target, column }) {
 
 		wrapperDynamicHeight();
 	}, [location.pathname]);
+
 	return (
 		<div
 			className='row   g-4 mt-sm-2 cardWrapper py-3'
 			style={{ overflowX: "scroll" }}>
+			<VerticallyCenteredModal
+				type={modalType}
+				show={modalShow}
+				onHide={() => setModalShow(false)}
+			/>
 			{[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((item, ind) => (
 				<div className={`col-${column}`}>
 					<div className='campCard '>
@@ -71,8 +80,16 @@ export default function HealthcampCards({ parent, head, target, column }) {
 								<span className='m-0 '>24</span>
 							</div>
 							<div
+								onClick={() => {
+									setModalType("editCamp");
+									setModalShow(true);
+								}}
 								className='position-absolute text-white '
-								style={{ top: "1.2rem", right: "1rem" }}>
+								style={{
+									top: "1.2rem",
+									right: "1rem",
+									cursor: "pointer",
+								}}>
 								<FontAwesomeIcon icon={faPencil} />
 							</div>
 							<div

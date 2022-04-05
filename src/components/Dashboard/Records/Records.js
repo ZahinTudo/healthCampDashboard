@@ -19,7 +19,7 @@ import "./Records.css";
 import useWindowResize from "../../../CustomHooks/useWindowResize";
 import VerticallyCenteredModal from "../Modal/VerticallyCenteredModal";
 
-export default function Records() {
+export default function Records({ profileShow }) {
 	const { width } = useWindowResize();
 	const [modalShow, setModalShow] = React.useState(false);
 	const [modalType, setModalType] = React.useState("");
@@ -39,6 +39,13 @@ export default function Records() {
 			getInnerHeight(recordsWrapper) -
 			getInnerHeight(searchFilter) +
 			"px";
+		console.log(
+			recordsWrapper,
+			searchFilter,
+			patientList,
+			getInnerHeight(recordsWrapper),
+			getInnerHeight(searchFilter)
+		);
 	};
 	useEffect(() => {
 		patientLIstHeight();
@@ -53,7 +60,10 @@ export default function Records() {
 			<VerticallyCenteredModal
 				type={modalType}
 				show={modalShow}
-				onHide={() => setModalShow(false)}
+				onHide={() => {
+					setModalShow(false);
+					profileShow(1);
+				}}
 			/>
 			<div className='SearchFilterSection'>
 				<h3>Manage Users</h3>

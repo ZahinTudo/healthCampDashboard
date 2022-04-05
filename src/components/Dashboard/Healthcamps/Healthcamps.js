@@ -6,6 +6,7 @@ import { faCalendar, faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./healthcamps.css";
 import useWindowResize from "../../../CustomHooks/useWindowResize";
 import HealthcampCards from "../HealthcampCards/HealthcampCards";
+import VerticallyCenteredModal from "../Modal/VerticallyCenteredModal";
 
 export default function Healthcamps(props) {
 	const { width } = useWindowResize();
@@ -13,6 +14,11 @@ export default function Healthcamps(props) {
 	const [modalType, setModalType] = React.useState("");
 	return (
 		<div className='w-100 p-4 pb-0'>
+			<VerticallyCenteredModal
+				type={modalType}
+				show={modalShow}
+				onHide={() => setModalShow(false)}
+			/>
 			<div className='d-flex align-items-center '>
 				{props.children}
 				<h3 className='screenTitle mb-0'>Healthcamps</h3>
@@ -34,7 +40,7 @@ export default function Healthcamps(props) {
 						<div
 							className='btn addPatient'
 							onClick={() => {
-								setModalType("form");
+								setModalType("addcamp");
 								setModalShow(true);
 							}}>
 							<span className='' style={{ whiteSpace: "nowrap" }}>

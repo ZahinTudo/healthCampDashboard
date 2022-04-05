@@ -5,6 +5,8 @@ import OTP from "./OTP/OTP";
 import AddPatient from "./AddPatient/AddPatient";
 import { Modal } from "react-bootstrap";
 import AddUser from "./AddUser/AddUser";
+import AddHealthCamp from "./AddHealthCamp/AddHealthCamp";
+import EditHealthCamp from "./EditHealthCamp/EditHealthCamp";
 
 export default function VerticallyCenteredModal(props) {
 	const { type } = props;
@@ -17,6 +19,10 @@ export default function VerticallyCenteredModal(props) {
 		comp = <AddPatient props={props} />;
 	} else if (type === "adduser") {
 		comp = <AddUser props={props} />;
+	} else if (type === "addcamp") {
+		comp = <AddHealthCamp props={props} />;
+	} else if (type === "editCamp") {
+		comp = <EditHealthCamp props={props} />;
 	}
 	return (
 		<Modal
