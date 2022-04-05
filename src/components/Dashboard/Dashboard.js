@@ -5,16 +5,15 @@ import { Link } from "react-router-dom";
 import "./Dashboard.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getLogo } from "../../Redux/LocalStorage";
-import Records from "./Records/Records";
-import UpcomingHealthcamp from "./HealthcampCards/HealthcampCards";
 import { useRouteMatch } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import DashboardScreen from "./Dashboard/DashboardScreen";
 import Healthcamps from "./Healthcamps/Healthcamps";
 import Users from "./Users/Users";
-import Settings from './Settings/Settings';
+import Settings from "./Settings/Settings";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 export default function Dashboard() {
 	// let { topicId } = useParams();
 	let { path, url } = useRouteMatch();
@@ -24,6 +23,7 @@ export default function Dashboard() {
 		const items = document.querySelectorAll(".dashMenuitem");
 		items.forEach((el) =>
 			el.addEventListener("click", (e) => {
+				const sidebar = document.getElementsByClassName("sideBar")[0];
 				const active = document.querySelector(".dashboardIcon.active");
 				active?.classList.remove("active");
 				const target = el.firstChild;
@@ -32,8 +32,13 @@ export default function Dashboard() {
 				document.querySelector(
 					".indicator"
 				).style.top = `${indicatorTop}px`;
+				sidebar.classList.remove("open");
 			})
 		);
+	};
+	const sidebarOpen = () => {
+		const sidebar = document.getElementsByClassName("sideBar")[0];
+		sidebar.classList.add("open");
 	};
 	useEffect(() => {
 		dispatch(getLogo());
@@ -42,6 +47,11 @@ export default function Dashboard() {
 		const indicatorTop = target.offsetTop - target.offsetHeight;
 		document.querySelector(".indicator").style.top = `${indicatorTop}px`;
 	}, [logo]);
+	const Hamburger = () => (
+		<span className='d-sm-none' onClick={sidebarOpen}>
+			<FontAwesomeIcon className='text-info me-2' icon={faBars} />
+		</span>
+	);
 	return (
 		<div className='dashboard  position-relative d-flex'>
 			<div className='sideBar   p-4 col-2'>
@@ -103,20 +113,30 @@ export default function Dashboard() {
 					</Link>
 				</div>
 			</div>
-			<Switch>
-				<Route exact path={path}>
-					<DashboardScreen />
-				</Route>
-				<Route path={`${path}/healthcamp`}>
-					<Healthcamps />
-				</Route>
-				<Route path={`${path}/users`}>
-					<Users />
-				</Route>
-				<Route path={`${path}/settings`}>
-					<Settings />
-				</Route>
-			</Switch>
+			<div className='col-12 col-md-10'>
+				<Switch>
+					<Route exact path={path}>
+						<DashboardScreen>
+							<Hamburger />
+						</DashboardScreen>
+					</Route>
+					<Route path={`${path}/healthcamp`}>
+						<Healthcamps>
+							<Hamburger />
+						</Healthcamps>
+					</Route>
+					<Route path={`${path}/users`}>
+						<Users>
+							<Hamburger />
+						</Users>
+					</Route>
+					<Route path={`${path}/settings`}>
+						<Settings>
+							<Hamburger />
+						</Settings>
+					</Route>
+				</Switch>
+			</div>
 		</div>
 	);
 }

@@ -7,13 +7,16 @@ import "./healthcamps.css";
 import useWindowResize from "../../../CustomHooks/useWindowResize";
 import HealthcampCards from "../HealthcampCards/HealthcampCards";
 
-export default function Healthcamps() {
+export default function Healthcamps(props) {
 	const { width } = useWindowResize();
 	const [modalShow, setModalShow] = React.useState(false);
 	const [modalType, setModalType] = React.useState("");
 	return (
 		<div className='w-100 p-4 pb-0'>
-			<h3 className='screenTitle'>Healthcamps</h3>
+			<div className='d-flex align-items-center '>
+				{props.children}
+				<h3 className='screenTitle mb-0'>Healthcamps</h3>
+			</div>
 
 			<div className='healthcamps' style={{ height: "86vh" }}>
 				<div className='healthcampsWrapperHead w-100'>

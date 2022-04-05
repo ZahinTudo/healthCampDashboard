@@ -44,8 +44,10 @@ export default function HealthcampCards({ parent, head, column }) {
 		wrapperDynamicHeight();
 	}, [location.pathname]);
 	return (
-		<div className='row g-4 mt-2 cardWrapper py-3'>
-			{[1, 1, 1, 1,1,1,1,1,1,1,1].map((item, ind) => (
+		<div
+			className='row   g-4 mt-2 cardWrapper py-3'
+			style={{ overflowX: "scroll",width:"80vw" }}>
+			{[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1].map((item, ind) => (
 				<div className={`col-${column}`}>
 					<div className='campCard '>
 						<div className='cardHead position-relative'>

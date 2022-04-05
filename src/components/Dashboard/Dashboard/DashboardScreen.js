@@ -1,4 +1,4 @@
-import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -8,13 +8,16 @@ import VerticallyCenteredModal from "../Modal/VerticallyCenteredModal";
 import "./DashboardScreen.css";
 import useWrapperHeight from "../../../CustomHooks/useWrapperHeight";
 
-export default function DashboardScreen() {
+export default function DashboardScreen(props) {
 	const [modalShow, setModalShow] = React.useState(false);
 	const [modalType, setModalType] = React.useState("");
 	useWrapperHeight("dashboard_prts", "info_cards", "Healthcamps");
 	return (
 		<div className='w-100 p-4 dashboardScreen'>
-			<h3 className='screenTitle'>Dashboard</h3>
+			<div className='d-flex align-items-center '>
+				{props.children}
+				<h3 className='screenTitle mb-0'>Dashboard</h3>
+			</div>
 			<div className='dashboard_prts' style={{ height: "86vh" }}>
 				<div className='col-12'>
 					<div className='info_cards'>
@@ -49,7 +52,7 @@ export default function DashboardScreen() {
 						<HealthCamps />
 					</div>
 				</div>
-				<Activities add={true}  />
+				<Activities add={true} />
 			</div>
 		</div>
 	);

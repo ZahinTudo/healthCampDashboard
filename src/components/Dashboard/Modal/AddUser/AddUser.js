@@ -67,15 +67,6 @@ export default function AddUser({ props }) {
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body className='py-0'>
-				{/* <div>
-					<NormalInputs
-						label={"Aadhar number"}
-						required={true}
-						onBlur={DataCollect}
-						type={"text"}
-						placeholder={"Enter 16 digits aadhar number"}
-					/>
-				</div> */}
 				<div className='name my-3 row gx-3 justify-content-between'>
 					<NormalInputs
 						label={"First name"}

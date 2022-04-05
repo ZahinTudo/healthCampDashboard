@@ -14,7 +14,7 @@ import {
 	PhoneInputs,
 } from "../../ModularComponents/Inputs/Inputs";
 
-export default function Settings() {
+export default function Settings(props) {
 	// const useDispatch()
 	const [disable, setDisable] = React.useState(true);
 	const [showPicker, setShowPicker] = React.useState(false);
@@ -24,7 +24,10 @@ export default function Settings() {
 	};
 	return (
 		<div className='p-4 w-100'>
-			<h3 className='screenTitle'>Settings</h3>
+			<div className='d-flex align-items-center '>
+				{props.children}
+				<h3 className='screenTitle mb-0'>Settings</h3>
+			</div>
 			<div className='settings_parts'>
 				<div className='organisational_details'>
 					<div className='d-flex align-items-center justify-content-between w-100'>

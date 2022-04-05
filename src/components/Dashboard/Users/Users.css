@@ -45,4 +45,7 @@
 		grid-template-columns: 1fr;
 		gap: 1rem;
 	}
+	.UserScreen .records {
+		height: inherit !important;
+	}
 }

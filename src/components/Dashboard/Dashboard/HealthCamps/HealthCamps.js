@@ -28,18 +28,20 @@ export default function HealthCamps() {
 	}, [width]);
 	return (
 		<div className='w-100 healthcampWrapper p-4'>
-			<div className='camWrapperHead d-flex justify-content-between align-items-center'>
+			<div className='camWrapperHead d-flex flex-sm-row flex-column justify-content-between align-items-sm-center'>
 				<h3>Healthcamps</h3>
-				<InputGroup className='' style={{ width: "40%" }}>
-					<InputGroup.Text id='searchBtn'>
-						<FontAwesomeIcon icon={faSearch} />
-					</InputGroup.Text>
-					<FormControl
-						placeholder='Search'
-						aria-label='Search'
-						aria-describedby='basic-addon1'
-					/>
-				</InputGroup>
+				<div className='col-md-5 col-12 mt-3 mt-sm-0'>
+					<InputGroup>
+						<InputGroup.Text id='searchBtn'>
+							<FontAwesomeIcon icon={faSearch} />
+						</InputGroup.Text>
+						<FormControl
+							placeholder='Search'
+							aria-label='Search'
+							aria-describedby='basic-addon1'
+						/>
+					</InputGroup>
+				</div>
 			</div>
 			{loading ? (
 				<Spinner />

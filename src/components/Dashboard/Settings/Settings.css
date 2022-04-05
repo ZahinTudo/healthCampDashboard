@@ -84,3 +84,14 @@
 	color: #000000;
 	margin-top: 2rem;
 }
+
+@media (max-width: 600px) {
+	.settings_parts {
+		display: grid;
+		grid-auto-flow: row;
+		grid-template-columns: 1fr;
+		margin: auto;
+		gap: 1rem;
+		margin-top: var(--dashSecMarginTop);
+	}
+}
