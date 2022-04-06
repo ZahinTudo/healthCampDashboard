@@ -13,7 +13,7 @@ export default function DashboardScreen(props) {
 	const [modalType, setModalType] = React.useState("");
 	useWrapperHeight("dashcamps", "info_cards", "Healthcamps");
 	return (
-		<div className='w-100 p-4 dashboardScreen'>
+		<div className='w-100 p-3 dashboardScreen'>
 			<div className='d-flex align-items-center '>
 				{props.children}
 				<h3 className='screenTitle mb-0'>Dashboard</h3>
@@ -23,7 +23,7 @@ export default function DashboardScreen(props) {
 					<div className='info_cards'>
 						<div className='col-12 card'>
 							<p
-								className='fs-1 m-0 '
+								className='fs-1 m-0 number'
 								style={{ color: "#888EF7" }}>
 								25
 							</p>

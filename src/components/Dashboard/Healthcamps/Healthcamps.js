@@ -11,7 +11,8 @@ import VerticallyCenteredModal from "../Modal/VerticallyCenteredModal";
 export default function Healthcamps(props) {
 	const { width } = useWindowResize();
 	const [modalShow, setModalShow] = React.useState(false);
-	const [modalType, setModalType] = React.useState("");
+    const [modalType, setModalType] = React.useState("");
+    
 	return (
 		<div className='w-100 p-4 pb-0'>
 			<VerticallyCenteredModal

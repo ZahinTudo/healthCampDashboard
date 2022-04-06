@@ -14,6 +14,7 @@ import Users from "./Users/Users";
 import Settings from "./Settings/Settings";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import DetailCamp from "./DetailCamp/DetailCamp";
 export default function Dashboard() {
 	// let { topicId } = useParams();
 	let { path, url } = useRouteMatch();
@@ -120,7 +121,7 @@ export default function Dashboard() {
 							<Hamburger />
 						</DashboardScreen>
 					</Route>
-					<Route path={`${path}/healthcamp`}>
+					<Route exact path={`${path}/healthcamp`}>
 						<Healthcamps>
 							<Hamburger />
 						</Healthcamps>
@@ -134,6 +135,12 @@ export default function Dashboard() {
 						<Settings>
 							<Hamburger />
 						</Settings>
+					</Route>
+					<Route exact path={`${path}/:topicId`}>
+						<DetailCamp />
+					</Route>
+					<Route exact path={`${path}/healthcamp/:topicId`}>
+						<DetailCamp />
 					</Route>
 				</Switch>
 			</div>

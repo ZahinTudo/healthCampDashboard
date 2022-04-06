@@ -9,7 +9,7 @@ export default function Activities({ add }) {
 	const [modalShow, setModalShow] = React.useState(false);
 	const [modalType, setModalType] = React.useState("");
 	return (
-		<div className='activities_wrapper'>
+		<div className='activities_wrapper '>
 			<div
 				className='col-12 bg-white activities'
 				style={{ height: "calc(100% - 0rem)" }}>
@@ -18,9 +18,9 @@ export default function Activities({ add }) {
 					show={modalShow}
 					onHide={() => setModalShow(false)}
 				/>
-				<div className='w-100'>
+				<div className='w-100 p-2'>
 					<div className='d-flex align-items-center justify-content-between'>
-						<h4 className='m-0'>Activity</h4>
+						<h4 className='m-0 title'>Activity</h4>
 						{add ? (
 							<div
 								className='btn addPatient'
@@ -42,8 +42,14 @@ export default function Activities({ add }) {
 					<div className='mt-4'>
 						{[1, 2, 3, 4].map((items, ind) => (
 							<p className='status'>
-								<Link> Chetana Singh</Link> has attended in{" "}
-								<Link>healthcamp</Link>
+								<Link>
+									{" "}
+									<u>Chetana Singh</u>
+								</Link>{" "}
+								has attended in{" "}
+								<Link>
+									<u>healthcamp</u>
+								</Link>
 							</p>
 						))}
 					</div>

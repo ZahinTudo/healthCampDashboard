@@ -7,10 +7,29 @@
 	display: flex;
 	padding: 1rem;
 }
+.activities_wrapper .addPatient {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 9.313rem;
+	height: 3.5rem;
+}
+.activities_wrapper .title {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: var(--fontLg);
+	line-height: 140%;
+
+	/* identical to box height, or 34px */
+
+	color: #000000;
+}
 .activities_wrapper .status {
 	font-family: "Public Sans";
 	font-style: normal;
 	font-weight: 400;
 	font-size: var(--fontMd);
 	line-height: 140%;
+	margin-bottom: 2rem;
 }

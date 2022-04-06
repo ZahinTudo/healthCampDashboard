@@ -7,7 +7,7 @@ import "./Users.css";
 export default function Users(props) {
 	const [modalShow, setModalShow] = React.useState(false);
 	const [modalType, setModalType] = React.useState("");
-	const [UserProfileShow, setUserProfileShow] = React.useState(true);
+	const [UserProfileShow, setUserProfileShow] = React.useState(false);
 	const useProfileShow = (id) => {
 		setUserProfileShow(true);
 	};
