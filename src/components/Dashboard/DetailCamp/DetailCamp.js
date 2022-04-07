@@ -11,7 +11,6 @@ export default function DetailCamp(props) {
 	return (
 		<div className='p-3 detailcamp'>
 			<div className='d-flex align-items-center '>
-				{props.children}
 				<FontAwesomeIcon
 					style={{ fontSize: "2.5rem" }}
 					icon={faArrowLeft}
