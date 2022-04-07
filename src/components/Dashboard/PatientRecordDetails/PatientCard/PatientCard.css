@@ -1,0 +1,49 @@
+.PatientCard .name {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 2.5rem;
+	line-height: 2.6rem;
+	color: #000000;
+}
+.PatientCard .age {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 2rem;
+	line-height: 2.1rem;
+	background: linear-gradient(90deg, #2ea8fa 0%, #076eb3 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-fill-color: transparent;
+}
+.PatientCard .sex {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1.25rem;
+	line-height: 1.5rem;
+	color: #000000;
+}
+.PatientCard .personalInfo {
+	/* margin: 0.5rem 0; */
+}
+
+.PatientCard .contacts {
+	flex-grow: 1;
+}
+.PatientCard .personalInfo .icon {
+	display: flex;
+	width: 2rem;
+	align-items: center;
+	justify-content: center;
+}
+.PatientCard .personalInfo .text {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 1.25rem;
+	line-height: 1.5rem;
+	color: #000000;
+}

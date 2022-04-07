@@ -1,0 +1,33 @@
+.selectDropDown {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0.5rem 1rem;
+	background: #ffffff;
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 8px;
+}
+.selectDropDown .btn {
+	box-shadow: none !important;
+}
+.patientEnrolledList {
+	overflow-y: scroll;
+}
+.patientEnrolledList .name {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 1.25rem;
+	line-height: 140%;
+	color: #000000;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.patientEnrolledList::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.patientEnrolledList {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}

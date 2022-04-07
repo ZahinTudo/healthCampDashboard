@@ -57,7 +57,7 @@ export default function OTP({ hide }) {
 			<Modal.Footer className='border-0 justify-content-center px-5 py-2 '>
 				<Button
 					className='w-50 modalSaveBtn pb-2'
-					onClick={hide.onHide}>
+					onClick={hide.onConfirm}>
 					Confirm
 				</Button>
 			</Modal.Footer>

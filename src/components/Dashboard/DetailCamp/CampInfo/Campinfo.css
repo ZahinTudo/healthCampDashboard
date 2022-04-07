@@ -1,0 +1,91 @@
+.campinfo .campImg {
+	height: 13.374rem;
+	background-color: #c4c4c4;
+}
+.campinfo .location {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 1.25rem;
+	line-height: 140%;
+	color: #000000;
+	opacity: 0.5;
+}
+.campinfo .time {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 1.25rem;
+	line-height: 140%;
+	background: linear-gradient(90deg, #2ea8fa 0%, #076eb3 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-fill-color: transparent;
+}
+.campinfo .tag {
+	background: linear-gradient(90deg, #2efa67 0%, #07b337 100%);
+	opacity: 0.8;
+	border-radius: 25px;
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 1.25rem;
+	line-height: 140%;
+	padding: 0.3rem 0.5rem;
+	color: #ffffff;
+}
+.campinfo .textDetails {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 140%;
+	color: #000000;
+}
+.campNumbers {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1rem;
+	grid-auto-flow: column;
+}
+.campNumbers .cards {
+	background: #ffffff;
+	box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 20px;
+	/* width: 15.911rem;
+	height: 10.063rem; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 1rem;
+}
+.campNumbers .type {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 1.25rem;
+	line-height: 140%;
+	color: #000000;
+	opacity: 0.7;
+}
+.campNumbers .cards .title {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 2.688rem;
+	line-height: 140%;
+	color: #ffbc70;
+}
+@media (max-width: 600px) {
+	.campNumbers .cards {
+		width: auto;
+		height: auto;
+	}
+	.campNumbers .type {
+		font-size: .9rem;
+	}
+	.campNumbers .cards .title {
+		font-size: 2rem;
+	}
+}

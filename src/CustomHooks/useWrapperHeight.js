@@ -17,10 +17,10 @@ export default function useWrapperHeight(parent, head, wrapper) {
 		const Parent = document.querySelector(`.${parent}`);
 		const Head = document.querySelector(`.${head}`);
 		const cardWrapper = document.querySelector(`.${wrapper}`);
-		if (width <= 600) {
-			cardWrapper.style.height = "max-content";
-			return;
-		}
+		// if (width <= 600) {
+		// 	cardWrapper.style.height = "max-content";
+		// 	return;
+		// }
 		cardWrapper.style.height =
 			getInnerHeight(Parent) - getInnerHeight(Head) + "px";
 	};

@@ -71,48 +71,48 @@ export default function HealthcampCards({ parent, head, target, column }) {
 			/>
 			{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, ind) => (
 				<div className={`col-${column}`}>
-					<Link className='d-inline-block' to={`${url}/${item}`}>
-						<div className='campCard '>
-							<div className='cardHead position-relative'>
-								<div>
-									<img
-										style={{
-											borderRadius: "10px 10px 0 0",
-										}}
-										src='/assets/images/dummyImg.png'
-										className='img-fluid'
-										alt=''
-										srcset=''
-									/>
-								</div>
-								<div className='position-absolute bg-white date'>
-									<span className='m-0'>MAR</span>
-									<span className='m-0 '>24</span>
-								</div>
-								<div
-									onClick={() => {
-										setModalType("editCamp");
-										setModalShow(true);
+					<div className='campCard '>
+						<div className='cardHead position-relative'>
+							<div>
+								<img
+									style={{
+										borderRadius: "10px 10px 0 0",
 									}}
-									className='position-absolute text-white '
-									style={{
-										top: "1.2rem",
-										right: "1rem",
-										cursor: "pointer",
-									}}>
-									<FontAwesomeIcon icon={faPencil} />
-								</div>
-								<div
-									className='position-absolute text-white p-1 px-2 d-flex align-items-center justify-content-center tag'
-									style={{
-										bottom: ".5rem",
-										left: ".5rem",
-										background: "#07B337",
-										borderRadius: "1.5rem",
-									}}>
-									Ongoing
-								</div>
+									src='/assets/images/dummyImg.png'
+									className='img-fluid'
+									alt=''
+									srcset=''
+								/>
 							</div>
+							<div className='position-absolute bg-white date'>
+								<span className='m-0'>MAR</span>
+								<span className='m-0 '>24</span>
+							</div>
+							<div
+								onClick={() => {
+									setModalType("editCamp");
+									setModalShow(true);
+								}}
+								className='position-absolute text-white '
+								style={{
+									top: "1.2rem",
+									right: "1rem",
+									cursor: "pointer",
+								}}>
+								<FontAwesomeIcon icon={faPencil} />
+							</div>
+							<div
+								className='position-absolute text-white p-1 px-2 d-flex align-items-center justify-content-center tag'
+								style={{
+									bottom: ".5rem",
+									left: ".5rem",
+									background: "#07B337",
+									borderRadius: "1.5rem",
+								}}>
+								Ongoing
+							</div>
+						</div>
+						<Link className='d-inline-block' to={`${url}/${item}`}>
 							<div className='py-2 px-3'>
 								<div className='campName'>Healthcamp 1</div>
 								<div className='location'>
@@ -123,8 +123,8 @@ export default function HealthcampCards({ parent, head, target, column }) {
 								</div>
 								<div className='time'>9:00-10:00 AM</div>
 							</div>
-						</div>
-					</Link>
+						</Link>
+					</div>
 				</div>
 			))}
 			{/* <Switch>

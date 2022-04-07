@@ -1,0 +1,52 @@
+.PatientRecordDetails .title {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 2.5rem;
+	line-height: 140%;
+	color: #000000;
+}
+.PatientRecordDetailsParts {
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: 3fr 2fr;
+	margin-top: var(--dashSecMarginTop);
+	gap: 1rem;
+}
+.PatientRecordDetailsParts .PatientCard {
+	padding: 2.5rem 2rem 2rem 2rem;
+	background: #ffffff;
+	border-radius: 20px;
+}
+.PatientRecordDetailsParts .healthrecords {
+	padding: 2.5rem 2rem 2rem 2rem;
+	background: #ffffff;
+	border-radius: 20px;
+    margin-top: 1rem;
+}
+.PatientRecordDetailsParts .RecordDetails {
+	height: var(--deskHeight);
+	/* width: 100%; */
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+.PatientRecordDetailsParts .recordViewer {
+	height: var(--deskHeight);
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 2.5rem 2rem 2rem 2rem;
+	background: #ffffff;
+	border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+	.PatientRecordDetailsParts {
+		display: block;
+	}
+	.PatientRecordDetailsParts .RecordDetails,
+	.PatientRecordDetailsParts .recordViewer {
+		margin-bottom: 1rem;
+	}
+}

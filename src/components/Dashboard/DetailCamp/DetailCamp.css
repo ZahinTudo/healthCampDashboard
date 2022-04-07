@@ -1,0 +1,36 @@
+.detailcamp .title {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 2.5rem;
+	line-height: 140%;
+	color: #000000;
+}
+.detailsParts {
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: 3fr 4fr;
+	margin-top: var(--dashSecMarginTop);
+	gap: 1rem;
+}
+
+.detailsParts .campDetails,
+.detailsParts .inrolementDetails {
+	height: var(--deskHeight);
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 2.5rem 2rem 2rem 2rem;
+	background: #ffffff;
+	border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+	.detailsParts {
+		display: block;
+	}
+	.detailsParts .campDetails,
+	.detailsParts .inrolementDetails {
+		margin-bottom: 1rem;
+	}
+}

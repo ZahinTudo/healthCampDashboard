@@ -154,7 +154,7 @@ export default function AddPatient({ props }) {
 				<Button
 					disabled={SaveDisable}
 					className='w-50 modalSaveBtn pb-2'
-					onClick={props.onHide}>
+					onClick={props.onConfirm}>
 					Save
 				</Button>
 			</Modal.Footer>

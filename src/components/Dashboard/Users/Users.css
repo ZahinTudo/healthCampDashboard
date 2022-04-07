@@ -40,10 +40,11 @@
 }
 @media (max-width: 600px) {
 	.UserScreen .user_prts {
-		display: grid;
+		/* display: grid;
 		grid-auto-flow: row;
 		grid-template-columns: 1fr;
-		gap: 1rem;
+		gap: 1rem; */
+		display: block;
 	}
 	.UserScreen .records {
 		height: inherit !important;

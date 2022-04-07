@@ -1,0 +1,9 @@
+.reports .tabtitle {
+	border: none;
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 1.25rem;
+	line-height: 1.5rem;
+	color: rgba(0, 0, 0, 0.8);
+}

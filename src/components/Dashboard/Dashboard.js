@@ -15,6 +15,7 @@ import Settings from "./Settings/Settings";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import DetailCamp from "./DetailCamp/DetailCamp";
+import PatientRecordDetails from "./PatientRecordDetails/PatientRecordDetails";
 export default function Dashboard() {
 	// let { topicId } = useParams();
 	let { path, url } = useRouteMatch();
@@ -121,17 +122,20 @@ export default function Dashboard() {
 							<Hamburger />
 						</DashboardScreen>
 					</Route>
+					<Route exact path={`${path}/PatientRecordDetails`}>
+						<PatientRecordDetails />
+					</Route>
 					<Route exact path={`${path}/healthcamp`}>
 						<Healthcamps>
 							<Hamburger />
 						</Healthcamps>
 					</Route>
-					<Route path={`${path}/users`}>
+					<Route exact path={`${path}/users`}>
 						<Users>
 							<Hamburger />
 						</Users>
 					</Route>
-					<Route path={`${path}/settings`}>
+					<Route exact path={`${path}/settings`}>
 						<Settings>
 							<Hamburger />
 						</Settings>
