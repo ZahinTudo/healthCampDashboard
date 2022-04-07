@@ -48,5 +48,6 @@
 	}
 	.UserScreen .records {
 		height: inherit !important;
+		padding: 2rem !important;
 	}
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import useWindowResize from "./useWindowResize";
 
-export default function useWrapperHeight(parent, head, wrapper) {
+export default function useWrapperHeight(parent, head, wrapper,mobile="max-content") {
 	const location = useLocation();
 	const { width } = useWindowResize();
 	const getInnerHeight = (elm) => {
@@ -17,10 +17,10 @@ export default function useWrapperHeight(parent, head, wrapper) {
 		const Parent = document.querySelector(`.${parent}`);
 		const Head = document.querySelector(`.${head}`);
 		const cardWrapper = document.querySelector(`.${wrapper}`);
-		// if (width <= 600) {
-		// 	cardWrapper.style.height = "max-content";
-		// 	return;
-		// }
+		if (width <= 600) {
+			cardWrapper.style.height = mobile;
+			return;
+		}
 		cardWrapper.style.height =
 			getInnerHeight(Parent) - getInnerHeight(Head) + "px";
 	};

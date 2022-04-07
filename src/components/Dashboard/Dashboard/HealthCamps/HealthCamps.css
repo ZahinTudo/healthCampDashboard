@@ -8,13 +8,13 @@
 	border-radius: 8px;
 }
 
-
-@media (max-width:600px) {
-    .dashboardScreen .cardWrapper{
-        width: calc(100vw - 2%);
-    }
-    .dashboardScreen .cardWrapper .col-6{
-        width: 60%
-    }
-    
+@media (max-width: 600px) {
+	.dashboardScreen .cardWrapper {
+		width: 100vw;
+        padding-right: 0 !important;
+        
+	}
+	.dashboardScreen .cardWrapper .col-6 {
+		width: 60%;
+	}
 }

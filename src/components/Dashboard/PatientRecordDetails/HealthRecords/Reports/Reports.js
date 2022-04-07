@@ -2,12 +2,16 @@ import React, { useEffect } from "react";
 import useWrapperHeight from "../../../../../CustomHooks/useWrapperHeight";
 import "./Reports.css";
 import $ from "jquery";
+import VerticallyCenteredModal from "../../../Modal/VerticallyCenteredModal";
 
-export default function Reports() {
+export default function Reports({ pdf }) {
 	const data1 = ["RTPCR Report", "RTPCR Report", "RTPCR Report"];
 	const data2 = ["COVID19 Vaccin", "COVID19 Vaccin", "COVID19 Vaccin"];
 	const [StoptLoop, setStoptLoop] = React.useState(true);
 	const [Data, setData] = React.useState(data1);
+	const [modalBtn, setModalBtn] = React.useState("record");
+	const [modalShow, setModalShow] = React.useState(false);
+	const [modalType, setModalType] = React.useState("");
 	const getInnerHeight = (elm) => {
 		var computed = getComputedStyle(elm),
 			padding =
@@ -34,57 +38,121 @@ export default function Reports() {
 	const handleTabSwitch = () => {
 		const tabs = document.getElementsByClassName("tabtitle");
 		$(".tabtitle").on("click", (e) => {
-			// console.log(e);
-			// const target = e.target;
-			// $(target).addclass("active");
 			$(".tabtitle").each((i, obj) => {
 				if ($(obj).hasClass("active")) {
 					$(obj).removeClass("active");
 				}
 			});
 			$(e.target).addClass("active");
-			// console.log($(e.target).addClass("active"));
 		});
 	};
+	function DownloadFile(url, fileName) {
+		fetch(url)
+			.then((res) => {
+				if (res.status == 200) {
+					return res.blob;
+				} else {
+					return res.text;
+				}
+			})
+			.then((result) => {
+				var blob = new Blob([result], {
+					type: "application/octetstream",
+				});
+
+				//Check the Browser type and download the File.
+				var isIE = false || !!document.documentMode;
+				if (isIE) {
+					window.navigator.msSaveBlob(blob, fileName);
+				} else {
+					var url = window.URL || window.webkitURL;
+					const link = url.createObjectURL(blob);
+					var a = $("<a />");
+					a.attr("download", fileName);
+					a.attr("href", link);
+					$("body").append(a);
+					a[0].click();
+					$("body").remove(a);
+				}
+			});
+	}
 	useEffect(() => {
 		handleTabSwitch();
 	});
 	return (
 		<div className='reports'>
 			<div className='reportsHead'>
-				<div className='d-flex  justify-content-between align-items-center '>
+				<VerticallyCenteredModal
+					type={modalType}
+					show={modalShow}
+					onHide={() => setModalShow(false)}
+				/>
+				<div
+					style={{ paddingBottom: "1rem" }}
+					className='d-flex  justify-content-between align-items-center '>
 					<div>
 						<span
-							onClick={() => setData(data1)}
+							onClick={() => {
+								setData(data1);
+								setModalBtn("record");
+							}}
 							className='tabtitle active me-3'>
 							Healthrecords
 						</span>
 						<span
-							onClick={() => setData(data2)}
+							onClick={() => {
+								setData(data2);
+								setModalBtn("camp");
+							}}
 							className='tabtitle'>
 							Healthcamps Attended
 						</span>
 					</div>
-					<div>
-						<span className='addBtn d-flex align-items-center'>
-							<span>
-								<img
-									src='/assets/images/record.svg'
-									alt=''
-									className='img-fluid'
-								/>
+
+					{modalBtn == "record" ? (
+						<div
+							onClick={() => {
+								setModalType("addrecord");
+								setModalShow(true);
+							}}>
+							<span className='addBtn d-flex align-items-center'>
+								<span>
+									<img
+										src='/assets/images/record.svg'
+										alt=''
+										className='img-fluid'
+									/>
+								</span>
+								<span className='ms-2'>Add Healthrecord</span>
 							</span>
-							<span className='ms-2'>Add healthcamp</span>
-						</span>
-					</div>
+						</div>
+					) : (
+						<div
+							onClick={() => {
+								setModalType("addcamp");
+								setModalShow(true);
+							}}>
+							<span className='addBtn d-flex align-items-center'>
+								<span>
+									<img
+										src='/assets/images/record.svg'
+										alt=''
+										className='img-fluid'
+									/>
+								</span>
+								<span className='ms-2'>Add Healthcamp</span>
+							</span>
+						</div>
+					)}
 				</div>
-				<div className='d-flex mt-2'>
+				<div className='d-flex'>
 					<div className='col-3 tableHead'>Reference Name</div>
 					<div className='col-3 tableHead'>Type</div>
 					<div className='col-3 tableHead'>Date</div>
-					<div className='col-3 tableHead'>action</div>
+					<div className='col-3 tableHead'>Action</div>
 				</div>
 			</div>
+
 			<div className='listWrapper pt-2 ' style={{ overflowY: "scroll" }}>
 				{StoptLoop ? (
 					""
@@ -96,7 +164,14 @@ export default function Reports() {
 								<div className='col-3 type'>Report</div>
 								<div className='col-3 date'>22 mar 2021</div>
 								<div className='col-3 actionBtn d-flex justify-content-center'>
-									<span>
+									<span
+										className=''
+										onClick={() => {
+											// alert("clicked");
+											pdf(
+												"https://africau.edu/images/default/sample.pdf"
+											);
+										}}>
 										<img
 											style={{
 												width: "2.5rem",
@@ -109,6 +184,10 @@ export default function Reports() {
 									</span>
 									<span className='mx-2'>
 										<img
+											onClick={() => {
+												setModalType("editrecord");
+												setModalShow(true);
+											}}
 											style={{
 												width: "2.5rem",
 												cursor: "pointer",
@@ -118,16 +197,29 @@ export default function Reports() {
 											className='img-fluid'
 										/>
 									</span>
-									<span>
-										<img
-											style={{
-												width: "2.5rem",
-												cursor: "pointer",
-											}}
-											src='/assets/images/download.svg'
-											alt=''
-											className='img-fluid'
-										/>
+									<span
+									// onClick={() =>
+									// 	DownloadFile(
+									// 		"https://africau.edu/images/default/sample.pdf",
+									// 		"pdf"
+									// 	)
+									// }
+									>
+										<a
+											href='https://africau.edu/images/default/sample.pdf'
+											target='_blank'
+											download='pdf'
+											rel='noopener noreferrer'>
+											<img
+												style={{
+													width: "2.5rem",
+													cursor: "pointer",
+												}}
+												src='/assets/images/download.svg'
+												alt=''
+												className='img-fluid'
+											/>
+										</a>
 									</span>
 								</div>
 							</div>

@@ -26,6 +26,11 @@
 }
 
 @media (max-width: 600px) {
+	.detailsParts .campDetails,
+	.detailsParts .inrolementDetails {
+		height: auto;
+	}
+
 	.detailsParts {
 		display: block;
 	}

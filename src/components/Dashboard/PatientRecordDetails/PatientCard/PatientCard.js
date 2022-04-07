@@ -1,8 +1,16 @@
 import React from "react";
+import VerticallyCenteredModal from "../../Modal/VerticallyCenteredModal";
 import "./PatientCard.css";
 export default function PatientCard() {
+	const [modalShow, setModalShow] = React.useState(false);
+	const [modalType, setModalType] = React.useState("");
 	return (
 		<div className='d-flex w-100 PatientCard '>
+			<VerticallyCenteredModal
+				type={modalType}
+				show={modalShow}
+				onHide={() => setModalShow(false)}
+			/>
 			<div className='col-4'>
 				<span>
 					<img
@@ -12,7 +20,7 @@ export default function PatientCard() {
 					/>
 				</span>
 			</div>
-			<div className='col-8 ps-2 d-flex flex-column'>
+			<div className='col-8 ps-3 d-flex flex-column'>
 				<div className='d-flex align-items-center justify-content-between'>
 					<div className='d-flex align-items-center justify-content-between'>
 						<h3 className='name me-2 mb-0'>Bella DCosta</h3>
@@ -20,6 +28,10 @@ export default function PatientCard() {
 					</div>
 					<span>
 						<img
+							onClick={() => {
+								setModalType("edituser");
+								setModalShow(true);
+							}}
 							src='/assets/images/editPencil.svg'
 							alt=''
 							className='img-fluid'

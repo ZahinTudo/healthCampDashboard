@@ -4,8 +4,14 @@ import React from "react";
 import HealthRecords from "./HealthRecords/HealthRecords";
 import PatientCard from "./PatientCard/PatientCard";
 import "./PatientRecordDetails.css";
+import { Document } from "react-pdf";
 
 export default function PatientRecordDetails() {
+	const [pdf, setpdf] = React.useState("");
+	const pdfUrlHandle = (url) => {
+		// setpdf("http://africau.edu/images/default/sample.pdf");
+		setpdf(url);
+	};
 	return (
 		<div className='p-3 PatientRecordDetails'>
 			<div className='d-flex align-items-center '>
@@ -20,9 +26,60 @@ export default function PatientRecordDetails() {
 					<div className='PatientCardbrief w-100'>
 						<PatientCard />
 					</div>
-					<HealthRecords />
+					<HealthRecords pdf={pdfUrlHandle} />
 				</div>
-				<div className='recordViewer'>{/* <PatientEnrolled /> */}</div>
+				<div className='d-none d-sm-block recordViewer w-100 d-flex flex-column'>
+					<div className='d-flex justify-content-between w-100 mb-2'>
+						<span className='title'>File Viewer</span>
+						<span>
+							<img
+								style={{ width: "1rem" }}
+								src='/assets/images/zoom.svg'
+								alt=''
+								className='img-fluid'
+							/>
+						</span>
+					</div>
+					{pdf.length > 0 ? (
+						<object
+							data={pdf}
+							type='application/pdf'
+							width='100%'
+							height='100%'>
+							<div
+								className='d-flex flex-column align-items-center justify-content-center w-100 h-100'
+								style={{ flexGrow: "1" }}>
+								<span>
+									<img
+										src='/assets/images/noPdf.svg'
+										alt=''
+										className='img-fluid'
+									/>
+								</span>
+								<span className='px-5 py-2 text-center sorrytext'>
+									Sorry nothing to show here currently. <br />{" "}
+									Click on a record to view <br /> a file.
+								</span>
+							</div>
+						</object>
+					) : (
+						<div
+							className='d-flex flex-column align-items-center justify-content-center w-100 h-100'
+							style={{ flexGrow: "1" }}>
+							<span>
+								<img
+									src='/assets/images/noPdf.svg'
+									alt=''
+									className='img-fluid'
+								/>
+							</span>
+							<span className='px-5 py-2 text-center sorrytext'>
+								Sorry nothing to show here currently. <br />{" "}
+								Click on a record to view <br /> a file.
+							</span>
+						</div>
+					)}
+				</div>
 			</div>
 		</div>
 	);

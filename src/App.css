@@ -31,6 +31,13 @@ a {
 	border-left: none;
 	border-radius: 8px;
 }
+.btn {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	width: 9.313rem;
+	height: 3.5rem;
+}
 
 @media (max-width: 1400px) {
 	html,

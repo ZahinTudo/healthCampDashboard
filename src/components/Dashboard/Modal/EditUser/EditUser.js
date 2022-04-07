@@ -6,11 +6,11 @@ import {
 	SelectInputs,
 } from "../../..//ModularComponents/Inputs/Inputs";
 import { Button, Col, Form, Modal } from "react-bootstrap";
-import "./AddUser.css";
+import "./EditUser.css";
 
 import UploadInput from "../../../ModularComponents/UploadInput/UploadInput";
 
-export default function AddUser({ props }) {
+export default function EditUser({ props }) {
 	const [formData, setFormData] = React.useState({});
 	const [SaveDisable, setSaveDisable] = React.useState(true);
 	const handleSubmit = () => {};
@@ -66,7 +66,7 @@ export default function AddUser({ props }) {
 		<div className='px-4 py-5'>
 			<Modal.Header closeButton className='border-0'>
 				<Modal.Title id='contained-modal-title-vcenter'>
-					Add user
+					Edit user
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body className='py-0'>
@@ -125,7 +125,7 @@ export default function AddUser({ props }) {
 			<Modal.Footer className='border-0 justify-content-center px-5 py-2 '>
 				<Button
 					disabled={SaveDisable}
-					className='w-50 modalSaveBtn pb-2'
+					className='w-50 modalSaveBtn'
 					onClick={props.onHide}>
 					Save
 				</Button>

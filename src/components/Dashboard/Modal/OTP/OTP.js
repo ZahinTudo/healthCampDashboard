@@ -55,9 +55,7 @@ export default function OTP({ hide }) {
 				<div className='text-center my-3'>Resend in 59 secs</div>
 			</Modal.Body>
 			<Modal.Footer className='border-0 justify-content-center px-5 py-2 '>
-				<Button
-					className='w-50 modalSaveBtn pb-2'
-					onClick={hide.onConfirm}>
+				<Button className='w-50 modalSaveBtn' onClick={hide.onConfirm}>
 					Confirm
 				</Button>
 			</Modal.Footer>

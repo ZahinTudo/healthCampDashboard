@@ -6,11 +6,12 @@ import CampInfo from "./CampInfo/CampInfo";
 import PatientEnrolled from "./PatientEnrolled/PatientEnrolled";
 import "./DetailCamp.css";
 
-export default function DetailCamp() {
+export default function DetailCamp(props) {
 	const { topicId } = useParams();
 	return (
 		<div className='p-3 detailcamp'>
 			<div className='d-flex align-items-center '>
+				{props.children}
 				<FontAwesomeIcon
 					style={{ fontSize: "2.5rem" }}
 					icon={faArrowLeft}

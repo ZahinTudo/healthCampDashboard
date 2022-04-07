@@ -8,3 +8,19 @@
 	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
 	border-radius: 8px;
 }
+.uploadingWrapper .title {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 1.25rem;
+	line-height: 140%;
+	color: #000000;
+}
+.uploadingWrapper .text {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 0.8rem;
+	line-height: 140%;
+	color: rgba(0, 0, 0, 0.6);
+}

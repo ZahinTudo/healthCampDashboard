@@ -83,6 +83,7 @@
 		overflow-y: scroll;
 		padding: 1rem 1.5rem 1rem 0.4rem;
 		width: calc(100vw - 2%);
+		gap: 30px;
 	}
 	.dashboardScreen .Healthcamps {
 		background: transparent;

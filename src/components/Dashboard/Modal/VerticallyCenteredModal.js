@@ -7,6 +7,9 @@ import { Modal } from "react-bootstrap";
 import AddUser from "./AddUser/AddUser";
 import AddHealthCamp from "./AddHealthCamp/AddHealthCamp";
 import EditHealthCamp from "./EditHealthCamp/EditHealthCamp";
+import AddRecord from "./AddRecord/AddRecord";
+import EditRecord from "./EditRecord/EditRecord";
+import EditUser from "./EditUser/EditUser";
 
 export default function VerticallyCenteredModal(props) {
 	const { type } = props;
@@ -23,6 +26,12 @@ export default function VerticallyCenteredModal(props) {
 		comp = <AddHealthCamp props={props} />;
 	} else if (type === "editCamp") {
 		comp = <EditHealthCamp props={props} />;
+	} else if (type === "edituser") {
+		comp = <EditUser props={props} />;
+	} else if (type === "addrecord") {
+		comp = <AddRecord props={props} />;
+	} else if (type === "editrecord") {
+		comp = <EditRecord props={props} />;
 	}
 	return (
 		<Modal

@@ -11,9 +11,9 @@ export default function UploadInput({ Btntype }) {
 		console.log(file, file.name);
 	};
 	return (
-		<div className='d-flex w-100 align-items-center justify-content-between'>
+		<div className='uploadingWrapper d-flex w-100 align-items-center justify-content-between'>
 			<div className='col'>
-				<h4 className='fw-bold text-capitalize'>
+				<h4 className='title fw-bold text-capitalize'>
 					{Btntype === "Upload" && "Upload"} id proof
 				</h4>
 				{Btntype === "Re-Upload" ? (
@@ -29,12 +29,15 @@ export default function UploadInput({ Btntype }) {
 				) : (
 					""
 				)}
-				<p>
+				<p className='text'>
 					(Document to be uploaded should be in pdf format and the
 					file size should be 5MB only)
 				</p>
 			</div>
-			<div className='col text-end' onClick={uploadHandle}>
+			<div
+				style={{ cursor: "pointer" }}
+				className='col text-end'
+				onClick={uploadHandle}>
 				<input
 					onChange={fileUpload}
 					hidden

@@ -94,4 +94,8 @@
 		gap: 1rem;
 		margin-top: var(--dashSecMarginTop);
 	}
+	.settings_parts .organisational_details,
+	.settings_parts .LogoAndcolor {
+		padding: 2rem !important;
+	}
 }

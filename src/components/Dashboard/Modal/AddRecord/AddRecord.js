@@ -6,13 +6,14 @@ import {
 	SelectInputs,
 } from "../../..//ModularComponents/Inputs/Inputs";
 import { Button, Col, Form, Modal } from "react-bootstrap";
-import "./EditHealthCamp.css";
 import DragAndDrop from "../../../ModularComponents/DragAndDrop/DragAndDrop";
 import TextAreaInput from "../../../ModularComponents/TextAreaInput/TextAreaInput";
+import "./AddRecord.css";
+import UploadInput from "../../../ModularComponents/UploadInput/UploadInput";
 
-export default function EditHealthCamp({ props }) {
-	const [formData, setFormData] = React.useState({ countryCode: "+91" });
-	const [SaveDisable, setSaveDisable] = React.useState(true);
+export default function AddRecord({ props }) {
+	const [formData, setFormData] = React.useState({});
+	const [SaveDisable, setSaveDisable] = React.useState(false);
 	const handleSubmit = () => {};
 	const DataCollect = (e) => {
 		e.preventDefault();
@@ -29,23 +30,23 @@ export default function EditHealthCamp({ props }) {
 				if (newData[item].length > 0) count += 1;
 			}
 		});
-		if (count === 9) {
-			setSaveDisable(false);
-		} else setSaveDisable(true);
+		// if (count === 9) {
+		// 	setSaveDisable(false);
+		// } else setSaveDisable(true);
 	};
 
-	const Location = [
+	const type = [
 		{
-			name: "Pune",
-			value: "pune",
+			name: "Prescription",
+			value: "Prescription",
 		},
 		{
-			name: "Delhi",
-			value: "delhi",
+			name: "Report",
+			value: "Report",
 		},
 		{
-			name: "Kolkata",
-			value: "kolkata",
+			name: "Other",
+			value: "Other",
 		},
 	];
 
@@ -53,52 +54,36 @@ export default function EditHealthCamp({ props }) {
 		<div className='px-4 py-5'>
 			<Modal.Header closeButton className='border-0'>
 				<Modal.Title id='contained-modal-title-vcenter'>
-					Edit healthcamp
+					Upload Healthrecord
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body className='py-0'>
-				<div className='my-3'>
-					{/* <DragAndDrop /> */}
-					<div className='CampImage'>
-						<img
-							src='/assets/images/CampDummyImage.png'
-							alt=''
-							className='img-fluid'
-						/>
-					</div>
-				</div>
+				<UploadInput Btntype={"Upload"} />
+
 				<div>
 					<NormalInputs
-						label={"Title"}
+						label={"Reference name"}
 						required={false}
 						onBlur={DataCollect}
 						type={"text"}
-						placeholder={"Healthcamp name"}
+						placeholder={"Reference name"}
 					/>
 				</div>
 
 				<div className='name my-3 row gx-3 justify-content-between'>
 					<SelectInputs
-						data={Location}
-						label={"Location"}
+						data={type}
+						label={"Type of record"}
 						onBlur={DataCollect}
-						placeholder={"Location"}
-						required={true}
+						placeholder={"Prescription/report/others"}
+						required={false}
 					/>
 					<DateInputs
-						label={"Date of birth"}
-						required={true}
-						onBlur={DataCollect}
-						type={"date"}
-						placeholder={"MM/DD/YYYY"}
-					/>
-				</div>
-				<div>
-					<TextAreaInput
-						label={"Heathcamp Description"}
+						label={"Date of document"}
 						required={false}
 						onBlur={DataCollect}
-						placeholder={"Description"}
+						type={"date"}
+						placeholder={"DD/MM/YYYY"}
 					/>
 				</div>
 			</Modal.Body>
@@ -106,7 +91,7 @@ export default function EditHealthCamp({ props }) {
 				<Button
 					disabled={SaveDisable}
 					className='w-50 modalSaveBtn'
-					onClick={props.onHide}>
+					onClick={props.onConfirm}>
 					Confirm
 				</Button>
 			</Modal.Footer>

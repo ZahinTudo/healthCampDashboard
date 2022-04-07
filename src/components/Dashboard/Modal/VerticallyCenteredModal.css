@@ -4,11 +4,25 @@
 	border-radius: 8px;
 	border: none;
 	box-shadow: none;
+	/* width: 297px; */
+	min-height: 56px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem 0.5rem;
+	cursor: pointer;
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 1rem;
+	line-height: 19px;
+	cursor: pointer;
+	color: #ffffff;
 }
 .modalSaveBtn:hover {
 	background: linear-gradient(90deg, #2ea8fa 0%, #3286be 100%);
 }
-
 
 .grayDefault option {
 	color: black;

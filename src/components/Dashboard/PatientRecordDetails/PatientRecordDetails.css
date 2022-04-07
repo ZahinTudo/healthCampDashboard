@@ -22,7 +22,7 @@
 	padding: 2.5rem 2rem 2rem 2rem;
 	background: #ffffff;
 	border-radius: 20px;
-    margin-top: 1rem;
+	margin-top: 1rem;
 }
 .PatientRecordDetailsParts .RecordDetails {
 	height: var(--deskHeight);
@@ -39,6 +39,16 @@
 	padding: 2.5rem 2rem 2rem 2rem;
 	background: #ffffff;
 	border-radius: 20px;
+}
+.PatientRecordDetailsParts .recordViewer .sorrytext,
+.PatientRecordDetailsParts .recordViewer .title {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 1.25rem;
+	line-height: 1.5rem;
+	text-align: center;
+	color: #000000;
 }
 
 @media (max-width: 600px) {

@@ -38,6 +38,7 @@ export default function HealthCamps() {
 							<FontAwesomeIcon icon={faSearch} />
 						</InputGroup.Text>
 						<FormControl
+							style={{ padding: ".66rem" }}
 							placeholder='Search'
 							aria-label='Search'
 							aria-describedby='basic-addon1'

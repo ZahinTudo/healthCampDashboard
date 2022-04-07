@@ -62,7 +62,7 @@ export default function HealthcampCards({ parent, head, target, column }) {
 
 	return (
 		<div
-			className='row   gy-4 gx-5 mt-sm-2 cardWrapper py-3'
+			className='row py-3 gy-sm-4 gx-5 mt-sm-2 cardWrapper py-3 py-sm-1'
 			style={{ overflowX: "scroll" }}>
 			<VerticallyCenteredModal
 				type={modalType}
@@ -71,7 +71,7 @@ export default function HealthcampCards({ parent, head, target, column }) {
 			/>
 			{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, ind) => (
 				<div className={`col-${column}`}>
-					<div className='campCard '>
+					<div className='campCard mb-4'>
 						<div className='cardHead position-relative'>
 							<div>
 								<img

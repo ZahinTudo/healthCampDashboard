@@ -72,7 +72,6 @@ export default function AddUser({ props }) {
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body className='py-0'>
-			
 				<div className='name my-3 row gx-3 justify-content-between'>
 					<NormalInputs
 						label={"First name"}
@@ -128,7 +127,7 @@ export default function AddUser({ props }) {
 			<Modal.Footer className='border-0 justify-content-center px-5 py-2 '>
 				<Button
 					disabled={SaveDisable}
-					className='w-50 modalSaveBtn pb-2'
+					className='w-50 modalSaveBtn'
 					onClick={props.onHide}>
 					Save
 				</Button>

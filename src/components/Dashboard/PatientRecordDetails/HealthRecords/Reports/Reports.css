@@ -52,6 +52,7 @@
 	color: #000000;
 	display: flex;
 	justify-content: center;
+	text-transform: capitalize;
 }
 .reports .name {
 	font-family: "Public Sans";

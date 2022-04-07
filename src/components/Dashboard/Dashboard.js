@@ -50,8 +50,9 @@ export default function Dashboard() {
 		document.querySelector(".indicator").style.top = `${indicatorTop}px`;
 	}, [logo]);
 	const Hamburger = () => (
-		<span className='d-sm-none' onClick={sidebarOpen}>
-			<FontAwesomeIcon className='text-info me-2' icon={faBars} />
+		<span className='d-sm-none me-3' onClick={sidebarOpen}>
+			{/* <FontAwesomeIcon className='text-info me-2' icon={faBars} /> */}
+			<img src='/assets/images/burger.svg' alt='' className='img-fluid' />
 		</span>
 	);
 	return (
@@ -80,7 +81,7 @@ export default function Dashboard() {
 
 				<div
 					className='d-flex flex-column justify-content-evenly align-items-start '
-					style={{ height: "12rem" }}>
+					style={{ height: "18rem" }}>
 					<div className='indicator position-absolute'>
 						<img
 							className='img-fluid'
@@ -141,7 +142,9 @@ export default function Dashboard() {
 						</Settings>
 					</Route>
 					<Route exact path={`${path}/:topicId`}>
-						<DetailCamp />
+						<DetailCamp>
+							<Hamburger />
+						</DetailCamp>
 					</Route>
 					<Route exact path={`${path}/healthcamp/:topicId`}>
 						<DetailCamp />

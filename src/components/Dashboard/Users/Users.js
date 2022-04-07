@@ -23,11 +23,13 @@ export default function Users(props) {
 					style={{ height: "86vh" }}>
 					<Records profileShow={useProfileShow} />
 				</div>
-				{UserProfileShow ? (
-					<UserProfile state={setUserProfileShow} />
-				) : (
-					<Activities add={false} />
-				)}
+				<div className='my-3 my-sm-0'>
+					{UserProfileShow ? (
+						<UserProfile state={setUserProfileShow} />
+					) : (
+						<Activities add={false} />
+					)}
+				</div>
 			</div>
 		</div>
 	);

@@ -1,0 +1,51 @@
+.imgPlaceholder {
+	width: 2.75rem;
+	height: 2.75rem;
+	background: #c4c4c4;
+	border-radius: 4px;
+}
+.listofuser {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 8px 16px;
+	background: #ffffff;
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 10px;
+	height: 73px;
+}
+.role {
+	background: linear-gradient(90deg, #2ea8fa 0%, #076eb3 100%);
+	border-radius: 50%;
+	width: 1.5rem;
+	height: 1.5rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+    margin-left: .4rem;
+}
+.listofuser .username {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 19px;
+	color: #000000;
+}
+.listofuser .userphone {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 11px;
+	line-height: 19px;
+	color: #000000;
+}
+.listofuser .datetime {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 11px;
+	line-height: 140%;
+	color: rgba(0, 0, 0, 0.6);
+}

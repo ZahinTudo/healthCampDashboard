@@ -18,6 +18,7 @@ import {
 import "./Records.css";
 import useWindowResize from "../../../CustomHooks/useWindowResize";
 import VerticallyCenteredModal from "../Modal/VerticallyCenteredModal";
+import UserSHow from "./UserShow/UserSHow";
 
 export default function Records({ profileShow }) {
 	const { width } = useWindowResize();
@@ -35,17 +36,21 @@ export default function Records({ profileShow }) {
 		const recordsWrapper = document.querySelector(".records");
 		const searchFilter = document.querySelector(".SearchFilterSection");
 		const patientList = document.querySelector(".patientList");
+		if (width <= 600) {
+			patientList.style.height = "350px";
+			return;
+		}
 		patientList.style.height =
 			getInnerHeight(recordsWrapper) -
 			getInnerHeight(searchFilter) +
 			"px";
-		console.log(
-			recordsWrapper,
-			searchFilter,
-			patientList,
-			getInnerHeight(recordsWrapper),
-			getInnerHeight(searchFilter)
-		);
+		// console.log(
+		// 	recordsWrapper,
+		// 	searchFilter,
+		// 	patientList,
+		// 	getInnerHeight(recordsWrapper),
+		// 	getInnerHeight(searchFilter)
+		// );
 	};
 	useEffect(() => {
 		patientLIstHeight();
@@ -62,13 +67,12 @@ export default function Records({ profileShow }) {
 				show={modalShow}
 				onHide={() => {
 					setModalShow(false);
-					profileShow(1);
 				}}
 			/>
 			<div className='SearchFilterSection'>
 				<h3>Manage Users</h3>
 				<div className='search_wrapper'>
-					<InputGroup className='pe-3'>
+					<InputGroup className='pe-sm-3'>
 						<InputGroup.Text id='searchBtn'>
 							<FontAwesomeIcon icon={faSearch} />
 						</InputGroup.Text>
@@ -79,7 +83,7 @@ export default function Records({ profileShow }) {
 						/>
 					</InputGroup>
 					<div
-						className='btn addPatient'
+						className='btn addPatient d-none d-sm-block'
 						onClick={() => {
 							setModalType("adduser");
 							setModalShow(true);
@@ -119,7 +123,7 @@ export default function Records({ profileShow }) {
 						</span>
 					</div>
 				</div>
-				<div className=' d-flex justify-content-between align-items-center my-2'>
+				<div className='d-none d-sm-flex justify-content-between align-items-center my-2'>
 					<div className='name col-3 '>Name</div>
 					<div className='name col-3 text-center'>Phone</div>
 					<div className='name col-2 text-center'>Role</div>
@@ -128,31 +132,9 @@ export default function Records({ profileShow }) {
 				</div>
 			</div>
 			<div
-				className='patientList'
+				className='patientList px-2 px-sm-0'
 				style={{ height: "53%", overflowY: "scroll" }}>
-				{[1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3].map((item, ind) => (
-					<div className=' d-flex justify-content-between align-items-center'>
-						<div className='name col-3 '>Alina Bondareva</div>
-						<div className=' col-3 text-center'>+91-9236785412</div>
-						<div className=' col-2 text-center'>Moderator</div>
-						<div className=' col-3 text-center'>26 Mar 2022</div>
-						<div className='icons col-1 text-center'>
-							<span
-								onClick={() => {
-									setModalType("otp");
-									setModalShow(true);
-								}}>
-								<img
-									style={{ width: "1rem", height: "1rem" }}
-									className='img-fluid'
-									src='/assets/images/user.png'
-									alt=''
-									srcset=''
-								/>
-							</span>
-						</div>
-					</div>
-				))}
+				<UserSHow profileShow={profileShow} />
 			</div>
 		</div>
 	);

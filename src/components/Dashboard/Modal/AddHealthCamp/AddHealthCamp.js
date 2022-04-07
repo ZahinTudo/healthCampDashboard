@@ -98,7 +98,7 @@ export default function AddHealthCamp({ props }) {
 			<Modal.Footer className='border-0 justify-content-center px-5 py-2 '>
 				<Button
 					disabled={SaveDisable}
-					className='w-50 modalSaveBtn pb-2'
+					className='w-50 modalSaveBtn'
 					onClick={props.onHide}>
 					Confirm
 				</Button>

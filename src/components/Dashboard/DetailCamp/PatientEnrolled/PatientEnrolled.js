@@ -20,7 +20,8 @@ export default function PatientEnrolled() {
 	useWrapperHeight(
 		"inrolementDetails",
 		"patientEnrolledHeader",
-		"patientEnrolledList"
+		"patientEnrolledList",
+		"50vh"
 	);
 	useEffect(() => {
 		// listSize();
@@ -46,6 +47,7 @@ export default function PatientEnrolled() {
 								<FontAwesomeIcon icon={faSearch} />
 							</InputGroup.Text>
 							<FormControl
+								style={{ padding: ".66rem" }}
 								placeholder='Search'
 								aria-label='Search'
 								aria-describedby='basic-addon1'
@@ -99,7 +101,7 @@ export default function PatientEnrolled() {
 				</div>
 			</div>
 			<div className='patientEnrolledList '>
-				<PatientList/>
+				<PatientList />
 			</div>
 		</div>
 	);

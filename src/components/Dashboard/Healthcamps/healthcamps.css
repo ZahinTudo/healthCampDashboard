@@ -1,15 +1,64 @@
 .healthcamps {
+	height: 86vh;
 	margin-top: var(--dashSecMarginTop);
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	/* padding: 40px 32px 40px 40px; */
 	background: #ffffff;
-	background-color: rgb(255, 255, 255);
+	/* background-color: rgb(255, 255, 255); */
 	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
 	border-radius: 20px;
+}
+
+.healthcamps .checkbox > input {
+	background: #ebebeb;
+	border: 1px solid #9e9e9e;
+	box-sizing: border-box;
+	border-radius: 5px;
+}
+.healthcamps .checkbox > label {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 1.25rem;
+	line-height: 140%;
+	color: #000000;
 }
 .healthcamps .selectShadow {
 	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
 	border-radius: 8px;
+}
+.healthcamps .input-group {
+	width: 50%;
+}
+.healthcamps .dropdown {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 0.5rem 1rem;
+	position: static;
+	width: 8.188rem;
+	height: 3.5rem;
+	background: #ffffff;
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 8px;
+}
+@media (max-width: 600px) {
+	.healthcamps {
+		height: 90vh;
+		background: transparent;
+		box-shadow: none;
+	}
+	.healthcamps .search_wrapper {
+		flex-direction: column;
+		align-items: flex-end;
+	}
+	.healthcamps .addPatient {
+		margin-top: 1rem;
+	}
+	.healthcamps .input-group {
+		width: 100%;
+	}
 }
