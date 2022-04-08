@@ -77,18 +77,23 @@ export default function Records({ profileShow }) {
 							<FontAwesomeIcon icon={faSearch} />
 						</InputGroup.Text>
 						<FormControl
+							style={{ padding: ".66rem" }}
 							placeholder='Search'
 							aria-label='Search'
 							aria-describedby='basic-addon1'
 						/>
 					</InputGroup>
 					<div
-						className='btn addPatient d-none d-sm-block'
+						className='btn addPatient d-none d-sm-flex'
 						onClick={() => {
 							setModalType("adduser");
 							setModalShow(true);
 						}}>
-						<span className='' style={{ whiteSpace: "nowrap" }}>
+						<span
+							className=''
+							d-flex
+							align-items-center
+							style={{ whiteSpace: "nowrap" }}>
 							{" "}
 							<FontAwesomeIcon icon={faUserPlus} />
 							<span className='ms-2'>New User</span>

@@ -5,11 +5,7 @@ import "./HealthRecords.css";
 import Reports from "./Reports/Reports";
 
 export default function HealthRecords(props) {
-	// useWrapperHeight(
-	// 	"PatientRecordDetailsParts",
-	// 	"PatientCard",
-	// 	"healthrecords"
-	// );
+	// useWrapperHeight("RecordDetails", "PatientCard", "healthrecords");
 	useEffect(() => {
 		// const head = document.getElementsByClassName("PatientCard")[0];
 		// const target = document.getElementsByClassName("healthrecords")[0];

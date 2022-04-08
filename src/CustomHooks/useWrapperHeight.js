@@ -22,7 +22,7 @@ export default function useWrapperHeight(
 		const Parent = document.querySelector(`.${parent}`);
 		const Head = document.querySelector(`.${head}`);
 		const cardWrapper = document.querySelector(`.${wrapper}`);
-		if (width <= 600) {
+		if (width <= 800) {
 			cardWrapper.style.height = mobile;
 			return;
 		}

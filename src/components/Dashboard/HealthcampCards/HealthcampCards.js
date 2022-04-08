@@ -37,7 +37,7 @@ export default function HealthcampCards({ parent, head, target, column }) {
 		const Parent = document.querySelector(`.${parent}`);
 		const Head = document.querySelector(`.${head}`);
 		const cardWrapper = document.querySelector(`${target}`);
-		if (width <= 600) {
+		if (width <= 800) {
 			cardWrapper.style.height = "auto";
 			return;
 		}
@@ -78,7 +78,7 @@ export default function HealthcampCards({ parent, head, target, column }) {
 									style={{
 										borderRadius: "10px 10px 0 0",
 									}}
-									src='/assets/images/dummyImg.png'
+									src='https://assets-cdn.kathmandupost.com/uploads/source/news/2020/news/Saipaleye1-1600285663.jpg'
 									className='img-fluid'
 									alt=''
 									srcset=''
@@ -112,7 +112,7 @@ export default function HealthcampCards({ parent, head, target, column }) {
 								Ongoing
 							</div>
 						</div>
-						<Link className='d-inline-block' to={`${url}/${item}`}>
+						<Link className='d-block' to={`${url}/${item}`}>
 							<div className='py-2 px-3'>
 								<div className='campName'>Healthcamp 1</div>
 								<div className='location'>

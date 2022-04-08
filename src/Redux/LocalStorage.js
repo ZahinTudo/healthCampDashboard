@@ -13,7 +13,7 @@ export const logoStore = createSlice({
 			if (!state.logo) {
 				localStorage.setItem(
 					"logo",
-					"http://www.dailyrounds.org/blog/wp-content/uploads/2015/05/caduceus.jpg"
+					"https://www.dailyrounds.org/blog/wp-content/uploads/2015/05/caduceus.jpg"
 				);
 			}
 		},

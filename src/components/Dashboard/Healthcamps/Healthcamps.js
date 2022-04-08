@@ -15,7 +15,7 @@ export default function Healthcamps(props) {
 	const [modalShow, setModalShow] = React.useState(false);
 	const [modalType, setModalType] = React.useState("");
 	useEffect(() => {
-		if (width <= 600) setColumn("12");
+		if (width <= 800) setColumn("12");
 	}, [width]);
 
 	return (

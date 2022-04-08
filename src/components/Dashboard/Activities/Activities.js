@@ -9,7 +9,7 @@ export default function Activities({ add }) {
 	const [modalShow, setModalShow] = React.useState(false);
 	const [modalType, setModalType] = React.useState("");
 	return (
-		<div className='activities_wrapper '>
+		<div className='activities_wrapper mt-3 mt-sm-0'>
 			<div
 				className='col-12 bg-white activities'
 				style={{ height: "calc(100% - 0rem)" }}>
