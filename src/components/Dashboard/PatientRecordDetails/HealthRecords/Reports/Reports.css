@@ -74,6 +74,20 @@
 	display: flex;
 	justify-content: center;
 }
+.reports .filter,
+.reports .sort {
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	padding: 1px 16px;
+	background: #ffffff;
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 10px;
+	width: 48px;
+	height: 40px;
+}
 .reports .date {
 	font-family: "Public Sans";
 	font-style: normal;
@@ -84,6 +98,45 @@
 	display: flex;
 	justify-content: center;
 }
+.reports .mobileCard {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 16px;
+	height: 72px;
+	background: #ffffff;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+	border-radius: 10px;
+	margin-bottom: 1rem;
+}
+.reports .mobileCard .titlename {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 19px;
+	color: #000000;
+}
+.reports .mobileCard .types {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 11px;
+	line-height: 13px;
+	color: #000000;
+}
+.reports .mobileCard .time,
+.reports .mobileCard .date {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 140%;
+	color: #666666;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .listWrapper::-webkit-scrollbar {
 	display: none;

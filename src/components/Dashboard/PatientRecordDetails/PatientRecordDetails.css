@@ -12,6 +12,7 @@
 	grid-template-columns: 3fr 2fr;
 	margin-top: var(--dashSecMarginTop);
 	gap: 1rem;
+	height: 86vh;
 }
 .PatientRecordDetailsParts .PatientCard {
 	padding: 2.5rem 2rem 2rem 2rem;
@@ -58,5 +59,6 @@
 	.PatientRecordDetailsParts .RecordDetails,
 	.PatientRecordDetailsParts .recordViewer {
 		margin-bottom: 1rem;
+		padding: 1rem;
 	}
 }

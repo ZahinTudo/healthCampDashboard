@@ -19,7 +19,7 @@
 	/* right: 0; */
 }
 .CountryCode {
-	width: max-content;
+	width: 6.3rem;
 	border-top-right-radius: 0%;
 	border-bottom-right-radius: 0%;
 	border-right-color: transparent;

@@ -72,7 +72,7 @@ export default function Healthcamps(props) {
 											name='eventType'
 										/>
 										<label htmlFor='upcoming'>
-											Upcoming
+											January
 										</label>
 									</span>
 								</Dropdown.Item>
@@ -85,7 +85,7 @@ export default function Healthcamps(props) {
 											name='eventType'
 										/>
 										<label htmlFor='upcoming'>
-											Upcoming
+											February
 										</label>
 									</span>
 								</Dropdown.Item>
@@ -97,9 +97,7 @@ export default function Healthcamps(props) {
 											type='checkbox'
 											name='eventType'
 										/>
-										<label htmlFor='upcoming'>
-											Upcoming
-										</label>
+										<label htmlFor='upcoming'>March</label>
 									</span>
 								</Dropdown.Item>
 							</DropdownButton>

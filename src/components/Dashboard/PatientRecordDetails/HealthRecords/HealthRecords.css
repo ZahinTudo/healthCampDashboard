@@ -1,5 +1,6 @@
 .healthrecords {
 	background-color: white;
+	/* height: cal(100vh - 41vh); */
 }
 .nav-tabs {
 	border: none;
@@ -25,4 +26,12 @@
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
 	text-fill-color: transparent;
+}
+
+@media (max-width: 600px) {
+	.healthrecords {
+		background-color: white;
+		height: auto !important;
+		margin-bottom: 2rem;
+	}
 }

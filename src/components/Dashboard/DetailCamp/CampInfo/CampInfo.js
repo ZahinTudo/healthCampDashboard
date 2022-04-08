@@ -1,14 +1,27 @@
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import VerticallyCenteredModal from "../../Modal/VerticallyCenteredModal";
 import "./Campinfo.css";
 
 export default function CampInfo() {
+	const [modalShow, setModalShow] = React.useState(false);
+	const [modalType, setModalType] = React.useState("");
 	return (
 		<div className='w-100 campinfo'>
+			<VerticallyCenteredModal
+				type={modalType}
+				show={modalShow}
+				onHide={() => setModalShow(false)}
+			/>
 			<div className='d-flex  justify-content-between align-items-center'>
 				<h3>Healthcamp 1</h3>
-				<span>
+				<span
+					style={{ cursor: "pointer" }}
+					onClick={() => {
+						setModalType("editCamp");
+						setModalShow(true);
+					}}>
 					<img
 						style={{ width: "2.7rem" }}
 						src='/assets/images/editPencil.svg'

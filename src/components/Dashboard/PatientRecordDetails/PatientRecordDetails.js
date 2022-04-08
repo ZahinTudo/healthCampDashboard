@@ -5,16 +5,25 @@ import HealthRecords from "./HealthRecords/HealthRecords";
 import PatientCard from "./PatientCard/PatientCard";
 import "./PatientRecordDetails.css";
 import { Document } from "react-pdf";
+import useWindowResize from "../../../CustomHooks/useWindowResize";
+import MobilePatientDetails from "./MobilePatientDetails/MobilePatientDetails";
 
-export default function PatientRecordDetails() {
+export default function PatientRecordDetails(props) {
+	const { width } = useWindowResize();
 	const [pdf, setpdf] = React.useState("");
 	const pdfUrlHandle = (url) => {
 		// setpdf("http://africau.edu/images/default/sample.pdf");
 		setpdf(url);
 	};
+	// if (width <= 600) {
+	//     return (
+	//         <MobilePatientDetails/>
+	//     )
+	// }
 	return (
 		<div className='p-3 PatientRecordDetails'>
 			<div className='d-flex align-items-center '>
+				{props.children}
 				<FontAwesomeIcon
 					style={{ fontSize: "2.5rem" }}
 					icon={faArrowLeft}
@@ -26,7 +35,9 @@ export default function PatientRecordDetails() {
 					<div className='PatientCardbrief w-100'>
 						<PatientCard />
 					</div>
-					<HealthRecords pdf={pdfUrlHandle} />
+					<div className='w-100'>
+						<HealthRecords pdf={pdfUrlHandle} />
+					</div>
 				</div>
 				<div className='d-none d-sm-block recordViewer w-100 d-flex flex-column'>
 					<div className='d-flex justify-content-between w-100 mb-2'>

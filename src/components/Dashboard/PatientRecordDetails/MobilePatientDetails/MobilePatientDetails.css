@@ -1,0 +1,78 @@
+.mobilePatientDetails .personDetailCard {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 16px;
+	min-height: 116px;
+	background: #ffffff;
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 10px;
+}
+.mobilePatientDetails .personDetailCard .img-wrapper {
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	background: #c4c4c4;
+	border-radius: 4px;
+}
+
+.mobilePatientDetails .personalDetails .name {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 19px;
+	color: #000000;
+}
+.mobilePatientDetails .personalDetails .ageSex {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 11px;
+	line-height: 13px;
+	color: #000000;
+}
+.mobilePatientDetails .personalDetails .personalInfo .text {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 11px;
+	line-height: 140%;
+	color: #000000;
+	opacity: 0.7;
+}
+.mobilePatientDetails .personalDetails .personalInfo .icon {
+	display: inline-flex;
+	width: 1.2rem;
+	align-items: center;
+	justify-content: center;
+}
+.mobilePatientDetails .contactsCard {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	padding: 16px;
+	min-height: 83px;
+	background: #ffffff;
+	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 10px;
+}
+.mobilePatientDetails .contactsCard .title {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 19px;
+	color: #000000;
+}
+.mobilePatientDetails .contactsCard .phone,
+.mobilePatientDetails .contactsCard .email {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 400;
+	font-size: 11px;
+	line-height: 140%;
+	color: #000000;
+	opacity: 0.7;
+}

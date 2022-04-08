@@ -124,7 +124,9 @@ export default function Dashboard() {
 						</DashboardScreen>
 					</Route>
 					<Route exact path={`${path}/PatientRecordDetails`}>
-						<PatientRecordDetails />
+						<PatientRecordDetails>
+							<Hamburger />
+						</PatientRecordDetails>
 					</Route>
 					<Route exact path={`${path}/healthcamp`}>
 						<Healthcamps>
@@ -147,7 +149,9 @@ export default function Dashboard() {
 						</DetailCamp>
 					</Route>
 					<Route exact path={`${path}/healthcamp/:topicId`}>
-						<DetailCamp />
+						<DetailCamp>
+							<Hamburger />
+						</DetailCamp>
 					</Route>
 				</Switch>
 			</div>

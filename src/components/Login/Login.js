@@ -54,12 +54,12 @@ export default function Login() {
 					aliquam, faucibus morbi ut.
 				</p>
 				<PhoneInputs
-					placeholder={"phone"}
+					placeholder={"Phone"}
 					data={[{ name: "+88", value: "+88" }]}
-					label={"phone Number"}
+					label={"Phone Number"}
 				/>
 
-				<PassInputs placeholder={"password"} label={"Password"} />
+				<PassInputs placeholder={"Password"} label={"Password"} />
 
 				<Link
 					to='/dashboard'

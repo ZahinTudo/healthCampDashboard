@@ -1,9 +1,17 @@
 import React from "react";
 import VerticallyCenteredModal from "../../Modal/VerticallyCenteredModal";
 import "./PatientCard.css";
+import useWindowResize from '../../../../CustomHooks/useWindowResize';
+import MobilePatientDetails from "../MobilePatientDetails/MobilePatientDetails";
 export default function PatientCard() {
+    const {width}=useWindowResize()
 	const [modalShow, setModalShow] = React.useState(false);
-	const [modalType, setModalType] = React.useState("");
+    const [modalType, setModalType] = React.useState("");
+    if (width <= 600) {
+        return (
+            <MobilePatientDetails/>
+        )
+    }
 	return (
 		<div className='d-flex w-100 PatientCard '>
 			<VerticallyCenteredModal

@@ -3,10 +3,26 @@ import useWrapperHeight from "../../../../../CustomHooks/useWrapperHeight";
 import "./Reports.css";
 import $ from "jquery";
 import VerticallyCenteredModal from "../../../Modal/VerticallyCenteredModal";
+import useWindowResize from "../../../../../CustomHooks/useWindowResize";
 
 export default function Reports({ pdf }) {
-	const data1 = ["RTPCR Report", "RTPCR Report", "RTPCR Report"];
-	const data2 = ["COVID19 Vaccin", "COVID19 Vaccin", "COVID19 Vaccin"];
+	const { width } = useWindowResize();
+	const data1 = [
+		"RTPCR Report",
+		"RTPCR Report",
+		"RTPCR Report",
+		"RTPCR Report",
+		"RTPCR Report",
+		"RTPCR Report",
+	];
+	const data2 = [
+		"COVID19 Vaccin",
+		"COVID19 Vaccin",
+		"COVID19 Vaccin",
+		"COVID19 Vaccin",
+		"COVID19 Vaccin",
+		"COVID19 Vaccin",
+	];
 	const [StoptLoop, setStoptLoop] = React.useState(true);
 	const [Data, setData] = React.useState(data1);
 	const [modalBtn, setModalBtn] = React.useState("record");
@@ -24,10 +40,10 @@ export default function Reports({ pdf }) {
 		const Parent = document.querySelector(`.${parent}`);
 		const Head = document.querySelector(`.${head}`);
 		const cardWrapper = document.querySelector(`.${wrapper}`);
-		// if (width <= 600) {
-		// 	cardWrapper.style.height = "max-content";
-		// 	return;
-		// }
+		if (width <= 600) {
+			cardWrapper.style.height = "50vh";
+			return;
+		}
 		cardWrapper.style.height =
 			getInnerHeight(Parent) - getInnerHeight(Head) + "px";
 	};
@@ -81,7 +97,7 @@ export default function Reports({ pdf }) {
 	});
 	return (
 		<div className='reports'>
-			<div className='reportsHead'>
+			<div className='reportsHead pb-2'>
 				<VerticallyCenteredModal
 					type={modalType}
 					show={modalShow}
@@ -90,7 +106,7 @@ export default function Reports({ pdf }) {
 				<div
 					style={{ paddingBottom: "1rem" }}
 					className='d-flex  justify-content-between align-items-center '>
-					<div>
+					<div className=''>
 						<span
 							onClick={() => {
 								setData(data1);
@@ -108,7 +124,67 @@ export default function Reports({ pdf }) {
 							Healthcamps Attended
 						</span>
 					</div>
-
+					<div className='d-none d-sm-block'>
+						{modalBtn == "record" ? (
+							<div
+								onClick={() => {
+									setModalType("addrecord");
+									setModalShow(true);
+								}}>
+								<span className='addBtn d-flex align-items-center'>
+									<span>
+										<img
+											src='/assets/images/record.svg'
+											alt=''
+											className='img-fluid'
+										/>
+									</span>
+									<span className='ms-2'>
+										Add Healthrecord
+									</span>
+								</span>
+							</div>
+						) : (
+							<div
+								onClick={() => {
+									setModalType("addcamp");
+									setModalShow(true);
+								}}>
+								<span className='addBtn d-flex align-items-center'>
+									<span>
+										<img
+											src='/assets/images/record.svg'
+											alt=''
+											className='img-fluid'
+										/>
+									</span>
+									<span className='ms-2'>Add Healthcamp</span>
+								</span>
+							</div>
+						)}
+					</div>
+				</div>
+				<div className='d-flex justify-content-between d-sm-none w-100 align-items-center'>
+					<div className='d-flex'>
+						<div className='filter me-2'>
+							<span>
+								<img
+									src='/assets/images/filter.svg'
+									alt=''
+									className='img-fluid'
+								/>
+							</span>
+						</div>
+						<div className='sort'>
+							<span>
+								<img
+									src='/assets/images/sort.svg'
+									alt=''
+									className='img-fluid'
+								/>
+							</span>
+						</div>
+					</div>
 					{modalBtn == "record" ? (
 						<div
 							onClick={() => {
@@ -116,7 +192,7 @@ export default function Reports({ pdf }) {
 								setModalShow(true);
 							}}>
 							<span className='addBtn d-flex align-items-center'>
-								<span>
+								<span className='d-none d-sm-flex'>
 									<img
 										src='/assets/images/record.svg'
 										alt=''
@@ -133,7 +209,7 @@ export default function Reports({ pdf }) {
 								setModalShow(true);
 							}}>
 							<span className='addBtn d-flex align-items-center'>
-								<span>
+								<span className='d-none d-sm-flex'>
 									<img
 										src='/assets/images/record.svg'
 										alt=''
@@ -145,7 +221,7 @@ export default function Reports({ pdf }) {
 						</div>
 					)}
 				</div>
-				<div className='d-flex'>
+				<div className='d-none d-sm-flex '>
 					<div className='col-3 tableHead'>Reference Name</div>
 					<div className='col-3 tableHead'>Type</div>
 					<div className='col-3 tableHead'>Date</div>
@@ -153,77 +229,99 @@ export default function Reports({ pdf }) {
 				</div>
 			</div>
 
-			<div className='listWrapper pt-2 ' style={{ overflowY: "scroll" }}>
+			<div
+				className='listWrapper  px-2   '
+				style={{ overflowY: "scroll" }}>
 				{StoptLoop ? (
 					""
 				) : (
 					<span>
-						{Data.map((item, ind) => (
-							<div className='d-flex my-2 listItem align-items-center'>
-								<div className='col-3 name'>{item}</div>
-								<div className='col-3 type'>Report</div>
-								<div className='col-3 date'>22 mar 2021</div>
-								<div className='col-3 actionBtn d-flex justify-content-center'>
-									<span
-										className=''
-										onClick={() => {
-											// alert("clicked");
-											pdf(
-												"https://africau.edu/images/default/sample.pdf"
-											);
-										}}>
-										<img
-											style={{
-												width: "2.5rem",
-												cursor: "pointer",
-											}}
-											src='/assets/images/View.svg'
-											alt=''
-											className='img-fluid'
-										/>
-									</span>
-									<span className='mx-2'>
-										<img
+						{width > 600 &&
+							Data.map((item, ind) => (
+								<div className='d-flex my-2 listItem align-items-center'>
+									<div className='col-3 name'>{item}</div>
+									<div className='col-3 type'>Report</div>
+									<div className='col-3 date'>
+										22 mar 2021
+									</div>
+									<div className='col-3 actionBtn d-flex justify-content-center'>
+										<span
+											className=''
 											onClick={() => {
-												setModalType("editrecord");
-												setModalShow(true);
-											}}
-											style={{
-												width: "2.5rem",
-												cursor: "pointer",
-											}}
-											src='/assets/images/edit.svg'
-											alt=''
-											className='img-fluid'
-										/>
-									</span>
-									<span
-									// onClick={() =>
-									// 	DownloadFile(
-									// 		"https://africau.edu/images/default/sample.pdf",
-									// 		"pdf"
-									// 	)
-									// }
-									>
-										<a
-											href='https://africau.edu/images/default/sample.pdf'
-											target='_blank'
-											download='pdf'
-											rel='noopener noreferrer'>
+												// alert("clicked");
+												pdf(
+													"https://africau.edu/images/default/sample.pdf"
+												);
+											}}>
 											<img
 												style={{
 													width: "2.5rem",
 													cursor: "pointer",
 												}}
-												src='/assets/images/download.svg'
+												src='/assets/images/View.svg'
 												alt=''
 												className='img-fluid'
 											/>
-										</a>
-									</span>
+										</span>
+										<span className='mx-2'>
+											<img
+												onClick={() => {
+													setModalType("editrecord");
+													setModalShow(true);
+												}}
+												style={{
+													width: "2.5rem",
+													cursor: "pointer",
+												}}
+												src='/assets/images/edit.svg'
+												alt=''
+												className='img-fluid'
+											/>
+										</span>
+										<span>
+											<a
+												href='https://africau.edu/images/default/sample.pdf'
+												target='_blank'
+												download='pdf'
+												rel='noopener noreferrer'>
+												<img
+													style={{
+														width: "2.5rem",
+														cursor: "pointer",
+													}}
+													src='/assets/images/download.svg'
+													alt=''
+													className='img-fluid'
+												/>
+											</a>
+										</span>
+									</div>
 								</div>
-							</div>
-						))}
+							))}
+						{width <= 600 &&
+							Data.map((item, ind) => (
+								<div className='mobileCard'>
+									<div className='TitleType'>
+										<h4 className='titlename m-0'>
+											{item}
+										</h4>
+										<p className='types m-0'>Report</p>
+									</div>
+									<div>
+										<div className='time'>20:00</div>
+										<div className='date'>20 Mar 2022</div>
+									</div>
+									<div>
+										<span>
+											<img
+												src='/assets/images/dot.svg'
+												alt=''
+												className='img-fluid'
+											/>
+										</span>
+									</div>
+								</div>
+							))}
 					</span>
 				)}
 			</div>
