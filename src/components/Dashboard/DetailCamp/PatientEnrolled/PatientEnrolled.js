@@ -12,6 +12,7 @@ import "./PatientEnrolled.css";
 import useWrapperHeight from "../../../../CustomHooks/useWrapperHeight";
 import useWindowResize from "../../../../CustomHooks/useWindowResize";
 import PatientList from "./PatientList/PatientList";
+import DropDown from "../../../ModularComponents/DropDown/DropDown";
 
 export default function PatientEnrolled() {
 	const [modalShow, setModalShow] = React.useState(false);
@@ -23,6 +24,17 @@ export default function PatientEnrolled() {
 		"patientEnrolledList",
 		"50vh"
 	);
+	const gender = [
+		{ name: "Male" },
+		{ name: "Female" },
+		{ name: "Others" },
+		// { name: "Moderator" },
+		// { name: "admin" },
+		// { name: "Moderator" },
+		// { name: "admin" },
+		// { name: "Moderator" },
+		// { name: "admin" },
+	];
 	useEffect(() => {
 		// listSize();
 	}, [width]);
@@ -68,7 +80,14 @@ export default function PatientEnrolled() {
 					</div>
 					<div className='d-flex my-2 align-items-center '>
 						<span className='me-2'>
-							<DropdownButton
+							<DropDown
+								height={12.204}
+								width={21.014}
+								name={"gender"}
+								data={gender}
+								type={"normal"}
+							/>
+							{/* <DropdownButton
 								className='selectDropDown'
 								variant=''
 								title='Gender'
@@ -76,26 +95,16 @@ export default function PatientEnrolled() {
 								<Dropdown.Item href='#'>Male</Dropdown.Item>
 								<Dropdown.Item href='#'>Female</Dropdown.Item>
 								<Dropdown.Item href='#'>Others</Dropdown.Item>
-							</DropdownButton>
+							</DropdownButton> */}
 						</span>
 						<span>
-							<DropdownButton
-								className='selectDropDown'
-								variant=''
-								title='Role'
-								id=''>
-								<Dropdown.Item href='#'>Action</Dropdown.Item>
-								<Dropdown.Item href='#'>
-									Another action
-								</Dropdown.Item>
-								<Dropdown.Item href='#'>
-									Something else here
-								</Dropdown.Item>
-								<Dropdown.Divider />
-								<Dropdown.Item href='#'>
-									Separated link
-								</Dropdown.Item>
-							</DropdownButton>
+							<DropDown
+								height={7}
+								width={20}
+								name={"Age"}
+								data={gender}
+								type={"normal"}
+							/>
 						</span>
 					</div>
 				</div>

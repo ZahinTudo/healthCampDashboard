@@ -11,7 +11,7 @@ export default function UserSHow({ profileShow }) {
 	const DeskList = () => (
 		<>
 			{[1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3].map((item, ind) => (
-				<div className=' d-flex justify-content-between align-items-center'>
+				<div className=' d-flex justify-content-between align-items-center mb-3'>
 					<div className='name col-3 '>Alina Bondareva</div>
 					<div className=' col-3 text-center'>+91-9236785412</div>
 					<div className=' col-2 text-center'>Moderator</div>

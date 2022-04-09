@@ -22,15 +22,7 @@ a {
 .searchBtn {
 	width: auto;
 }
-.search_wrapper .input-group-text {
-	background-color: white;
-	border-right: none;
-	border-radius: 8px;
-}
-.search_wrapper .form-control {
-	border-left: none;
-	border-radius: 8px;
-}
+
 .btn {
 	display: flex !important;
 	align-items: center !important;

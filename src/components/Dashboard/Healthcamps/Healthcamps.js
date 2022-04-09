@@ -7,6 +7,8 @@ import "./healthcamps.css";
 import useWindowResize from "../../../CustomHooks/useWindowResize";
 import HealthcampCards from "../HealthcampCards/HealthcampCards";
 import VerticallyCenteredModal from "../Modal/VerticallyCenteredModal";
+import DropDown from "../../ModularComponents/DropDown/DropDown";
+import Search from "../../ModularComponents/Search/Search";
 
 export default function Healthcamps(props) {
 	const { width } = useWindowResize();
@@ -14,12 +16,33 @@ export default function Healthcamps(props) {
 
 	const [modalShow, setModalShow] = React.useState(false);
 	const [modalType, setModalType] = React.useState("");
+	const months = [
+		{ name: "January" },
+		{ name: "February" },
+		{ name: "March" },
+		{ name: "April" },
+		{ name: "May" },
+		{ name: "june" },
+		{ name: "july" },
+		{ name: "august" },
+		{ name: "september" },
+		{ name: "october" },
+		{ name: "november" },
+		{ name: "december" },
+	];
+	const state = [
+		{ name: "Bengaluru" },
+		{ name: "Mumbai" },
+		{ name: "Rajasthan" },
+		{ name: "Madhya pradesh" },
+		{ name: "Uttar pradesh" },
+	];
 	useEffect(() => {
 		if (width <= 800) setColumn("12");
 	}, [width]);
 
 	return (
-		<div className='w-100 p-4 pb-0'>
+		<div className='w-100 p-3 pb-0'>
 			<VerticallyCenteredModal
 				type={modalType}
 				show={modalShow}
@@ -33,7 +56,11 @@ export default function Healthcamps(props) {
 			<div className='healthcamps p-sm-4'>
 				<div className='healthcampsWrapperHead w-100'>
 					<div className='search_wrapper '>
-						<InputGroup className='pe-sm-3 '>
+						<div className='pe-sm-3 w-100'>
+							<Search width={50} />
+						</div>
+
+						{/* <InputGroup className='pe-sm-3 '>
 							<InputGroup.Text id='searchBtn'>
 								<FontAwesomeIcon icon={faSearch} />
 							</InputGroup.Text>
@@ -43,7 +70,7 @@ export default function Healthcamps(props) {
 								aria-label='Search'
 								aria-describedby='basic-addon1'
 							/>
-						</InputGroup>
+						</InputGroup> */}
 						<div
 							className='btn addPatient'
 							onClick={() => {
@@ -58,83 +85,24 @@ export default function Healthcamps(props) {
 						</div>
 					</div>
 					<div className='my-1 my-sm-4 flex-wrap d-flex  align-items-center'>
-						<span className='selectShadow me-3 my-2 my-sm-0'>
-							<DropdownButton
-								variant=''
-								title='All month'
-								id='input-group-dropdown-1'>
-								<Dropdown.Item href='#'>
-									<span className='checkbox my-2 my-sm-0'>
-										<input
-											id='upcoming'
-											className='me-2'
-											type='checkbox'
-											name='eventType'
-										/>
-										<label htmlFor='upcoming'>
-											January
-										</label>
-									</span>
-								</Dropdown.Item>
-								<Dropdown.Item href='#'>
-									<span className='checkbox my-2 my-sm-0'>
-										<input
-											id='upcoming'
-											className='me-2'
-											type='checkbox'
-											name='eventType'
-										/>
-										<label htmlFor='upcoming'>
-											February
-										</label>
-									</span>
-								</Dropdown.Item>
-								<Dropdown.Item href='#'>
-									<span className='checkbox my-2 my-sm-0'>
-										<input
-											id='upcoming'
-											className='me-2'
-											type='checkbox'
-											name='eventType'
-										/>
-										<label htmlFor='upcoming'>March</label>
-									</span>
-								</Dropdown.Item>
-							</DropdownButton>
-						</span>
-						<span className='selectShadow me-3 my-2 my-sm-0'>
-							<DropdownButton
-								variant=''
-								title='Location'
-								id='input-group-dropdown-1'>
-								<Dropdown.Item href='#'>Action</Dropdown.Item>
-								<Dropdown.Item href='#'>
-									Another action
-								</Dropdown.Item>
-								<Dropdown.Item href='#'>
-									Something else here
-								</Dropdown.Item>
-								<Dropdown.Divider />
-								<Dropdown.Item href='#'>
-									Separated link
-								</Dropdown.Item>
-							</DropdownButton>
-							{/* <DropdownButton
-								variant=''
-								title='Location'
-								id='input-group-dropdown-1'>
-								<Dropdown.Item href='#'>Action</Dropdown.Item>
-								<Dropdown.Item href='#'>
-									Another action
-								</Dropdown.Item>
-								<Dropdown.Item href='#'>
-									Something else here
-								</Dropdown.Item>
-								<Dropdown.Divider />
-								<Dropdown.Item href='#'>
-									Separated link
-								</Dropdown.Item>
-							</DropdownButton> */}
+						<div className=' me-3 my-2 my-sm-0'>
+							<DropDown
+								type={"normal"}
+								height={16}
+								width={21}
+								name={"all months"}
+								data={months}
+							/>
+						</div>
+
+						<span className=' me-3 my-2 my-sm-0'>
+							<DropDown
+								type={"location"}
+								height={25.223}
+								width={33.509}
+								name={"Location"}
+								data={state}
+							/>
 						</span>
 
 						<span className='me-3 checkbox my-2 my-sm-0'>

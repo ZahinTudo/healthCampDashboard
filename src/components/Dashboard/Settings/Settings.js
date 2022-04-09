@@ -23,7 +23,7 @@ export default function Settings(props) {
 		setShowPicker(!showPicker);
 	};
 	return (
-		<div className='p-4 w-100'>
+		<div className='p-3 w-100'>
 			<div className='d-flex align-items-center '>
 				{props.children}
 				<h3 className='screenTitle mb-0'>Settings</h3>

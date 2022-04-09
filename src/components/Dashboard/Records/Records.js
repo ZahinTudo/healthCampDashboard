@@ -19,6 +19,8 @@ import "./Records.css";
 import useWindowResize from "../../../CustomHooks/useWindowResize";
 import VerticallyCenteredModal from "../Modal/VerticallyCenteredModal";
 import UserSHow from "./UserShow/UserSHow";
+import DropDown from "../../ModularComponents/DropDown/DropDown";
+import Search from "../../ModularComponents/Search/Search";
 
 export default function Records({ profileShow }) {
 	const { width } = useWindowResize();
@@ -52,6 +54,16 @@ export default function Records({ profileShow }) {
 		// 	getInnerHeight(searchFilter)
 		// );
 	};
+	const roles = [
+		{ name: "Moderator" },
+		{ name: "admin" },
+		// { name: "Moderator" },
+		// { name: "admin" },
+		// { name: "Moderator" },
+		// { name: "admin" },
+		// { name: "Moderator" },
+		// { name: "admin" },
+	];
 	useEffect(() => {
 		patientLIstHeight();
 		// $(".grayDefault").change(function () {
@@ -72,7 +84,8 @@ export default function Records({ profileShow }) {
 			<div className='SearchFilterSection'>
 				<h3>Manage Users</h3>
 				<div className='search_wrapper'>
-					<InputGroup className='pe-sm-3'>
+					<Search width={80}/>
+					{/* <InputGroup className='pe-sm-3'>
 						<InputGroup.Text id='searchBtn'>
 							<FontAwesomeIcon icon={faSearch} />
 						</InputGroup.Text>
@@ -82,7 +95,7 @@ export default function Records({ profileShow }) {
 							aria-label='Search'
 							aria-describedby='basic-addon1'
 						/>
-					</InputGroup>
+					</InputGroup> */}
 					<div
 						className='btn addPatient d-none d-sm-flex'
 						onClick={() => {
@@ -100,10 +113,18 @@ export default function Records({ profileShow }) {
 						</span>
 					</div>
 				</div>
+
 				<div className='filterSort d-flex justify-content-between align-items-center my-3'>
 					<div className='d-flex align-items-center'>
 						<span className=' me-3'>
-							<DropdownButton variant='' title='Role' id=''>
+							<DropDown
+								type={"normal"}
+								height={8}
+								name={"Role"}
+								data={roles}
+							/>
+
+							{/* <DropdownButton variant='' title='Role' id=''>
 								<Dropdown.Item href='#'>Action</Dropdown.Item>
 								<Dropdown.Item href='#'>
 									Another action
@@ -115,16 +136,18 @@ export default function Records({ profileShow }) {
 								<Dropdown.Item href='#'>
 									Separated link
 								</Dropdown.Item>
-							</DropdownButton>
+							</DropdownButton> */}
 						</span>
 						<span>
 							<input
-								id='Inactive users'
+								id='inactive'
 								className='me-2'
 								type='checkbox'
 								name='eventType'
 							/>
-							<label htmlFor='upcoming'>Inactive users</label>
+							<label className='inactiveLabel' htmlFor='inactive'>
+								Inactive users
+							</label>
 						</span>
 					</div>
 				</div>

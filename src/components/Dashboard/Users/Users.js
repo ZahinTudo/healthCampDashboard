@@ -12,7 +12,7 @@ export default function Users(props) {
 		setUserProfileShow(true);
 	};
 	return (
-		<div className='w-100 p-4 UserScreen'>
+		<div className='w-100 p-3 UserScreen'>
 			<div className='d-flex align-items-center '>
 				{props.children}
 				<h3 className='screenTitle mb-0'>Users</h3>

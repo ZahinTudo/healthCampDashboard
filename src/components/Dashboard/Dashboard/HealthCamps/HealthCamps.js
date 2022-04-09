@@ -31,7 +31,7 @@ export default function HealthCamps() {
 	return (
 		<div className='w-100 healthcampWrapper p-sm-4'>
 			<div className='camWrapperHead d-flex flex-sm-row flex-column justify-content-between align-items-sm-center'>
-				<h3>Healthcamps</h3>
+				<h3 className="secTitle">Healthcamps</h3>
 				<div className='col-sm-5 col-12 mt-3 mt-sm-0'>
 					<InputGroup>
 						<InputGroup.Text id='searchBtn'>
