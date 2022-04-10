@@ -89,19 +89,11 @@ export default function PatientEnrolled() {
 								data={gender}
 								type={"normal"}
 							/>
-							{/* <DropdownButton
-								className='selectDropDown'
-								variant=''
-								title='Gender'
-								id=''>
-								<Dropdown.Item href='#'>Male</Dropdown.Item>
-								<Dropdown.Item href='#'>Female</Dropdown.Item>
-								<Dropdown.Item href='#'>Others</Dropdown.Item>
-							</DropdownButton> */}
+							
 						</span>
 						<span>
 							<DropDown
-								height={7}
+								height={10}
 								width={20}
 								name={"Age"}
 								data={gender}

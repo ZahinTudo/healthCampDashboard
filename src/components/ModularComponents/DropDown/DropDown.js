@@ -9,10 +9,39 @@ import "./DropDown1.css";
 export default function DropDown(props) {
 	const dropBtn = useRef(null);
 	const [show, setShow] = React.useState(false);
+	const [min, setMin] = React.useState(25);
+	const [max, setMax] = React.useState(75);
 	const handleclick = () => {
 		setShow(!show);
 	};
-	const sliderHandle = () => {};
+
+	const sliderHandle = () => {
+		const rangeInput = document.querySelectorAll(".range-input input");
+		const progress = document.querySelector(".rangeSlider .progress");
+		const ageGap = 10;
+		rangeInput.forEach((input) => {
+			input.addEventListener("input", (e) => {
+				let minVal = parseInt(rangeInput[0].value);
+				let maxVal = parseInt(rangeInput[1].value);
+				if (e.target.className === "range-min") {
+					setMin(minVal);
+				} else setMax(maxVal);
+
+				if (maxVal - minVal < ageGap) {
+					if (e.target.className === "range-min") {
+						rangeInput[0].value = maxVal - ageGap;
+					} else {
+						rangeInput[1].value = minVal + ageGap;
+					}
+				} else {
+					progress.style.left =
+						(minVal / rangeInput[0].max) * 100 + "%";
+					progress.style.right =
+						100 - (maxVal / rangeInput[1].max) * 100 + "%";
+				}
+			});
+		});
+	};
 	useEffect(() => {
 		sliderHandle();
 	}, []);
@@ -96,35 +125,58 @@ export default function DropDown(props) {
 						maxHeight: props.height - 3 + "rem",
 						minWidth: "max-content",
 						Width: "100%",
+						height: props.height - 3 + "rem",
 
 						// marginTop: "2.18rem",
 					}}
-					className='OptioninnerWrapper'>
-					<div className='d-flex justify-content-between'>
-						<h5 className='selectRange text-capitalize'>
-							Select range
-						</h5>
-						<div className='d-flex align-items-center justify-content-center '>
-							<input
-								className='d-flex align-items-center justify-content-center text-center'
-								style={{
-									width: "3rem",
-									borderRadius: "20%",
-									// maxWidth: "3rem",
-								}}
-								type='text'
-							/>
-							<span className='mx-2'>to</span>
-							<input
-								className='d-flex align-items-center justify-content-center text-center'
-								style={{
-									width: "3rem",
-									borderRadius: "20%",
-								}}
-								type='text'
-							/>
+					className='OptioninnerWrapper d-flex align-items-center'>
+					<div className='d-flex flex-column justify-content-between'>
+						<div className='d-flex justify-content-between'>
+							<h5 className='selectRange text-capitalize'>
+								Select range
+							</h5>
+							<div className='d-flex align-items-center justify-content-center '>
+								<input
+									className='d-flex align-items-center justify-content-center text-center'
+									style={{
+										width: "3rem",
+										borderRadius: "20%",
+										// maxWidth: "3rem",
+									}}
+									type='text'
+								/>
+								<span className='mx-2'>to</span>
+								<input
+									className='d-flex align-items-center justify-content-center text-center'
+									style={{
+										width: "3rem",
+										borderRadius: "20%",
+									}}
+									type='text'
+								/>
+							</div>
 						</div>
-						<div></div>
+						<div className='rangeWrapper my-4'>
+							<div className='rangeSlider'>
+								<div className='progress'></div>
+							</div>
+							<div className='range-input'>
+								<input
+									className='range-min'
+									type='range'
+									value={min}
+									min='0'
+									max='100'
+								/>
+								<input
+									className='range-max'
+									type='range'
+									value={max}
+									min='0'
+									max='100'
+								/>
+							</div>
+						</div>
 					</div>
 				</div>
 			);

@@ -22,3 +22,4 @@ export default function Search(props) {
 		</div>
 	);
 }
+ 
