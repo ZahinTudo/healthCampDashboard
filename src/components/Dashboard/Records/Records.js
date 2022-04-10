@@ -84,7 +84,7 @@ export default function Records({ profileShow }) {
 			<div className='SearchFilterSection'>
 				<h3>Manage Users</h3>
 				<div className='search_wrapper'>
-					<Search width={80}/>
+					<Search width={100} className='pe-sm-3 ' />
 					{/* <InputGroup className='pe-sm-3'>
 						<InputGroup.Text id='searchBtn'>
 							<FontAwesomeIcon icon={faSearch} />

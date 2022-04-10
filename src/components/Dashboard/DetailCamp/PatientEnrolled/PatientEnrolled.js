@@ -13,6 +13,7 @@ import useWrapperHeight from "../../../../CustomHooks/useWrapperHeight";
 import useWindowResize from "../../../../CustomHooks/useWindowResize";
 import PatientList from "./PatientList/PatientList";
 import DropDown from "../../../ModularComponents/DropDown/DropDown";
+import Search from "../../../ModularComponents/Search/Search";
 
 export default function PatientEnrolled() {
 	const [modalShow, setModalShow] = React.useState(false);
@@ -54,7 +55,8 @@ export default function PatientEnrolled() {
 				</div>
 				<div>
 					<div className='search_wrapper'>
-						<InputGroup className='pe-3'>
+						<Search width={100} className='me-sm-3' />
+						{/* <InputGroup className='pe-3'>
 							<InputGroup.Text id='searchBtn'>
 								<FontAwesomeIcon icon={faSearch} />
 							</InputGroup.Text>
@@ -64,9 +66,9 @@ export default function PatientEnrolled() {
 								aria-label='Search'
 								aria-describedby='basic-addon1'
 							/>
-						</InputGroup>
+						</InputGroup> */}
 						<div
-							className='btn addPatient'
+							className='btn addPatient mt-3 mt-sm-0'
 							onClick={() => {
 								setModalType("adduser");
 								setModalShow(true);
@@ -103,7 +105,7 @@ export default function PatientEnrolled() {
 								width={20}
 								name={"Age"}
 								data={gender}
-								type={"normal"}
+								type={"age"}
 							/>
 						</span>
 					</div>

@@ -4,6 +4,7 @@ import { data } from "jquery";
 import React, { useEffect, useRef } from "react";
 import Search from "../Search/Search";
 import "./DropDown.css";
+import "./DropDown1.css";
 
 export default function DropDown(props) {
 	const dropBtn = useRef(null);
@@ -11,7 +12,10 @@ export default function DropDown(props) {
 	const handleclick = () => {
 		setShow(!show);
 	};
-	useEffect(() => {}, []);
+	const sliderHandle = () => {};
+	useEffect(() => {
+		sliderHandle();
+	}, []);
 	const comp = () => {
 		if (props.type === "normal") {
 			return (
@@ -84,6 +88,46 @@ export default function DropDown(props) {
 					</div>
 				</>
 			);
+		} else if (props.type == "age") {
+			return (
+				<div
+					style={{
+						minHeight: "2rem",
+						maxHeight: props.height - 3 + "rem",
+						minWidth: "max-content",
+						Width: "100%",
+
+						// marginTop: "2.18rem",
+					}}
+					className='OptioninnerWrapper'>
+					<div className='d-flex justify-content-between'>
+						<h5 className='selectRange text-capitalize'>
+							Select range
+						</h5>
+						<div className='d-flex align-items-center justify-content-center '>
+							<input
+								className='d-flex align-items-center justify-content-center text-center'
+								style={{
+									width: "3rem",
+									borderRadius: "20%",
+									// maxWidth: "3rem",
+								}}
+								type='text'
+							/>
+							<span className='mx-2'>to</span>
+							<input
+								className='d-flex align-items-center justify-content-center text-center'
+								style={{
+									width: "3rem",
+									borderRadius: "20%",
+								}}
+								type='text'
+							/>
+						</div>
+						<div></div>
+					</div>
+				</div>
+			);
 		}
 	};
 
@@ -99,62 +143,13 @@ export default function DropDown(props) {
 				style={{
 					height: props.height + "rem",
 					width: props.width + "rem",
+					padding: props.type === "age" ? "0 20px" : "",
 				}}
 				className={`dropOptions ${
 					show ? "d-flex flex-column" : "d-none"
 				}`}
 				ref={dropBtn}>
 				{comp()}
-				{/* <Search className={"w-100"} />
-
-				<div
-					style={{
-						minHeight: "2rem",
-						maxHeight: props.height - 10 + "rem",
-						minWidth: "max-content",
-						Width: "100%",
-						marginTop: "2.18rem",
-					}}
-					className='OptioninnerWrapper'>
-					
-					{props.data.map((item, ind) => (
-						<div
-							className={`mb-${
-								ind == props.data.length - 1 ? "0" : "3"
-							}`}>
-							<input
-								style={{ marginRight: "27px" }}
-								className=''
-								type='checkbox'
-								name={item.name}
-								id={item.name}
-							/>
-							<label
-								className='text-capitalize'
-								htmlFor={item.name}>
-								{item.name}
-							</label>
-						</div>
-					))}
-				</div> */}
-				{/* <div className='mb-2'>
-					<input
-						className='me-2'
-						type='checkbox'
-						name='mod'
-						id='mod'
-					/>
-					<label htmlFor='mod'>Moderator</label>
-				</div>
-				<div>
-					<input
-						className='me-2'
-						type='checkbox'
-						name='admin'
-						id='admin'
-					/>
-					<label htmlFor='admin'>Admin</label>
-				</div> */}
 			</div>
 		</div>
 	);

@@ -57,7 +57,7 @@ export default function Healthcamps(props) {
 				<div className='healthcampsWrapperHead w-100'>
 					<div className='search_wrapper '>
 						<div className='pe-sm-3 w-100'>
-							<Search width={50} />
+							<Search  className="searchWidth" />
 						</div>
 
 						{/* <InputGroup className='pe-sm-3 '>

@@ -114,6 +114,21 @@ export default function Dashboard() {
 							<span className='Dashitem'>Settings</span>
 						</div>
 					</Link>
+					<Link
+						to='/'
+						className='position-absolute'
+						style={{ bottom: "35px" }}>
+						<div className='d-flex align-items-center logout'>
+							<span className='me-3'>
+								<img
+									src='/assets/images/logout.svg'
+									alt=''
+									className='img-fluid'
+								/>
+							</span>
+							<span className='text'>Logout</span>
+						</div>
+					</Link>
 				</div>
 			</div>
 			<div className='col-12 col-md-10'>

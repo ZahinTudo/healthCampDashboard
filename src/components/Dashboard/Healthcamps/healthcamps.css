@@ -45,7 +45,13 @@
 	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
 	border-radius: 8px;
 }
+.searchWidth {
+	width: 50%;
+}
 @media (max-width: 600px) {
+	.searchWidth {
+		width: 100%;
+	}
 	.healthcamps {
 		height: 90vh;
 		background: transparent;

@@ -7,10 +7,12 @@ import "./PatientRecordDetails.css";
 import { Document } from "react-pdf";
 import useWindowResize from "../../../CustomHooks/useWindowResize";
 import MobilePatientDetails from "./MobilePatientDetails/MobilePatientDetails";
+import { useHistory } from "react-router-dom";
 
 export default function PatientRecordDetails(props) {
 	const { width } = useWindowResize();
 	const [pdf, setpdf] = React.useState("");
+	const history = useHistory();
 	const pdfUrlHandle = (url) => {
 		// setpdf("http://africau.edu/images/default/sample.pdf");
 		setpdf(url);
@@ -24,10 +26,14 @@ export default function PatientRecordDetails(props) {
 		<div className='p-3 PatientRecordDetails'>
 			<div className='d-flex align-items-center '>
 				{props.children}
-				<FontAwesomeIcon
-					style={{ fontSize: "2.5rem" }}
-					icon={faArrowLeft}
-				/>{" "}
+				<span
+					style={{ cursor: "pointer" }}
+					onClick={() => history.goBack()}>
+					<FontAwesomeIcon
+						style={{ fontSize: "2.5rem" }}
+						icon={faArrowLeft}
+					/>{" "}
+				</span>
 				<h3 className='ms-2 mb-0 title'>Patient Details</h3>
 			</div>
 			<div className='PatientRecordDetailsParts'>
