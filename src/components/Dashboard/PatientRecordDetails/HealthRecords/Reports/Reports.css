@@ -147,3 +147,9 @@
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
 }
+
+@media (max-width: 600px) {
+	.reports .tabtitle {
+		font-size: 1.1rem;
+	}
+}
