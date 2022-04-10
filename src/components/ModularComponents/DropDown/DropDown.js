@@ -17,8 +17,32 @@ export default function DropDown(props) {
 
 	const sliderHandle = () => {
 		const rangeInput = document.querySelectorAll(".range-input input");
+		const priceInput = document.querySelectorAll(".price-input .inputbox");
 		const progress = document.querySelector(".rangeSlider .progress");
+		// const range = document.querySelector(".rangeSlider .progress");
+		console.log(priceInput, rangeInput);
 		const ageGap = 10;
+		// priceInput.forEach((input) => {
+		// 	input.addEventListener("input", (e) => {
+		// 		let minPrice = parseInt(priceInput[0].value),
+		// 			maxPrice = parseInt(priceInput[1].value);
+
+		// 		if (
+		// 			maxPrice - minPrice >= ageGap &&
+		// 			maxPrice <= rangeInput[1].max
+		// 		) {
+		// 			if (e.target.className === "input-min") {
+		// 				rangeInput[0].value = minPrice;
+		// 				progress.style.left =
+		// 					(minPrice / rangeInput[0].max) * 100 + "%";
+		// 			} else {
+		// 				rangeInput[1].value = maxPrice;
+		// 				progress.style.right =
+		// 					100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+		// 			}
+		// 		}
+		// 	});
+		// });
 		rangeInput.forEach((input) => {
 			input.addEventListener("input", (e) => {
 				let minVal = parseInt(rangeInput[0].value);
@@ -122,41 +146,47 @@ export default function DropDown(props) {
 				<div
 					style={{
 						minHeight: "2rem",
-						maxHeight: props.height - 3 + "rem",
+						maxHeight: props.height - 2 + "rem",
 						minWidth: "max-content",
 						Width: "100%",
-						height: props.height - 3 + "rem",
+						height: props.height - 2 + "rem",
 
 						// marginTop: "2.18rem",
 					}}
 					className='OptioninnerWrapper d-flex align-items-center'>
-					<div className='d-flex flex-column justify-content-between'>
-						<div className='d-flex justify-content-between'>
+					<div className='d-flex flex-column justify-content-between w-100'>
+						<div className='d-flex justify-content-between align-items-center'>
 							<h5 className='selectRange text-capitalize'>
 								Select range
 							</h5>
-							<div className='d-flex align-items-center justify-content-center '>
+							<div className=' priceInput d-flex align-items-center justify-content-center '>
 								<input
-									className='d-flex align-items-center justify-content-center text-center'
-									style={{
-										width: "3rem",
-										borderRadius: "20%",
-										// maxWidth: "3rem",
-									}}
-									type='text'
+									className='inputbox d-flex align-items-center justify-content-center text-center'
+									style={
+										{
+											// width: "3rem",
+											// borderRadius: "20%",
+											// maxWidth: "3rem",
+										}
+									}
+									value={min}
+									type='number'
 								/>
-								<span className='mx-2'>to</span>
+								<span className='mx-2 selectRange'>to</span>
 								<input
-									className='d-flex align-items-center justify-content-center text-center'
-									style={{
-										width: "3rem",
-										borderRadius: "20%",
-									}}
-									type='text'
+									className='inputbox d-flex align-items-center justify-content-center text-center'
+									style={
+										{
+											// width: "3rem",
+											// borderRadius: "20%",
+										}
+									}
+									value={max}
+									type='number'
 								/>
 							</div>
 						</div>
-						<div className='rangeWrapper my-4'>
+						<div className='rangeWrapper mt-4'>
 							<div className='rangeSlider'>
 								<div className='progress'></div>
 							</div>
@@ -165,16 +195,20 @@ export default function DropDown(props) {
 									className='range-min'
 									type='range'
 									value={min}
-									min='0'
+									min='1'
 									max='100'
 								/>
 								<input
 									className='range-max'
 									type='range'
 									value={max}
-									min='0'
+									min='1'
 									max='100'
 								/>
+							</div>
+							<div className='mt-4 w-100 d-flex justify-content-between align-items-center'>
+								<span>1</span>
+								<span>100</span>
 							</div>
 						</div>
 					</div>
