@@ -11,38 +11,30 @@ export default function DropDown(props) {
 	const [show, setShow] = React.useState(false);
 	const [min, setMin] = React.useState(25);
 	const [max, setMax] = React.useState(75);
-	const handleclick = () => {
-		setShow(!show);
+
+	const handleclick = (e) => {
+		const target = e.currentTarget.querySelector(".dropOptions");
+		const dropBtn = document.querySelectorAll(".dropOptions");
+
+		dropBtn.forEach((item, ind) => {
+			if (item.classList.contains("d-flex")) {
+				console.log(item);
+				item.classList.remove("d-flex");
+				item.classList.add("d-none");
+			}
+		});
+
+		target.classList.remove("d-none");
+		target.classList.add("d-flex");
 	};
 
 	const sliderHandle = () => {
 		const rangeInput = document.querySelectorAll(".range-input input");
 		const priceInput = document.querySelectorAll(".price-input .inputbox");
 		const progress = document.querySelector(".rangeSlider .progress");
-		// const range = document.querySelector(".rangeSlider .progress");
 		console.log(priceInput, rangeInput);
 		const ageGap = 10;
-		// priceInput.forEach((input) => {
-		// 	input.addEventListener("input", (e) => {
-		// 		let minPrice = parseInt(priceInput[0].value),
-		// 			maxPrice = parseInt(priceInput[1].value);
 
-		// 		if (
-		// 			maxPrice - minPrice >= ageGap &&
-		// 			maxPrice <= rangeInput[1].max
-		// 		) {
-		// 			if (e.target.className === "input-min") {
-		// 				rangeInput[0].value = minPrice;
-		// 				progress.style.left =
-		// 					(minPrice / rangeInput[0].max) * 100 + "%";
-		// 			} else {
-		// 				rangeInput[1].value = maxPrice;
-		// 				progress.style.right =
-		// 					100 - (maxPrice / rangeInput[1].max) * 100 + "%";
-		// 			}
-		// 		}
-		// 	});
-		// });
 		rangeInput.forEach((input) => {
 			input.addEventListener("input", (e) => {
 				let minVal = parseInt(rangeInput[0].value);
@@ -219,23 +211,21 @@ export default function DropDown(props) {
 
 	return (
 		<div className='position-relative'>
-			<div className='dropBtn ' onClick={handleclick}>
+			<div className='dropBtn ' onClick={(e) => handleclick(e)}>
+				<div
+					style={{
+						height: props.height + "rem",
+						width: props.width + "rem",
+						padding: props.type === "age" ? "0 20px" : "",
+					}}
+					className={`dropOptions d-none flex-column`}
+					ref={dropBtn}>
+					{comp()}
+				</div>
 				<div className='text-capitalize  label'>{props.name}</div>
 				<span>
 					<FontAwesomeIcon icon={faAngleDown} />
 				</span>
-			</div>
-			<div
-				style={{
-					height: props.height + "rem",
-					width: props.width + "rem",
-					padding: props.type === "age" ? "0 20px" : "",
-				}}
-				className={`dropOptions ${
-					show ? "d-flex flex-column" : "d-none"
-				}`}
-				ref={dropBtn}>
-				{comp()}
 			</div>
 		</div>
 	);
