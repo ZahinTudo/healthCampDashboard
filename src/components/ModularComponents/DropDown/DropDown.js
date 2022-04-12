@@ -5,8 +5,10 @@ import React, { useEffect, useRef } from "react";
 import Search from "../Search/Search";
 import "./DropDown.css";
 import "./DropDown1.css";
+import useWindowResize from "../../../CustomHooks/useWindowResize";
 
 export default function DropDown(props) {
+	const { width } = useWindowResize();
 	const dropBtn = useRef(null);
 	const [show, setShow] = React.useState(true);
 	const [min, setMin] = React.useState(25);
@@ -222,10 +224,13 @@ export default function DropDown(props) {
 				<div
 					style={{
 						height: props.height + "rem",
-						width: props.width + "rem",
+						width:
+							width <= 600 && props.type == "location"
+								? "80vw"
+								: props.width + "rem",
 						padding: props.type === "age" ? "0 20px" : "",
 					}}
-					className={`dropOptions d-none flex-column`}
+					className={`dropOptions ${props.type} d-none flex-column`}
 					ref={dropBtn}>
 					{comp()}
 				</div>
