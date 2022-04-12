@@ -13,7 +13,7 @@ export default function AddRecords() {
 					setModalShow(false);
 				}}
 				onConfirm={() => {
-					setModalType("adduser");
+					setModalType("addrecord");
 					setModalShow(true);
 				}}
 			/>

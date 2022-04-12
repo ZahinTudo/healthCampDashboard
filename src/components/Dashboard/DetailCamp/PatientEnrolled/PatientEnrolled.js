@@ -70,13 +70,13 @@ export default function PatientEnrolled() {
 						<div
 							className='btn addPatient mt-3 mt-sm-0'
 							onClick={() => {
-								setModalType("adduser");
+								setModalType("addpatient");
 								setModalShow(true);
 							}}>
 							<span className='' style={{ whiteSpace: "nowrap" }}>
 								{" "}
 								<FontAwesomeIcon icon={faUserPlus} />
-								<span className='ms-2'>New User</span>
+								<span className='ms-2'>Add Patient</span>
 							</span>
 						</div>
 					</div>
@@ -89,7 +89,6 @@ export default function PatientEnrolled() {
 								data={gender}
 								type={"normal"}
 							/>
-							
 						</span>
 						<span>
 							<DropDown

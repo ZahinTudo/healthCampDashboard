@@ -86,7 +86,7 @@ export default function EditHealthCamp({ props }) {
 						required={true}
 					/>
 					<DateInputs
-						label={"Date of birth"}
+						label={"Date of Camp"}
 						required={true}
 						onBlur={DataCollect}
 						type={"date"}
