@@ -30,8 +30,8 @@ export default function Settings(props) {
 			</div>
 			<div className='settings_parts'>
 				<div className='organisational_details'>
-					<div className='d-flex align-items-center justify-content-between w-100'>
-						<h3 className='title'>Organisation details</h3>
+					<div className='d-flex align-items-center justify-content-between w-100 mb-4'>
+						<h3 className='title mb-0'>Organisation details</h3>
 						<div
 							className='editBtn'
 							style={{ cursor: "pointer" }}
@@ -39,6 +39,7 @@ export default function Settings(props) {
 							{/* <FontAwesomeIcon icon={faPencilSquare} /> */}
 							{disable ? (
 								<img
+									style={{ width: "30px" }}
 									className='img-fluid'
 									src='/assets/images/editIcon.svg'
 									alt=''

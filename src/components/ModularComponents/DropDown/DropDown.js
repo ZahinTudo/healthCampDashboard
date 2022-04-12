@@ -8,24 +8,31 @@ import "./DropDown1.css";
 
 export default function DropDown(props) {
 	const dropBtn = useRef(null);
-	const [show, setShow] = React.useState(false);
+	const [show, setShow] = React.useState(true);
 	const [min, setMin] = React.useState(25);
 	const [max, setMax] = React.useState(75);
-
+	let c = 0;
 	const handleclick = (e) => {
-		const target = e.currentTarget.querySelector(".dropOptions");
-		const dropBtn = document.querySelectorAll(".dropOptions");
+		const target = dropBtn.current;
+		const dropBtns = document.querySelectorAll(".dropOptions");
 
-		dropBtn.forEach((item, ind) => {
-			if (item.classList.contains("d-flex")) {
-				console.log(item);
+		dropBtns.forEach((item, ind) => {
+			if (target != item && item.classList.contains("d-flex")) {
 				item.classList.remove("d-flex");
 				item.classList.add("d-none");
 			}
 		});
 
-		target.classList.remove("d-none");
-		target.classList.add("d-flex");
+		if (target.classList.contains("d-none")) {
+			target.classList.remove("d-none");
+			target.classList.add("d-flex");
+			// console.log(target, show);
+		} else if (target.classList.contains("d-flex")) {
+			target.classList.remove("d-flex");
+			target.classList.add("d-none");
+			// console.log(target, show);
+		}
+		console.log(target, c, c % 2);
 	};
 
 	const sliderHandle = () => {
@@ -76,7 +83,7 @@ export default function DropDown(props) {
 						className='OptioninnerWrapper'>
 						{props.data.map((item, ind) => (
 							<div
-								className={`mb-${
+								className={`ps-3 mb-${
 									ind == props.data.length - 1 ? "0" : "3"
 								}`}>
 								<input
@@ -113,7 +120,7 @@ export default function DropDown(props) {
 						{/* {comp()} */}
 						{props.data.map((item, ind) => (
 							<div
-								className={`mb-${
+								className={` ps-2 mb-${
 									ind == props.data.length - 1 ? "0" : "3"
 								}`}>
 								<input

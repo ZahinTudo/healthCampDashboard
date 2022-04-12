@@ -30,6 +30,9 @@ a {
 	width: 9.313rem;
 	height: 3.5rem;
 }
+input[type="checkbox"] {
+	transform: scale(1.15);
+}
 @media (max-width: 600px) {
 	.search_wrapper {
 		flex-direction: column;
