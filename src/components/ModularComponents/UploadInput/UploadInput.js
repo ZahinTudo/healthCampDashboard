@@ -47,9 +47,16 @@ export default function UploadInput({ Btntype }) {
 					type='file'
 					name=''
 				/>
-				<span className='uploadBtn text-info text-end d-inline-block'>
-					<FontAwesomeIcon icon={faCloudArrowUp} />
-					<span className='ms-2'>{Btntype}</span>
+				<span className='uploadBtn  text-end '>
+					{/* <FontAwesomeIcon icon={faCloudArrowUp} /> */}
+					<span className='d-flex align-items-center justify-content-center'>
+						<img
+							src='/assets/images/upload.svg'
+							alt=''
+							className='img-fluid'
+						/>
+					</span>
+					<span className='ms-2 text'>{Btntype}</span>
 				</span>
 			</div>
 		</div>

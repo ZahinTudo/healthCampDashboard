@@ -24,3 +24,20 @@
 	line-height: 140%;
 	color: rgba(0, 0, 0, 0.6);
 }
+.uploadBtn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.uploadBtn .text {
+	font-family: "Public Sans";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 1rem;
+	/* line-height: 19px; */
+	background: linear-gradient(90deg, #2ea8fa 0%, #076eb3 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	text-fill-color: transparent;
+}

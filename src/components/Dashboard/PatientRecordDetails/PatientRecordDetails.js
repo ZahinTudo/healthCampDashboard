@@ -48,14 +48,18 @@ export default function PatientRecordDetails(props) {
 				<div className='d-none d-sm-block recordViewer w-100 d-flex flex-column'>
 					<div className='d-flex justify-content-between w-100 mb-2'>
 						<span className='title'>File Viewer</span>
-						<span>
+						<a
+							href={pdf}
+							className={pdf.length > 0 ? `` : "d-none"}
+							target='_blank'
+							rel='noreferrer'>
 							<img
 								style={{ width: "1rem" }}
 								src='/assets/images/zoom.svg'
 								alt=''
 								className='img-fluid'
 							/>
-						</span>
+						</a>
 					</div>
 					{pdf.length > 0 ? (
 						<object

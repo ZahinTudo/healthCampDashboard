@@ -6,11 +6,15 @@ export const ColorScheme = createSlice({
 		color: "#076EB3",
 	},
 	reducers: {
+		getColor: (state, action) => {
+			state.color = localStorage.getItem("color");
+		},
 		setColor: (state, action) => {
 			state.color = action.payload;
+			localStorage.setItem("color", state.color);
 		},
 	},
 });
-export const { setColor } = ColorScheme.actions;
+export const { setColor, getColor } = ColorScheme.actions;
 
 export default ColorScheme.reducer;

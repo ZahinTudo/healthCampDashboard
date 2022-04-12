@@ -1,3 +1,6 @@
+:root {
+	--color: linear-gradient(90deg, #2ea8fa 0%, #076eb3 100%) !important;
+}
 .dashboard {
 	min-height: 100vh;
 	background-color: #f6f9f8;
@@ -36,11 +39,11 @@
 }
 
 .dashboardIcon.active {
-	background: linear-gradient(90deg, #2ea8fa 0%, #076eb3 100%) !important;
+	background: var(--color);
 }
 
 .dashboardIcon.active + .Dashitem {
-	background: linear-gradient(90deg, #2ea8fa 0%, #076eb3 100%) !important;
+	background: var(--color);
 	-webkit-background-clip: text !important;
 	-webkit-text-fill-color: transparent;
 }
@@ -115,6 +118,9 @@
 	font-size: 1.25rem;
 	line-height: 140%;
 	color: #8e0202;
+}
+.btn {
+	background: var(--color) !important;
 }
 @media (max-width: 800px) {
 	.sideBar {
