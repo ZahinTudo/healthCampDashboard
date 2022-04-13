@@ -36,10 +36,14 @@
 }
 .dashboardIcon {
 	margin-right: 1rem;
+	/* background: red; */
+	display: inline-block;
+	width: 24px;
+	height: 24px;
 }
 
 .dashboardIcon.active {
-	background: var(--color);
+	/* background: var(--color); */
 }
 
 .dashboardIcon.active + .Dashitem {
@@ -47,18 +51,18 @@
 	-webkit-background-clip: text !important;
 	-webkit-text-fill-color: transparent;
 }
-.dash_icon {
+/* .dash_icon {
 	display: inline-flex;
 	width: 25px;
 	height: 25px;
 	background: black;
 	mask: url("/public/assets/images/dashboard.svg") no-repeat;
-}
-.healthcare_icon {
+} */
+/*.healthcare_icon {
 	display: inline-flex;
 	width: 25px;
 	height: 25px;
-	background: black;
+	background: red;
 	mask: url("/public/assets/images/healthcamps.svg") no-repeat;
 }
 .user_icon {
@@ -74,7 +78,7 @@
 	height: 25px;
 	background: black;
 	mask: url("/public/assets/images/settings.svg") no-repeat;
-}
+} */
 
 .dashboard .sideBar {
 	min-height: 100vh;

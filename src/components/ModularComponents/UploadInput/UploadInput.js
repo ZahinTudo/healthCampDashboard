@@ -2,13 +2,14 @@ import { faCloudArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "./UploadInput.css";
-export default function UploadInput({ Btntype }) {
+export default function UploadInput({ Btntype, disable }) {
 	const uploadHandle = () => {
 		document.querySelector("#uploadFile").click();
 	};
 	const fileUpload = ({ target }) => {
 		const file = target.files[0];
 		console.log(file, file.name);
+		disable(false);
 	};
 	return (
 		<div className='uploadingWrapper d-flex w-100 align-items-center justify-content-between'>

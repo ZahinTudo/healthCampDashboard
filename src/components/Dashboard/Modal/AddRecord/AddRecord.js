@@ -13,7 +13,7 @@ import UploadInput from "../../../ModularComponents/UploadInput/UploadInput";
 
 export default function AddRecord({ props }) {
 	const [formData, setFormData] = React.useState({});
-	const [SaveDisable, setSaveDisable] = React.useState(false);
+	const [SaveDisable, setSaveDisable] = React.useState(true);
 	const handleSubmit = () => {};
 	const DataCollect = (e) => {
 		e.preventDefault();
@@ -58,7 +58,7 @@ export default function AddRecord({ props }) {
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body className='py-0'>
-				<UploadInput Btntype={"Upload"} />
+				<UploadInput disable={setSaveDisable} Btntype={"Upload"} />
 
 				<div>
 					<NormalInputs

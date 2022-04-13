@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, FloatingLabel, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -12,18 +12,45 @@ import DashboardScreen from "./Dashboard/DashboardScreen";
 import Healthcamps from "./Healthcamps/Healthcamps";
 import Users from "./Users/Users";
 import Settings from "./Settings/Settings";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+
 import DetailCamp from "./DetailCamp/DetailCamp";
 import PatientRecordDetails from "./PatientRecordDetails/PatientRecordDetails";
 import { getColor } from "../../Redux/ColorScheme";
 export default function Dashboard() {
+	//redux color setting state
 	const { color } = useSelector((state) => state.color);
-	// console.log(color);
-	// let { topicId } = useParams();
-	let { path, url } = useRouteMatch();
+	//redux logo state
 	const { logo } = useSelector((state) => state.logo);
+	//redux function
 	const dispatch = useDispatch();
+
+	//nested routing path
+	let { path, url } = useRouteMatch();
+
+	//icon change state
+	const [dashIndi, setDashIndi] = useState({
+		dash: true,
+		camp: false,
+		user: false,
+		setting: false,
+	});
+
+	//for icon change on click
+	const dashClick = (e) => {
+		const name = e.currentTarget.name;
+		console.log(name);
+		const keys = Object.keys(dashIndi);
+		const newData = { ...dashIndi };
+		keys.forEach((item, ind) => {
+			console.log(item);
+			if (item != name) newData[item] = false;
+			else newData[item] = true;
+		});
+		console.log(newData);
+		setDashIndi(newData);
+	};
+
+	//indicatore movement
 	const dashItemClick = (e) => {
 		const items = document.querySelectorAll(".dashMenuitem");
 		items.forEach((el) =>
@@ -41,18 +68,21 @@ export default function Dashboard() {
 					".indicator"
 				).style.top = `${indicatorTop}px`;
 				sidebar.classList.remove("open");
-				console.log(colorTarget.style.background);
+				// console.log(colorTarget.style.background);
 				// colorTarget. =
 				// 	"linear-gradient(90deg, #2EA8FA 0%, #076EB3 100%)";
 			})
 		);
 	};
+
+	//mobile side bar open
 	const sidebarOpen = () => {
 		const sidebar = document.getElementsByClassName("sideBar")[0];
 		sidebar.classList.add("open");
 	};
 	useEffect(() => {
 		dispatch(getColor());
+		// style color property change
 		var bodyStyles = document.body.style;
 		bodyStyles.setProperty("--color", color);
 
@@ -62,10 +92,21 @@ export default function Dashboard() {
 		const indicatorTop = target.offsetTop - target.offsetHeight;
 		document.querySelector(".indicator").style.top = `${indicatorTop}px`;
 	}, [logo, color]);
+
+	// hamburger component
 	const Hamburger = () => (
 		<span className='d-sm-none me-3' onClick={sidebarOpen}>
-			{/* <FontAwesomeIcon className='text-info me-2' icon={faBars} /> */}
-			<img src='/assets/images/burger.svg' alt='' className='img-fluid' />
+			<svg
+				width='25'
+				height='20'
+				viewBox='0 0 25 20'
+				fill='none'
+				xmlns='http://www.w3.org/2000/svg'>
+				<path
+					d='M2.5 4H22.5C23.0304 4 23.5391 3.78929 23.9142 3.41421C24.2893 3.03914 24.5 2.53043 24.5 2C24.5 1.46957 24.2893 0.960859 23.9142 0.585786C23.5391 0.210714 23.0304 0 22.5 0H2.5C1.96957 0 1.46086 0.210714 1.08579 0.585786C0.710714 0.960859 0.5 1.46957 0.5 2C0.5 2.53043 0.710714 3.03914 1.08579 3.41421C1.46086 3.78929 1.96957 4 2.5 4ZM22.5 8H2.5C1.96957 8 1.46086 8.21071 1.08579 8.58579C0.710714 8.96086 0.5 9.46957 0.5 10C0.5 10.5304 0.710714 11.0391 1.08579 11.4142C1.46086 11.7893 1.96957 12 2.5 12H22.5C23.0304 12 23.5391 11.7893 23.9142 11.4142C24.2893 11.0391 24.5 10.5304 24.5 10C24.5 9.46957 24.2893 8.96086 23.9142 8.58579C23.5391 8.21071 23.0304 8 22.5 8ZM22.5 16H2.5C1.96957 16 1.46086 16.2107 1.08579 16.5858C0.710714 16.9609 0.5 17.4696 0.5 18C0.5 18.5304 0.710714 19.0391 1.08579 19.4142C1.46086 19.7893 1.96957 20 2.5 20H22.5C23.0304 20 23.5391 19.7893 23.9142 19.4142C24.2893 19.0391 24.5 18.5304 24.5 18C24.5 17.4696 24.2893 16.9609 23.9142 16.5858C23.5391 16.2107 23.0304 16 22.5 16Z'
+					fill={color}
+				/>
+			</svg>
 		</span>
 	);
 	return (
@@ -95,6 +136,7 @@ export default function Dashboard() {
 				<div
 					className='d-flex flex-column justify-content-evenly align-items-start '
 					style={{ height: "18rem" }}>
+					{/* indicator html  */}
 					<div className='indicator position-absolute'>
 						<svg
 							width='16'
@@ -107,71 +149,132 @@ export default function Dashboard() {
 								fill={color}
 							/>
 						</svg>
-						{/* <img
-							className='img-fluid'
-							src='/assets/images/indicator.svg'
-							alt=''
-							srcset=''
-						/> */}
 					</div>
-					<Link to={`${url}`}>
+					{/* menu of the dash board */}
+					<Link onClick={dashClick} name='dash' to={`${url}`}>
 						<div className='d-flex align-items-center dashMenuitem'>
-							<span className='dash_icon dashboardIcon active'></span>
+							<span className='dash_icon dashboardIcon active'>
+								{dashIndi.dash ? (
+									<span>
+										<svg
+											width='24'
+											height='24'
+											viewBox='0 0 24 24'
+											fill='none'
+											xmlns='http://www.w3.org/2000/svg'>
+											<path
+												d='M10 13H4C3.4 13 3 13.4 3 14V20C3 20.6 3.4 21 4 21H10C10.6 21 11 20.6 11 20V14C11 13.4 10.6 13 10 13ZM10 3H4C3.4 3 3 3.4 3 4V10C3 10.6 3.4 11 4 11H10C10.6 11 11 10.6 11 10V4C11 3.4 10.6 3 10 3ZM20 16H18V14C18 13.4 17.6 13 17 13C16.4 13 16 13.4 16 14V16H14C13.4 16 13 16.4 13 17C13 17.6 13.4 18 14 18H16V20C16 20.6 16.4 21 17 21C17.6 21 18 20.6 18 20V18H20C20.6 18 21 17.6 21 17C21 16.4 20.6 16 20 16ZM20 3H14C13.4 3 13 3.4 13 4V10C13 10.6 13.4 11 14 11H20C20.6 11 21 10.6 21 10V4C21 3.4 20.6 3 20 3Z'
+												fill={color}
+											/>
+										</svg>
+									</span>
+								) : (
+									<img
+										src='/assets/images/dashNormal.svg'
+										alt=''
+										className='img-fluid'
+									/>
+								)}
+							</span>
 							<span className='Dashitem'>Dashboard</span>
 						</div>
 					</Link>
-					<Link to={`${url}/healthcamp`}>
+					<Link
+						name='camp'
+						onClick={dashClick}
+						to={`${url}/healthcamp`}>
 						<div className='d-flex align-items-center dashMenuitem'>
-							<span className='healthcare_icon dashboardIcon '></span>
-							{/* <svg
-								width='20'
-								height='22'
-								viewBox='0 0 20 22'
-								fill='none'
-								xmlns='http://www.w3.org/2000/svg'>
-								<path
-									d='M17 2H16V1C16 0.734784 15.8946 0.48043 15.7071 0.292893C15.5196 0.105357 15.2652 0 15 0C14.7348 0 14.4804 0.105357 14.2929 0.292893C14.1054 0.48043 14 0.734784 14 1V2H6V1C6 0.734784 5.89464 0.48043 5.70711 0.292893C5.51957 0.105357 5.26522 0 5 0C4.73478 0 4.48043 0.105357 4.29289 0.292893C4.10536 0.48043 4 0.734784 4 1V2H3C2.20435 2 1.44129 2.31607 0.87868 2.87868C0.316071 3.44129 0 4.20435 0 5V19C0 19.7956 0.316071 20.5587 0.87868 21.1213C1.44129 21.6839 2.20435 22 3 22H17C17.7956 22 18.5587 21.6839 19.1213 21.1213C19.6839 20.5587 20 19.7956 20 19V5C20 4.20435 19.6839 3.44129 19.1213 2.87868C18.5587 2.31607 17.7956 2 17 2ZM18 19C18 19.2652 17.8946 19.5196 17.7071 19.7071C17.5196 19.8946 17.2652 20 17 20H3C2.73478 20 2.48043 19.8946 2.29289 19.7071C2.10536 19.5196 2 19.2652 2 19V10H18V19ZM18 8H2V5C2 4.73478 2.10536 4.48043 2.29289 4.29289C2.48043 4.10536 2.73478 4 3 4H4V5C4 5.26522 4.10536 5.51957 4.29289 5.70711C4.48043 5.89464 4.73478 6 5 6C5.26522 6 5.51957 5.89464 5.70711 5.70711C5.89464 5.51957 6 5.26522 6 5V4H14V5C14 5.26522 14.1054 5.51957 14.2929 5.70711C14.4804 5.89464 14.7348 6 15 6C15.2652 6 15.5196 5.89464 15.7071 5.70711C15.8946 5.51957 16 5.26522 16 5V4H17C17.2652 4 17.5196 4.10536 17.7071 4.29289C17.8946 4.48043 18 4.73478 18 5V8Z'
-									fill={color}
-								/>
-							</svg> */}
+							<span className='healthcare_icon dashboardIcon '>
+								{dashIndi.camp ? (
+									<svg
+										width='20'
+										height='22'
+										viewBox='0 0 20 22'
+										fill='none'
+										xmlns='http://www.w3.org/2000/svg'>
+										<path
+											d='M17 2H16V1C16 0.4 15.6 0 15 0C14.4 0 14 0.4 14 1V2H6V1C6 0.4 5.6 0 5 0C4.4 0 4 0.4 4 1V2H3C1.3 2 0 3.3 0 5V19C0 20.7 1.3 22 3 22H17C18.7 22 20 20.7 20 19V5C20 3.4 18.7 2 17 2ZM18 8H2V5C2 4.4 2.4 4 3 4H4V5C4 5.6 4.4 6 5 6C5.6 6 6 5.6 6 5V4H14V5C14 5.6 14.4 6 15 6C15.6 6 16 5.6 16 5V4H17C17.6 4 18 4.4 18 5V8Z'
+											fill={color}
+										/>
+									</svg>
+								) : (
+									<img
+										src='/assets/images/healthcamps.svg'
+										alt=''
+										className='img-fluid'
+									/>
+								)}
+							</span>
 
 							<span className='Dashitem'>Healthcamp</span>
 						</div>
 					</Link>
-					<Link to={`${url}/users`}>
+					<Link name='user' onClick={dashClick} to={`${url}/users`}>
 						<div className='d-flex align-items-center dashMenuitem'>
-							<span className='user_icon dashboardIcon'></span>
+							<span className='user_icon dashboardIcon'>
+								{dashIndi.user ? (
+									<svg
+										width='25'
+										height='24'
+										viewBox='0 0 25 24'
+										fill='none'
+										xmlns='http://www.w3.org/2000/svg'>
+										<path
+											d='M16.1354 13.8599C15.0002 14.6037 13.6726 14.9999 12.3154 14.9999C10.9582 14.9999 9.63058 14.6037 8.49539 13.8599C7.03159 14.548 5.7803 15.618 4.87315 16.9572C3.96599 18.2963 3.43651 19.8552 3.34039 21.4699C3.33598 21.5383 3.34569 21.6069 3.36891 21.6714C3.39214 21.7359 3.42838 21.795 3.47539 21.8449C3.52245 21.8942 3.5791 21.9334 3.64187 21.9601C3.70464 21.9868 3.7722 22.0003 3.84039 21.9999H20.8154C20.8836 22.0003 20.9511 21.9868 21.0139 21.9601C21.0767 21.9334 21.1333 21.8942 21.1804 21.8449C21.2274 21.795 21.2636 21.7359 21.2869 21.6714C21.3101 21.6069 21.3198 21.5383 21.3154 21.4699C21.2169 19.8526 20.6837 18.2919 19.772 16.9525C18.8603 15.613 17.6039 14.5446 16.1354 13.8599Z'
+											fill={color}
+										/>
+										<path
+											d='M12.3154 14C15.6291 14 18.3154 11.3137 18.3154 8C18.3154 4.68629 15.6291 2 12.3154 2C9.00172 2 6.31543 4.68629 6.31543 8C6.31543 11.3137 9.00172 14 12.3154 14Z'
+											fill={color}
+										/>
+									</svg>
+								) : (
+									<img
+										src='/assets/images/user.svg'
+										alt=''
+										className='img-fluid'
+									/>
+								)}
+							</span>
 							<span className='Dashitem'>Users</span>
 						</div>
 					</Link>
-					<Link to={`${url}/settings`}>
+					<Link
+						name='setting'
+						onClick={dashClick}
+						to={`${url}/settings`}>
 						<div className='d-flex align-items-center dashMenuitem'>
-							<span className='settings_icon dashboardIcon'></span>
-							{/* <svg
-								width='21'
-								height='22'
-								viewBox='0 0 21 22'
-								fill='none'
-								xmlns='http://www.w3.org/2000/svg'>
-								<path
-									fill-rule='evenodd'
-									clip-rule='evenodd'
-									d='M18.8191 6.62361L18.1967 5.54352C17.6701 4.6296 16.5032 4.31432 15.588 4.83872C15.1524 5.09534 14.6325 5.16815 14.1432 5.04109C13.6538 4.91402 13.235 4.59752 12.9793 4.16137C12.8148 3.88415 12.7263 3.56839 12.723 3.24604C12.7378 2.72922 12.5429 2.2284 12.1825 1.85767C11.8221 1.48694 11.327 1.27786 10.81 1.27808H9.55595C9.04942 1.27808 8.56376 1.47991 8.20645 1.83895C7.84914 2.19798 7.64963 2.68459 7.65206 3.19112C7.63705 4.23693 6.78493 5.07681 5.73902 5.0767C5.41666 5.07336 5.10091 4.98494 4.82369 4.82041C3.90851 4.29601 2.74156 4.61129 2.21499 5.52522L1.5468 6.62361C1.02086 7.53639 1.33185 8.70261 2.24245 9.23231C2.83435 9.57404 3.19898 10.2056 3.19898 10.8891C3.19898 11.5725 2.83435 12.2041 2.24245 12.5458C1.33301 13.0719 1.02168 14.2353 1.5468 15.1454L2.17838 16.2346C2.4251 16.6798 2.83905 17.0083 3.32864 17.1474C3.81823 17.2866 4.34309 17.2249 4.78707 16.976C5.22353 16.7213 5.74364 16.6516 6.23179 16.7822C6.71994 16.9128 7.13569 17.233 7.38661 17.6717C7.55115 17.9489 7.63956 18.2646 7.64291 18.587C7.64291 19.6435 8.49941 20.5 9.55595 20.5H10.81C11.8629 20.5 12.718 19.6491 12.723 18.5962C12.7205 18.088 12.9213 17.6 13.2806 17.2407C13.6399 16.8814 14.1279 16.6807 14.636 16.6831C14.9576 16.6917 15.2721 16.7798 15.5514 16.9394C16.4642 17.4653 17.6304 17.1544 18.1601 16.2438L18.8191 15.1454C19.0742 14.7075 19.1442 14.186 19.0137 13.6964C18.8831 13.2067 18.5627 12.7894 18.1235 12.5367C17.6842 12.284 17.3638 11.8666 17.2333 11.3769C17.1027 10.8873 17.1727 10.3658 17.4278 9.92796C17.5937 9.63834 17.8338 9.3982 18.1235 9.23231C19.0286 8.70289 19.3389 7.54349 18.8191 6.63277V6.62361Z'
-									stroke='black'
-									stroke-width='2'
-									stroke-linecap='round'
-									stroke-linejoin='round'
-									fill={color}
-								/>
-								<path
-									d='M10.1875 13.5249C11.6433 13.5249 12.8235 12.3448 12.8235 10.8889C12.8235 9.43311 11.6433 8.25293 10.1875 8.25293C8.73169 8.25293 7.55151 9.43311 7.55151 10.8889C7.55151 12.3448 8.73169 13.5249 10.1875 13.5249Z'
-									// fill={color}
-									stroke='black'
-									stroke-width='2'
-									stroke-linecap='round'
-									stroke-linejoin='round'
-								/>
-							</svg> */}
+							<span className='settings_icon dashboardIcon'>
+								{dashIndi.setting ? (
+									<svg
+										width='19'
+										height='20'
+										viewBox='0 0 19 20'
+										fill='none'
+										xmlns='http://www.w3.org/2000/svg'>
+										<path
+											fill-rule='evenodd'
+											clip-rule='evenodd'
+											d='M17.8191 5.37728L17.1967 4.29718C16.6701 3.38326 15.5032 3.06798 14.588 3.59238C14.1524 3.84901 13.6325 3.92181 13.1432 3.79475C12.6538 3.66768 12.235 3.35118 11.9793 2.91503C11.8148 2.63781 11.7263 2.32206 11.723 1.9997C11.7378 1.48288 11.5429 0.982064 11.1825 0.611332C10.8221 0.240599 10.327 0.0315255 9.80995 0.0317384H8.55595C8.04942 0.0317384 7.56376 0.233577 7.20645 0.592607C6.84914 0.951638 6.64963 1.43826 6.65206 1.94478C6.63705 2.99059 5.78493 3.83047 4.73902 3.83037C4.41666 3.82702 4.10091 3.73861 3.82369 3.57407C2.90851 3.04968 1.74156 3.36496 1.21499 4.27888L0.546798 5.37728C0.0208613 6.29006 0.331851 7.45627 1.24245 7.98597C1.83435 8.3277 2.19898 8.95925 2.19898 9.64272C2.19898 10.3262 1.83435 10.9577 1.24245 11.2995C0.333008 11.8256 0.0216784 12.989 0.546798 13.899L1.17838 14.9883C1.4251 15.4334 1.83905 15.762 2.32864 15.9011C2.81823 16.0402 3.34309 15.9786 3.78707 15.7297C4.22353 15.475 4.74364 15.4052 5.23179 15.5359C5.71994 15.6665 6.13569 15.9867 6.38661 16.4253C6.55115 16.7026 6.63956 17.0183 6.64291 17.3407C6.64291 18.3972 7.49941 19.2537 8.55595 19.2537H9.80995C10.8629 19.2537 11.718 18.4028 11.723 17.3498C11.7205 16.8417 11.9213 16.3537 12.2806 15.9944C12.6399 15.6351 13.1279 15.4343 13.636 15.4368C13.9576 15.4454 14.2721 15.5334 14.5514 15.6931C15.4642 16.219 16.6304 15.908 17.1601 14.9974L17.8191 13.899C18.0742 13.4612 18.1442 12.9397 18.0137 12.45C17.8831 11.9604 17.5627 11.543 17.1235 11.2903C16.6842 11.0376 16.3638 10.6202 16.2333 10.1306C16.1027 9.64097 16.1727 9.11948 16.4278 8.68162C16.5937 8.392 16.8338 8.15186 17.1235 7.98597C18.0286 7.45656 18.3389 6.29716 17.8191 5.38643V5.37728Z'
+											fill={color}
+										/>
+										<path
+											d='M10.8233 9.64284C10.8233 10.5464 10.0908 11.2788 9.18727 11.2788C8.28373 11.2788 7.55127 10.5464 7.55127 9.64284C7.55127 8.7393 8.28373 8.00684 9.18727 8.00684C10.0908 8.00684 10.8233 8.7393 10.8233 9.64284Z'
+											fill={color}
+											stroke='white'
+											stroke-width='2'
+											stroke-linecap='round'
+											stroke-linejoin='round'
+										/>
+									</svg>
+								) : (
+									<img
+										src='/assets/images/settings.svg'
+										alt=''
+										className='img-fluid'
+									/>
+								)}
+							</span>
 
 							<span className='Dashitem'>Settings</span>
 						</div>
