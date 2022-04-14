@@ -12,7 +12,7 @@ import { setColor } from "../../../../Redux/ColorScheme";
 
 export default function ColorPicker() {
 	const dispatch = useDispatch();
-	const [color, setcolor] = useState("#d3d3d3");
+	const [color, setcolor] = useState("#89CFF0");
 	const handleChangeComplete = (color, event) => {
 		console.log(color.hex);
 		setcolor(color.hex);
