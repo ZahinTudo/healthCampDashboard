@@ -16,6 +16,7 @@ import Settings from "./Settings/Settings";
 import DetailCamp from "./DetailCamp/DetailCamp";
 import PatientRecordDetails from "./PatientRecordDetails/PatientRecordDetails";
 import { getColor } from "../../Redux/ColorScheme";
+import DwvComponent from "../Dwv/DwvComponent";
 export default function Dashboard() {
 	//redux color setting state
 	const { color } = useSelector((state) => state.color);
@@ -305,6 +306,11 @@ export default function Dashboard() {
 						<PatientRecordDetails>
 							<Hamburger />
 						</PatientRecordDetails>
+					</Route>
+					<Route exact path={`${path}/PatientRecordDetails/dwv`}>
+						<DwvComponent>
+							<Hamburger />
+						</DwvComponent>
 					</Route>
 					<Route exact path={`${path}/healthcamp`}>
 						<Healthcamps>

@@ -4,24 +4,57 @@ import "./Reports.css";
 import $ from "jquery";
 import VerticallyCenteredModal from "../../../Modal/VerticallyCenteredModal";
 import useWindowResize from "../../../../../CustomHooks/useWindowResize";
+import { Link } from "react-router-dom";
 
 export default function Reports({ pdf }) {
 	const { width } = useWindowResize();
 	const data1 = [
-		"RTPCR Report",
-		"RTPCR Report",
-		"RTPCR Report",
-		"RTPCR Report",
-		"RTPCR Report",
-		"RTPCR Report",
+		{
+			name: "RTPCR Report",
+			type: "dicom",
+		},
+		{
+			name: "RTPCR Report",
+			type: "report",
+		},
+		{
+			name: "RTPCR Report",
+			type: "report",
+		},
+		{
+			name: "RTPCR Report",
+			type: "report",
+		},
+		{
+			name: "RTPCR Report",
+			type: "dicom",
+		},
+		{
+			name: "RTPCR Report",
+			type: "report",
+		},
 	];
 	const data2 = [
-		"COVID19 Vaccin",
-		"COVID19 Vaccin",
-		"COVID19 Vaccin",
-		"COVID19 Vaccin",
-		"COVID19 Vaccin",
-		"COVID19 Vaccin",
+		{
+			name: "COVID19 Vaccin",
+			type: "dicom",
+		},
+		{
+			name: "COVID19 Vaccin",
+			type: "report",
+		},
+		{
+			name: "COVID19 Vaccin",
+			type: "dicom",
+		},
+		{
+			name: "COVID19 Vaccin",
+			type: "report",
+		},
+		{
+			name: "COVID19 Vaccin",
+			type: "report",
+		},
 	];
 	const [StoptLoop, setStoptLoop] = React.useState(true);
 	const [Data, setData] = React.useState(data1);
@@ -239,30 +272,58 @@ export default function Reports({ pdf }) {
 						{width > 600 &&
 							Data.map((item, ind) => (
 								<div className='d-flex my-2 listItem align-items-center'>
-									<div className='col-3 name'>{item}</div>
-									<div className='col-3 type'>Report</div>
+									<div className='col-3 name'>
+										{item.name}
+									</div>
+									<div className='col-3 type text-capitalize'>
+										{item.type}
+									</div>
 									<div className='col-3 date'>
 										22 mar 2021
 									</div>
 									<div className='col-3 actionBtn d-flex justify-content-center'>
-										<span
-											className=''
-											onClick={() => {
-												// alert("clicked");
-												pdf(
-													"https://africau.edu/images/default/sample.pdf"
-												);
-											}}>
-											<img
-												style={{
-													width: "2.5rem",
-													cursor: "pointer",
-												}}
-												src='/assets/images/View.svg'
-												alt=''
-												className='img-fluid'
-											/>
-										</span>
+										{item.type == "dicom" ? (
+											<Link to='/dashboard/PatientRecordDetails/dwv'>
+												<span
+													className=''
+													onClick={() => {
+														// alert("clicked");
+														pdf(
+															"https://africau.edu/images/default/sample.pdf"
+														);
+													}}>
+													<img
+														style={{
+															width: "2.5rem",
+															cursor: "pointer",
+														}}
+														src='/assets/images/View.svg'
+														alt=''
+														className='img-fluid'
+													/>
+												</span>
+											</Link>
+										) : (
+											<span
+												className=''
+												onClick={() => {
+													// alert("clicked");
+													pdf(
+														"https://africau.edu/images/default/sample.pdf"
+													);
+												}}>
+												<img
+													style={{
+														width: "2.5rem",
+														cursor: "pointer",
+													}}
+													src='/assets/images/View.svg'
+													alt=''
+													className='img-fluid'
+												/>
+											</span>
+										)}
+
 										<span className='mx-2'>
 											<img
 												onClick={() => {
