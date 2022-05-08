@@ -61,6 +61,7 @@ export default function Reports({ pdf }) {
 	const [modalBtn, setModalBtn] = React.useState("record");
 	const [modalShow, setModalShow] = React.useState(false);
 	const [modalType, setModalType] = React.useState("");
+	const [toogle, setToogle] = React.useState(false);
 	const getInnerHeight = (elm) => {
 		var computed = getComputedStyle(elm),
 			padding =
@@ -125,6 +126,12 @@ export default function Reports({ pdf }) {
 				}
 			});
 	}
+	const handleDicomView = (e) => {
+		const type = e.currentTarget.dataset.type;
+		const nextSibling = e.currentTarget.nextElementSibling;
+		if (type == "dicom") nextSibling.classList.toggle("d-none");
+		// console.log(e);
+	};
 	useEffect(() => {
 		handleTabSwitch();
 	});
@@ -364,21 +371,55 @@ export default function Reports({ pdf }) {
 								<div className='mobileCard'>
 									<div className='TitleType'>
 										<h4 className='titlename m-0'>
-											{item}
+											{item.name}
 										</h4>
-										<p className='types m-0'>Report</p>
+										<p className='types m-0 text-capitalize'>
+											{item.type}
+										</p>
 									</div>
 									<div>
 										<div className='time'>20:00</div>
 										<div className='date'>20 Mar 2022</div>
 									</div>
-									<div>
-										<span>
+									<div className='position-relative'>
+										<span
+											data-type={item.type}
+											style={{ cursor: "pointer" }}
+											onClick={handleDicomView}>
 											<img
 												src='/assets/images/dot.svg'
 												alt=''
 												className='img-fluid'
 											/>
+										</span>
+										<span
+											className='position-absolute d-none'
+											style={{
+												right: 0,
+												top: "100%",
+												width: "20px",
+												height: "20px",
+											}}>
+											<Link to='/dashboard/PatientRecordDetails/dwv'>
+												<span
+													className=''
+													onClick={() => {
+														// alert("clicked");
+														pdf(
+															"https://africau.edu/images/default/sample.pdf"
+														);
+													}}>
+													<img
+														style={{
+															width: "2.5rem",
+															cursor: "pointer",
+														}}
+														src='/assets/images/View.svg'
+														alt=''
+														className='img-fluid'
+													/>
+												</span>
+											</Link>
 										</span>
 									</div>
 								</div>

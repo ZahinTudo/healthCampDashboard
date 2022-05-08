@@ -19,9 +19,13 @@ import Slide from "@material-ui/core/Slide";
 import Toolbar from "@material-ui/core/Toolbar";
 
 import TagsTable from "./TagsTable";
-
+import { withRouter } from "react-router-dom";
 import "./DwvComponent.css";
 import dwv from "dwv";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+// import { useHistory } from "react-router-dom";
+// import { withRouter } from "react-router";
 
 // Image decoders (for web workers)
 dwv.image.decoderScripts = {
@@ -55,7 +59,6 @@ const styles = (theme) => ({
 export const TransitionUp = React.forwardRef((props, ref) => (
 	<Slide direction='up' {...props} ref={ref} />
 ));
-
 class DwvComponent extends React.Component {
 	constructor(props) {
 		super(props);
@@ -105,7 +108,8 @@ class DwvComponent extends React.Component {
 			metaData,
 			toolMenuAnchorEl,
 		} = this.state;
-
+		// const { match, location, history } = this.props;
+		const { router, params, location, routes, history } = this.props;
 		const toolsMenuItems = toolNames.map((tool) => (
 			<MenuItem
 				onClick={this.handleMenuItemClick.bind(this, tool)}
@@ -114,9 +118,21 @@ class DwvComponent extends React.Component {
 				{tool}
 			</MenuItem>
 		));
-
+		// const history = useHistory();
 		return (
-			<div id='dwv'>
+			<div id='dwv' className='p-3'>
+				<div className='d-flex align-items-center '>
+					{this.props.children}
+					<span
+						style={{ cursor: "pointer" }}
+						onClick={() => history.goBack()}>
+						<FontAwesomeIcon
+							style={{ fontSize: "2.5rem" }}
+							icon={faArrowLeft}
+						/>{" "}
+					</span>
+					<h3 className='ms-2 mb-0 title'>Patient Details</h3>
+				</div>
 				<LinearProgress variant='determinate' value={loadProgress} />
 				<div className='button-row'>
 					<Button
@@ -548,4 +564,4 @@ DwvComponent.propTypes = {
 	classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(DwvComponent);
+export default withStyles(styles)(withRouter(DwvComponent));
